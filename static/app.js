@@ -111,9 +111,9 @@ function renderBahamut() {
 function renderMeta() {
   const meta = state.data.meta || {};
   const map = {
-    guides: ["guides_zh", "guides_en"],
-    videos_hot: ["videos_hot_zh", "videos_hot_en"],
-    videos_new: ["videos_new_zh", "videos_new_en"],
+    guides: ["guides_zh", "guides_en", "guides_ja"],
+    videos_hot: ["videos_hot_zh", "videos_hot_en", "videos_hot_ja"],
+    videos_new: ["videos_new_zh", "videos_new_en", "videos_new_ja"],
     bahamut: ["bahamut"],
   };
   $$("[data-meta]").forEach((el) => {
@@ -135,9 +135,9 @@ function localSearch(raw) {
   const byDate = (a, b) => String(b.found_date || "").localeCompare(String(a.found_date || ""));
   const guides = [...(state.data.guides_zh || []), ...(state.data.guides_en || []), ...(state.data.guides_ja || [])]
     .filter((g) => m(g, ["title", "snippet", "source", "category", "found_date"])).sort(byDate).slice(0, 60);
-  const hot = [...(state.data.videos_hot_zh || []), ...(state.data.videos_hot_en || [])]
+  const hot = [...(state.data.videos_hot_zh || []), ...(state.data.videos_hot_en || []), ...(state.data.videos_hot_ja || [])]
     .filter((v) => m(v, ["title", "channel", "lang"])).slice(0, 20);
-  const fresh = [...(state.data.videos_new_zh || []), ...(state.data.videos_new_en || [])]
+  const fresh = [...(state.data.videos_new_zh || []), ...(state.data.videos_new_en || []), ...(state.data.videos_new_ja || [])]
     .filter((v) => m(v, ["title", "channel", "lang"])).slice(0, 20);
   const baha = (state.data.bahamut || [])
     .filter((b) => m(b, ["title", "snippet", "author", "source"])).slice(0, 20);

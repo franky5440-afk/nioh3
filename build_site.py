@@ -9,8 +9,8 @@ SITE = BASE / "site"
 
 SECTIONS = [
     "guides_zh", "guides_en", "guides_ja",
-    "videos_hot_zh", "videos_hot_en",
-    "videos_new_zh", "videos_new_en",
+    "videos_hot_zh", "videos_hot_en", "videos_hot_ja",
+    "videos_new_zh", "videos_new_en", "videos_new_ja",
     "bahamut", "meta",
 ]
 
@@ -30,7 +30,7 @@ def main():
     shutil.copy(BASE / "templates" / "index.html", SITE / "index.html")
     shutil.copytree(BASE / "static", SITE / "static")
     shutil.copytree(DATA / "thumbs", SITE / "thumbs")
-    print(f"site built: {len(merged['guides_zh']) + len(merged['guides_en']) + len(merged['guides_ja'])} guides, "
+    print(f"site built: {sum(len(merged[k]) for k in merged if k.startswith('guides'))} guides, "
           f"{sum(len(merged[k]) for k in ('videos_hot_zh', 'videos_hot_en', 'videos_new_zh', 'videos_new_en'))} videos")
 
 

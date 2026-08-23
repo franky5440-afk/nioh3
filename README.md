@@ -25,9 +25,9 @@ python3 -m venv venv
 
 | 分頁 | 內容 | 資料檔 |
 |------|------|--------|
-| 攻略庫 | 全網搜尋文字／圖文攻略，累積式攻略庫，分中文區與 English，再依 Boss、配裝、武器、新手、流程、收集、白金、情報等類別分區 | `data/guides_zh.json` `data/guides_en.json` |
-| 熱門影片 TOP10 | YouTube 每日熱門攻略影片（依觀看數），分中英文區 | `data/videos_hot_{zh,en}.json` |
-| 最新影片 | YouTube 每日最新發布攻略影片各 10 部，分中英文區 | `data/videos_new_{zh,en}.json` |
+| 攻略庫 | 全網搜尋文字／圖文攻略，累積式攻略庫，分中文區、English、日本語，再依 Boss、配裝、武器、新手、流程、收集、白金、情報等類別分區 | `data/guides_{zh,en,ja}.json` |
+| 熱門影片 TOP10 | YouTube 每日熱門攻略影片（依觀看數），分中文、英文、日文區 | `data/videos_hot_{zh,en,ja}.json` |
+| 最新影片 | YouTube 每日最新發布攻略影片各 10 部，分中文、英文、日文區 | `data/videos_new_{zh,en,ja}.json` |
 | 巴哈討論區 | 巴哈姆特仁王哈啦區（bsn=8448）最新 10 篇討論（已排除置頂公告） | `data/bahamut.json` |
 
 頂部搜尋框可跨全部內容（攻略＋影片＋討論）以關鍵字搜尋。

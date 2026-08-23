@@ -186,8 +186,19 @@ def yt_full_info(vid):
 def collect_videos(lang):
     if lang == "zh":
         hot_queries, new_queries = ["仁王3 攻略"], ["仁王3 攻略"]
+
+        def keep(title):
+            return has_cjk(title) and not KANA_RE.search(title)
+    elif lang == "ja":
+        hot_queries, new_queries = ["仁王3 攻略", "仁王3 実況 攻略"], ["仁王3 攻略"]
+
+        def keep(title):
+            return bool(KANA_RE.search(title))
     else:
         hot_queries, new_queries = ["Nioh 3 guide", "Nioh 3 tips"], ["Nioh 3 guide"]
+
+        def keep(title):
+            return not has_cjk(title)
 
     pool_hot = []
     seen = set()
@@ -197,9 +208,7 @@ def collect_videos(lang):
             if k in seen:
                 continue
             seen.add(k)
-            if lang == "zh" and not has_cjk(v["title"]):
-                continue
-            if lang == "en" and has_cjk(v["title"]):
+            if not keep(v["title"]):
                 continue
             pool_hot.append(v)
 
@@ -255,9 +264,7 @@ def collect_videos(lang):
             if k in seen2:
                 continue
             seen2.add(k)
-            if lang == "zh" and not has_cjk(v["title"]):
-                continue
-            if lang == "en" and has_cjk(v["title"]):
+            if not keep(v["title"]):
                 continue
             pool_new.append(v)
     log.info("videos new [%s]: %d candidates", lang, len(pool_new))
@@ -336,7 +343,7 @@ def update_guides():
 
 
 def update_videos():
-    for lang in ("zh", "en"):
+    for lang in ("zh", "en", "ja"):
         hot, new = collect_videos(lang)
         save_json(f"videos_hot_{lang}.json", hot)
         save_json(f"videos_new_{lang}.json", new)

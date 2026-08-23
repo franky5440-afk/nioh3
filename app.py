@@ -9,8 +9,8 @@ DATA = BASE / "data"
 
 SECTIONS = [
     "guides_zh", "guides_en", "guides_ja",
-    "videos_hot_zh", "videos_hot_en",
-    "videos_new_zh", "videos_new_en",
+    "videos_hot_zh", "videos_hot_en", "videos_hot_ja",
+    "videos_new_zh", "videos_new_en", "videos_new_ja",
     "bahamut", "meta",
 ]
 
@@ -49,8 +49,8 @@ def api_search():
     if not q:
         return jsonify({"query": "", "guides": [], "hot": [], "new": [], "bahamut": [], "total": 0})
     guides = [g for s in ("guides_zh", "guides_en", "guides_ja") for g in load(s) if match(g, q)]
-    hot = [v for s in ("videos_hot_zh", "videos_hot_en") for v in load(s) if match(v, q)]
-    new = [v for s in ("videos_new_zh", "videos_new_en") for v in load(s) if match(v, q)]
+    hot = [v for s in ("videos_hot_zh", "videos_hot_en", "videos_hot_ja") for v in load(s) if match(v, q)]
+    new = [v for s in ("videos_new_zh", "videos_new_en", "videos_new_ja") for v in load(s) if match(v, q)]
     baha = [b for b in load("bahamut") if match(b, q)]
     guides.sort(key=lambda g: g.get("found_date") or "", reverse=True)
     return jsonify({
