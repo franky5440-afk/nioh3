@@ -1,6 +1,11 @@
 # 仁王3 攻略武庫 Nioh 3 Guide Hub
 
+**線上版：https://franky5440-afk.github.io/nioh3/**
+
 本機自用攻略聚合站。所有資料僅存放於本工作區 `data/`，每日由排程自動更新。
+
+- 線上版：GitHub Actions 每日 UTC 00:00（台北 08:00）雲端執行 `scraper.py` → 建置靜態站 → 自動發布 GitHub Pages，並將資料 commit 回本 repo
+- 本機版：cron 每天 08:00 執行 `update.sh`，Flask 服務於 `http://127.0.0.1:8765`
 
 ## 啟動網站
 
@@ -29,9 +34,8 @@ python3 -m venv venv
 
 ## 每日更新
 
-cron 已設定每天 08:00 執行 `update.sh`（呼叫 `scraper.py`）。
-
-手動更新：`./update.sh`
+- 雲端：GitHub Actions schedule（`.github/workflows/deploy.yml`），可手動觸發：`gh workflow run deploy.yml`
+- 本機：cron 已設定每天 08:00 執行 `update.sh`；手動更新：`./update.sh`
 
 更新來源：
 - 攻略庫：DuckDuckGo 網頁搜尋（ddgs）
