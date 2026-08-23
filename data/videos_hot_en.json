@@ -5,7 +5,7 @@
   "channel": "Boomstick Gaming",
   "url": "https://www.youtube.com/watch?v=mz3HbJnkllA",
   "views": 127881,
-  "date": "2026-02-04",
+  "date": null,
   "lang": "en"
  },
  {
@@ -14,7 +14,7 @@
   "channel": "Fextralife",
   "url": "https://www.youtube.com/watch?v=Qy4TPLod560",
   "views": 125171,
-  "date": "2026-02-05",
+  "date": null,
   "lang": "en"
  },
  {
@@ -22,8 +22,17 @@
   "title": "Nioh 3 - Ultimate Starter Guide",
   "channel": "FightinCowboy",
   "url": "https://www.youtube.com/watch?v=I5aXvXjxeN0",
-  "views": 116268,
-  "date": "2026-02-05",
+  "views": 116270,
+  "date": null,
+  "lang": "en"
+ },
+ {
+  "video_id": "QVVUiPgjrxg",
+  "title": "Nioh 3 - Become Overpowered In Under 4 Hours! Best Early Unlocks & How To Find Them",
+  "channel": "KhrazeGaming",
+  "url": "https://www.youtube.com/watch?v=QVVUiPgjrxg",
+  "views": 106765,
+  "date": null,
   "lang": "en"
  },
  {
@@ -32,7 +41,7 @@
   "channel": "GameCraft",
   "url": "https://www.youtube.com/watch?v=jENghuAhPKY",
   "views": 103069,
-  "date": "2026-02-11",
+  "date": null,
   "lang": "en"
  },
  {
@@ -40,8 +49,8 @@
   "title": "Nioh 3 - NG+ Guide: Everything You Should Know!",
   "channel": "FightinCowboy",
   "url": "https://www.youtube.com/watch?v=R9lqw2LSwm8",
-  "views": 101842,
-  "date": "2026-02-18",
+  "views": 101855,
+  "date": null,
   "lang": "en"
  },
  {
@@ -49,8 +58,8 @@
   "title": "Nioh 3 - Blacksmithing Guide: Everything You NEED to Know",
   "channel": "FightinCowboy",
   "url": "https://www.youtube.com/watch?v=rcRMcWwxc24",
-  "views": 84115,
-  "date": "2026-02-11",
+  "views": 84117,
+  "date": null,
   "lang": "en"
  },
  {
@@ -58,8 +67,17 @@
   "title": "16 Things EVERY Player Needs to Know! - Nioh 3 Beginners Guide",
   "channel": "P4wnyhof",
   "url": "https://www.youtube.com/watch?v=BZwU-_0hJ2I",
-  "views": 66736,
-  "date": "2026-02-02",
+  "views": 66737,
+  "date": null,
+  "lang": "en"
+ },
+ {
+  "video_id": "EYGH_DlIqIA",
+  "title": "Nioh 3 Blacksmithing Guide: Massive Damage for Any Weapon",
+  "channel": "ItalianSpartacus",
+  "url": "https://www.youtube.com/watch?v=EYGH_DlIqIA",
+  "views": 60449,
+  "date": null,
   "lang": "en"
  },
  {
@@ -68,25 +86,7 @@
   "channel": "Doms Roundtable",
   "url": "https://www.youtube.com/watch?v=6RPDgg4UGnw",
   "views": 54294,
-  "date": "2026-02-09",
-  "lang": "en"
- },
- {
-  "video_id": "3PLSBSXT2uo",
-  "title": "Nioh 3 | OPTIMIZATION GUIDE | Every Setting Tested | Best Settings",
-  "channel": "BenchmarKing",
-  "url": "https://www.youtube.com/watch?v=3PLSBSXT2uo",
-  "views": 52454,
-  "date": "2026-02-11",
-  "lang": "en"
- },
- {
-  "video_id": "0PUoIqaJU4I",
-  "title": "Nioh 3 - Ultimate Beginner TIPS & Tricks For The Perfect Start",
-  "channel": "KhrazeGaming",
-  "url": "https://www.youtube.com/watch?v=0PUoIqaJU4I",
-  "views": 50465,
-  "date": "2026-02-05",
+  "date": null,
   "lang": "en"
  }
 ]
