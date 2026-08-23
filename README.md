@@ -65,7 +65,7 @@ nioh3/
     ├── bahamut.json               # 巴哈最新討論（每日覆寫）
     ├── meta.json                  # 各區最後更新時間
     ├── site.json                  # 前端讀取的彙整檔（build_site.py 產生）
-    └── thumbs/{video_id}.jpg      # 影片縮圖快取
+    └── (縮圖不存放，前端直連 i.ytimg.com)
 ```
 
 ## 疑難排解

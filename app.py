@@ -63,11 +63,6 @@ def api_search():
     })
 
 
-@app.get("/thumbs/<path:name>")
-def thumbs(name):
-    return send_from_directory(DATA / "thumbs", name)
-
-
 @app.get("/data/<path:name>")
 def data_files(name):
     return send_from_directory(DATA, name)

@@ -36,7 +36,7 @@ scraper.py ──> data/*.json ──> build_site.py ──> site/（靜態站�
 ### yt-dlp（v2026.08+）
 - **沒有 `ytsearchdate` 前綴**了，按上傳時間排序要用搜尋 URL：`https://www.youtube.com/results?search_query={q}&sp=CAI%3D`——注意 `CAI%3D` 只能單能單層編碼，寫成 `%253D` 會被 parse_qs 解碼成無效參數、排序靜默失效
 - flat playlist 搜尋自帶 `view_count`，但**沒有 upload_date**，顯示日期需對選出的影片做完整 extract（每部約 1–2 秒，記得 sleep）
-- 影片縮圖下載到 `data/thumbs/{video_id}.jpg`，前端以相對路徑 `thumbs/...jpg` 引用，onerror fallback 到 i.ytimg.com
+- 影片縮圖**不下載、不入 repo**（避免再散布第三方素材）：前端直接引用 `https://i.ytimg.com/vi/{video_id}/mqdefault.jpg`，載入失敗即隱藏。`data/thumbs/` 已列入 `.gitignore`，不要重新加回下載邏輯
 
 ### DuckDuckGo（ddgs）
 - 同一批 query **短時間內重跑**會回 "No results found" 或引擎 429/403——這是速率限制，不是程式壞掉。攻略庫每天只掃一次所以不受影響；除錯時不要連續重跑 `update_guides()`，誤判會浪費時間
@@ -68,7 +68,7 @@ git add -A && git -c core.editor=true rebase --continue && git push
 1. `./venv/bin/python -c "import ast; ast.parse(open('scraper.py').read())"` — Python 語法
 2. `node --check static/app.js` — JS 語法
 3. 跑 scraper 後檢查各區筆數與**語言誤配 = 0**（用 `detect_lang(title)` 對照 item["lang"]）
-4. `./start.sh` 後 curl 三項：`/` 200、`/data/site.json` 可解析、任一 `/thumbs/<id>.jpg` 200
+4. `./start.sh` 後 curl 兩項：`/` 200、`/data/site.json` 可解析（`/thumbs/` 路由已移除，縮圖由前端直連 YouTube）
 5. push 後觸發 workflow，確認 run success 再 curl 線上 site.json
 
 ## 其他約定

@@ -3,3 +3,4 @@ site/
 logs/
 __pycache__/
 *.pyc
+data/thumbs/

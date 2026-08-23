@@ -10,7 +10,8 @@ const $$ = (s) => document.querySelectorAll(s);
 function esc(s) {
   const d = document.createElement("div");
   d.textContent = s == null ? "" : String(s);
-  return d.innerHTML;
+  // textContent→innerHTML 只轉義 & < >，不含引號；值會被插進 src/href 屬性，故補上
+  return d.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
 function fmtViews(n) {
@@ -37,7 +38,7 @@ function videoCard(v, rank) {
   const vid = esc(v.video_id);
   return `<article class="video-card">
     <a class="thumb-link" href="${esc(v.url)}" target="_blank" rel="noopener noreferrer">
-      <img class="thumb" src="thumbs/${vid}.jpg" data-vid="${vid}" alt="" loading="lazy">
+      <img class="thumb" src="https://i.ytimg.com/vi/${vid}/mqdefault.jpg" alt="" loading="lazy" referrerpolicy="no-referrer">
       <span class="play-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v14l11-7-11-7z"/></svg></span>
       ${rank != null ? `<span class="rank-badge">${rank}</span>` : ""}
     </a>
@@ -55,10 +56,7 @@ function videoCard(v, rank) {
 
 document.addEventListener("error", (e) => {
   const img = e.target;
-  if (img.tagName === "IMG" && img.classList.contains("thumb")) {
-    if (!img.dataset.fb) { img.dataset.fb = "1"; img.src = `https://i.ytimg.com/vi/${img.dataset.vid}/mqdefault.jpg`; }
-    else img.style.visibility = "hidden";
-  }
+  if (img.tagName === "IMG" && img.classList.contains("thumb")) img.style.visibility = "hidden";
 }, true);
 
 /* ---------- renders ---------- */

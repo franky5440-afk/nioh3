@@ -14,10 +14,8 @@ from ddgs import DDGS
 
 BASE = Path(__file__).resolve().parent
 DATA = BASE / "data"
-THUMBS = DATA / "thumbs"
 LOGS = BASE / "logs"
 DATA.mkdir(exist_ok=True)
-THUMBS.mkdir(exist_ok=True)
 LOGS.mkdir(exist_ok=True)
 
 logging.basicConfig(
@@ -125,23 +123,6 @@ def classify(text):
 def is_video_url(url):
     d = domain_of(url)
     return any(d == vd or d.endswith("." + vd) for vd in VIDEO_DOMAINS)
-
-
-def fetch_thumbs(items):
-    import hashlib
-    for it in items:
-        vid = it.get("video_id")
-        if not vid:
-            continue
-        dest = THUMBS / f"{vid}.jpg"
-        if dest.exists():
-            continue
-        try:
-            r = requests.get(f"https://i.ytimg.com/vi/{vid}/mqdefault.jpg", timeout=20, headers={"User-Agent": UA["User-Agent"]})
-            if r.ok and r.headers.get("content-type", "").startswith("image"):
-                dest.write_bytes(r.content)
-        except Exception as e:
-            log.warning("thumb %s: %s", vid, e)
 
 
 def yt_flat_search(query, n, sort_by_date=False):
@@ -270,7 +251,6 @@ def collect_videos(lang):
     log.info("videos new [%s]: %d candidates", lang, len(pool_new))
     new = enrich_and_take(pool_new, 10, by_views=False)
 
-    fetch_thumbs(hot + new)
     return hot, new
 
 
