@@ -133,7 +133,7 @@ function localSearch(raw) {
     return words.every((w) => hay.includes(w));
   };
   const byDate = (a, b) => String(b.found_date || "").localeCompare(String(a.found_date || ""));
-  const guides = [...(state.data.guides_zh || []), ...(state.data.guides_en || [])]
+  const guides = [...(state.data.guides_zh || []), ...(state.data.guides_en || []), ...(state.data.guides_ja || [])]
     .filter((g) => m(g, ["title", "snippet", "source", "category", "found_date"])).sort(byDate).slice(0, 60);
   const hot = [...(state.data.videos_hot_zh || []), ...(state.data.videos_hot_en || [])]
     .filter((v) => m(v, ["title", "channel", "lang"])).slice(0, 20);

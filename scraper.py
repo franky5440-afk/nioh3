@@ -85,10 +85,23 @@ def set_meta(section):
 
 
 CJK_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]")
+KANA_RE = re.compile(r"[\u3040-\u30ff]")
 
 
 def has_cjk(s):
     return bool(CJK_RE.search(s or ""))
+
+
+def detect_lang(text, url=""):
+    t = text or ""
+    if KANA_RE.search(t):
+        return "ja"
+    d = domain_of(url)
+    if d.endswith(".jp"):
+        return "ja"
+    if has_cjk(t):
+        return "zh"
+    return "en"
 
 
 def norm_url(u):
@@ -263,20 +276,31 @@ GUIDE_QUERIES = {
         "Nioh 3 guide", "Nioh 3 walkthrough", "Nioh 3 boss guide", "Nioh 3 best build",
         "Nioh 3 beginner tips", "Nioh 3 weapons tier list", "Nioh 3 trophy guide", "Nioh 3 kodama locations",
     ],
+    "ja": [
+        "仁王3 攻略", "仁王3 攻略 wiki", "仁王3 ボス 攻略方法", "仁王3 ビルド 最強",
+        "仁王3 初心者 序盤 攻略", "仁王3 武器 おすすめ", "仁王3 トロフィー コンプ", "仁王3 収集要素 場所",
+    ],
 }
+
+QUERY_REGIONS = {"zh": "tw-zh", "en": "us-en", "ja": "jp-jp"}
 
 
 def update_guides():
-    for lang in ("zh", "en"):
-        existing = load_json(f"guides_{lang}.json", [])
-        index = {norm_url(g["url"]): g for g in existing}
-        added = 0
-        with DDGS() as d:
-            for q in GUIDE_QUERIES[lang]:
+    pool = {}
+    for lang in ("zh", "en", "ja"):
+        for g in load_json(f"guides_{lang}.json", []):
+            k = norm_url(g["url"])
+            g["lang"] = detect_lang(g["title"] + " " + g.get("snippet", ""), g["url"])
+            pool[k] = g
+    added = 0
+    with DDGS() as d:
+        for qkey, queries in GUIDE_QUERIES.items():
+            region = QUERY_REGIONS[qkey]
+            for q in queries:
                 try:
-                    results = list(d.text(q, region="tw-zh" if lang == "zh" else "us-en", max_results=12))
+                    results = list(d.text(q, region=region, max_results=12))
                 except Exception as e:
-                    log.warning("ddgs %s %s: %s", lang, q, e)
+                    log.warning("ddgs %s %s: %s", qkey, q, e)
                     time.sleep(2)
                     continue
                 for r in results:
@@ -285,25 +309,30 @@ def update_guides():
                     if not url.startswith("http") or is_video_url(url):
                         continue
                     k = norm_url(url)
-                    if k in index:
+                    if k in pool:
                         continue
+                    body = (r.get("body") or "").strip()
                     item = {
                         "id": re.sub(r"[^a-f0-9]", "", __import__("hashlib").md5(k.encode()).hexdigest()),
                         "title": title,
                         "url": url,
-                        "snippet": (r.get("body") or "").strip(),
+                        "snippet": body,
                         "source": domain_of(url),
-                        "category": classify(title + " " + (r.get("body") or "")),
-                        "lang": lang,
+                        "category": classify(title + " " + body),
+                        "lang": detect_lang(title + " " + body, url),
                         "found_date": now_str()[:10],
                     }
-                    index[k] = item
+                    pool[k] = item
                     added += 1
                 time.sleep(1.5)
-        guides = list(index.values())
-        save_json(f"guides_{lang}.json", guides)
+    buckets = {"zh": [], "en": [], "ja": []}
+    for it in pool.values():
+        lang = it.get("lang") if it.get("lang") in buckets else detect_lang(it["title"] + " " + it.get("snippet", ""), it["url"])
+        buckets[lang].append(it)
+    for lang, items in buckets.items():
+        save_json(f"guides_{lang}.json", items)
         set_meta(f"guides_{lang}")
-        log.info("guides [%s]: +%d -> total %d", lang, added, len(guides))
+    log.info("guides: +%d -> zh=%d en=%d ja=%d", added, len(buckets["zh"]), len(buckets["en"]), len(buckets["ja"]))
 
 
 def update_videos():

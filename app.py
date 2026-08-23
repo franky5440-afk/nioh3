@@ -8,7 +8,7 @@ BASE = Path(__file__).resolve().parent
 DATA = BASE / "data"
 
 SECTIONS = [
-    "guides_zh", "guides_en",
+    "guides_zh", "guides_en", "guides_ja",
     "videos_hot_zh", "videos_hot_en",
     "videos_new_zh", "videos_new_en",
     "bahamut", "meta",
@@ -48,7 +48,7 @@ def api_search():
     q = (request.args.get("q") or "").strip().lower()
     if not q:
         return jsonify({"query": "", "guides": [], "hot": [], "new": [], "bahamut": [], "total": 0})
-    guides = [g for s in ("guides_zh", "guides_en") for g in load(s) if match(g, q)]
+    guides = [g for s in ("guides_zh", "guides_en", "guides_ja") for g in load(s) if match(g, q)]
     hot = [v for s in ("videos_hot_zh", "videos_hot_en") for v in load(s) if match(v, q)]
     new = [v for s in ("videos_new_zh", "videos_new_en") for v in load(s) if match(v, q)]
     baha = [b for b in load("bahamut") if match(b, q)]
