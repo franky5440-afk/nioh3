@@ -1,0 +1,393 @@
+#!/usr/bin/env python3
+import json
+import logging
+import re
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.parse import quote_plus, urljoin, urlparse
+
+import requests
+import yt_dlp
+from bs4 import BeautifulSoup
+from ddgs import DDGS
+
+BASE = Path(__file__).resolve().parent
+DATA = BASE / "data"
+THUMBS = DATA / "thumbs"
+LOGS = BASE / "logs"
+DATA.mkdir(exist_ok=True)
+THUMBS.mkdir(exist_ok=True)
+LOGS.mkdir(exist_ok=True)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    handlers=[logging.FileHandler(LOGS / "scraper.log", encoding="utf-8"), logging.StreamHandler()],
+)
+log = logging.getLogger("nioh3")
+
+BAHA_URL = "https://forum.gamer.com.tw/B.php?bsn=8448"
+BAHA_BASE = "https://forum.gamer.com.tw/"
+UA = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+    "Accept-Language": "zh-TW,zh;q=0.9,en;q=0.5",
+}
+
+VIDEO_DOMAINS = ("youtube.com", "youtu.be", "bilibili.com", "twitch.tv", "nicovideo.jp")
+
+CATEGORIES = [
+    ("boss", ["boss", "頭目", "尾王", "打法", "弱點", "怎麼打", "打不死", "攻略 boss"]),
+    ("build", ["build", "配裝", "流派", "詞綴", "恩寵", "強度", "最強", "傷害", "疊", "meta", "op ", "broken"]),
+    ("weapon", ["武器", "太刀", "大太刀", "鎖鐮", "手甲", "薙刀", "双刀", "雙刀", "斧", "槍", "弓", "銃", "炮", "盾鉾", "旋棍", "weapon", "katana", "odachi", "spear", "tonfa", "hatchet", "kusarigama", "bow", "rifle"]),
+    ("beginner", ["新手", "入門", "開局", "初期", "初學", "beginner", "tips", "basics", "starter", "getting started", "early game", "guide to"]),
+    ("walkthrough", ["流程", "主線", "支線", "任務", "章節", "全收集流程", "walkthrough", "mission", "chapter", "playthrough", "let's play"]),
+    ("collect", ["收集", "木靈", "溫泉", "隱藏", "地點", "入手", "道具", "裝備", "kodama", "location", "collectible", "item", "where to find", "shrine"]),
+    ("trophy", ["白金", "獎盃", "成就", "trophy", "achievement", "platinum", "100%"]),
+    ("news", ["更新", "dlc", "情報", "資料片", "改版", "patch", "update", "news", "review", "評價"]),
+]
+
+CATEGORY_LABELS = {
+    "boss": {"zh": "Boss 攻略", "en": "Boss Guides"},
+    "build": {"zh": "配裝 Build", "en": "Builds"},
+    "weapon": {"zh": "武器流派", "en": "Weapons"},
+    "beginner": {"zh": "新手入門", "en": "Beginner"},
+    "walkthrough": {"zh": "流程任務", "en": "Walkthrough"},
+    "collect": {"zh": "收集要素", "en": "Collectibles"},
+    "trophy": {"zh": "白金成就", "en": "Trophies"},
+    "news": {"zh": "情報更新", "en": "News & DLC"},
+    "general": {"zh": "綜合討論", "en": "General"},
+}
+
+
+def now_str():
+    return datetime.now(timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M")
+
+
+def load_json(name, default):
+    p = DATA / name
+    if p.exists():
+        try:
+            return json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return default
+
+
+def save_json(name, obj):
+    (DATA / name).write_text(json.dumps(obj, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def set_meta(section):
+    meta = load_json("meta.json", {})
+    meta[section] = now_str()
+    save_json("meta.json", meta)
+
+
+CJK_RE = re.compile(r"[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]")
+
+
+def has_cjk(s):
+    return bool(CJK_RE.search(s or ""))
+
+
+def norm_url(u):
+    u = u.split("#")[0].rstrip("/")
+    return u.lower()
+
+
+def domain_of(u):
+    netloc = urlparse(u).netloc.lower()
+    return netloc[4:] if netloc.startswith("www.") else netloc
+
+
+def classify(text):
+    t = text.lower()
+    for key, words in CATEGORIES:
+        if any(w in t for w in words):
+            return key
+    return "general"
+
+
+def is_video_url(url):
+    d = domain_of(url)
+    return any(d == vd or d.endswith("." + vd) for vd in VIDEO_DOMAINS)
+
+
+def fetch_thumbs(items):
+    import hashlib
+    for it in items:
+        vid = it.get("video_id")
+        if not vid:
+            continue
+        dest = THUMBS / f"{vid}.jpg"
+        if dest.exists():
+            continue
+        try:
+            r = requests.get(f"https://i.ytimg.com/vi/{vid}/mqdefault.jpg", timeout=20, headers={"User-Agent": UA["User-Agent"]})
+            if r.ok and r.headers.get("content-type", "").startswith("image"):
+                dest.write_bytes(r.content)
+        except Exception as e:
+            log.warning("thumb %s: %s", vid, e)
+
+
+def yt_flat_search(query, n, sort_by_date=False):
+    if sort_by_date:
+        url = f"https://www.youtube.com/results?search_query={quote_plus(query)}&sp=CAI%3D"
+    else:
+        url = f"ytsearch{n}:{query}"
+    opts = {"quiet": True, "no_warnings": True, "extract_flat": True, "skip_download": True, "socket_timeout": 30}
+    with yt_dlp.YoutubeDL(opts) as ydl:
+        info = ydl.extract_info(url, download=False)
+    out = []
+    for e in info.get("entries") or []:
+        if not e or not e.get("id"):
+            continue
+        out.append({
+            "video_id": e["id"],
+            "title": e.get("title") or "",
+            "channel": e.get("channel") or e.get("uploader") or "",
+            "view_count": e.get("view_count"),
+            "duration": e.get("duration"),
+            "url": f"https://www.youtube.com/watch?v={e['id']}",
+        })
+    return out
+
+
+YDL_FULL = {"quiet": True, "no_warnings": True, "skip_download": True, "socket_timeout": 30}
+
+
+def yt_full_info(vid):
+    try:
+        with yt_dlp.YoutubeDL(YDL_FULL) as ydl:
+            info = ydl.extract_info(f"https://www.youtube.com/watch?v={vid}", download=False)
+        ud = info.get("upload_date")
+        date = f"{ud[:4]}-{ud[4:6]}-{ud[6:8]}" if ud else None
+        vc = info.get("view_count")
+        return date, vc if isinstance(vc, int) else None
+    except Exception as e:
+        log.warning("yt full %s: %s", vid, e)
+        return None, None
+
+
+def collect_videos(lang):
+    if lang == "zh":
+        hot_queries, new_queries = ["仁王3 攻略"], ["仁王3 攻略"]
+    else:
+        hot_queries, new_queries = ["Nioh 3 guide", "Nioh 3 tips"], ["Nioh 3 guide"]
+
+    pool_hot = []
+    seen = set()
+    for q in hot_queries:
+        for v in yt_flat_search(q, 25):
+            k = v["video_id"]
+            if k in seen:
+                continue
+            seen.add(k)
+            if lang == "zh" and not has_cjk(v["title"]):
+                continue
+            if lang == "en" and has_cjk(v["title"]):
+                continue
+            pool_hot.append(v)
+
+    def enrich_and_take(pool, top_n, by_views):
+        if by_views:
+            known = [v for v in pool if isinstance(v.get("view_count"), int)]
+            unknown = [v for v in pool if not isinstance(v.get("view_count"), int)]
+            need = max(0, top_n * 2 - len(known))
+            for v in unknown[:need]:
+                _, vc = yt_full_info(v["video_id"])
+                time.sleep(0.5)
+                if isinstance(vc, int):
+                    v["view_count"] = vc
+                    known.append(v)
+            picked = sorted(known, key=lambda x: -(x["view_count"] or 0))[:top_n]
+        else:
+            picked = []
+            for v in pool:
+                if len(picked) >= top_n + 2:
+                    break
+                date, vc = yt_full_info(v["video_id"])
+                time.sleep(0.5)
+                v["date"], v["view_count"] = date, vc
+                picked.append(v)
+            picked.sort(key=lambda x: x.get("date") or "", reverse=True)
+        out = []
+        for v in picked:
+            date, vc = v.get("date"), v.get("view_count")
+            if date is None or vc is None:
+                d2, vc2 = yt_full_info(v["video_id"])
+                time.sleep(0.4)
+                date = date or d2
+                vc = vc if isinstance(vc, int) else vc2
+            out.append({
+                "video_id": v["video_id"],
+                "title": v["title"],
+                "channel": v["channel"],
+                "url": v["url"],
+                "views": vc,
+                "date": date,
+                "lang": lang,
+            })
+        return out[:top_n]
+
+    log.info("videos hot [%s]: %d candidates", lang, len(pool_hot))
+    hot = enrich_and_take(pool_hot, 10, by_views=True)
+
+    pool_new = []
+    seen2 = set()
+    for q in new_queries:
+        for v in yt_flat_search(q, 25, sort_by_date=True):
+            k = v["video_id"]
+            if k in seen2:
+                continue
+            seen2.add(k)
+            if lang == "zh" and not has_cjk(v["title"]):
+                continue
+            if lang == "en" and has_cjk(v["title"]):
+                continue
+            pool_new.append(v)
+    log.info("videos new [%s]: %d candidates", lang, len(pool_new))
+    new = enrich_and_take(pool_new, 10, by_views=False)
+
+    fetch_thumbs(hot + new)
+    return hot, new
+
+
+GUIDE_QUERIES = {
+    "zh": [
+        "仁王3 攻略", "仁王3 圖文攻略", "仁王3 boss 打法", "仁王3 配裝 build",
+        "仁王3 新手 入門 開局", "仁王3 武器 推薦", "仁王3 白金 獎盃", "仁王3 收集 木靈 溫泉",
+    ],
+    "en": [
+        "Nioh 3 guide", "Nioh 3 walkthrough", "Nioh 3 boss guide", "Nioh 3 best build",
+        "Nioh 3 beginner tips", "Nioh 3 weapons tier list", "Nioh 3 trophy guide", "Nioh 3 kodama locations",
+    ],
+}
+
+
+def update_guides():
+    for lang in ("zh", "en"):
+        existing = load_json(f"guides_{lang}.json", [])
+        index = {norm_url(g["url"]): g for g in existing}
+        added = 0
+        with DDGS() as d:
+            for q in GUIDE_QUERIES[lang]:
+                try:
+                    results = list(d.text(q, region="tw-zh" if lang == "zh" else "us-en", max_results=12))
+                except Exception as e:
+                    log.warning("ddgs %s %s: %s", lang, q, e)
+                    time.sleep(2)
+                    continue
+                for r in results:
+                    url = r.get("href") or ""
+                    title = (r.get("title") or "").strip()
+                    if not url.startswith("http") or is_video_url(url):
+                        continue
+                    k = norm_url(url)
+                    if k in index:
+                        continue
+                    item = {
+                        "id": re.sub(r"[^a-f0-9]", "", __import__("hashlib").md5(k.encode()).hexdigest()),
+                        "title": title,
+                        "url": url,
+                        "snippet": (r.get("body") or "").strip(),
+                        "source": domain_of(url),
+                        "category": classify(title + " " + (r.get("body") or "")),
+                        "lang": lang,
+                        "found_date": now_str()[:10],
+                    }
+                    index[k] = item
+                    added += 1
+                time.sleep(1.5)
+        guides = list(index.values())
+        save_json(f"guides_{lang}.json", guides)
+        set_meta(f"guides_{lang}")
+        log.info("guides [%s]: +%d -> total %d", lang, added, len(guides))
+
+
+def update_videos():
+    for lang in ("zh", "en"):
+        hot, new = collect_videos(lang)
+        save_json(f"videos_hot_{lang}.json", hot)
+        save_json(f"videos_new_{lang}.json", new)
+        set_meta(f"videos_hot_{lang}")
+        set_meta(f"videos_new_{lang}")
+        log.info("videos [%s]: hot=%d new=%d", lang, len(hot), len(new))
+
+
+def parse_baha_rows(html):
+    soup = BeautifulSoup(html, "html.parser")
+    items = []
+    for row in soup.select("tr.b-list__row"):
+        if row.select_one(".b-list__summary__mark"):
+            continue
+        main_link = row.select_one("td.b-list__main > a[href*='C.php']")
+        if not main_link:
+            continue
+        title_el = row.select_one(".b-list__main__title")
+        brief = row.select_one(".b-list__brief")
+        num_el = row.select_one(".b-list__count__number span")
+        author_el = row.select_one(".b-list__count__user a")
+        time_el = row.select_one(".b-list__time__edittime a")
+        items.append({
+            "title": title_el.get_text(" ", strip=True) if title_el else "",
+            "url": urljoin(BAHA_BASE, main_link.get("href", "")),
+            "author": author_el.get_text(strip=True) if author_el else "",
+            "replies": num_el.get_text(strip=True) if num_el else "",
+            "time": time_el.get_text(strip=True) if time_el else "",
+            "snippet": brief.get_text(" ", strip=True)[:200] if brief else "",
+        })
+    return items
+
+
+def update_bahamut():
+    items = []
+    try:
+        r = requests.get(BAHA_URL, headers=UA, timeout=20)
+        r.raise_for_status()
+        rows = parse_baha_rows(r.text)
+        seen = set()
+        for it in rows:
+            k = norm_url(it["url"])
+            if k in seen:
+                continue
+            seen.add(k)
+            it["id"] = re.sub(r"[^a-f0-9]", "", __import__("hashlib").md5(k.encode()).hexdigest())
+            it["source"] = "forum.gamer.com.tw"
+            it["category"] = classify(it["title"])
+            it["found_date"] = now_str()[:10]
+            items.append(it)
+            if len(items) >= 10:
+                break
+    except Exception as e:
+        log.error("bahamut failed: %s", e)
+    if items:
+        save_json("bahamut.json", items)
+        set_meta("bahamut")
+        log.info("bahamut: %d topics", len(items))
+    else:
+        log.warning("bahamut: no items parsed, keeping previous data")
+
+
+def main():
+    started = time.time()
+    log.info("=" * 50)
+    steps = [
+        ("guides", update_guides),
+        ("videos", update_videos),
+        ("bahamut", update_bahamut),
+    ]
+    failures = []
+    for name, fn in steps:
+        try:
+            fn()
+        except Exception as e:
+            log.exception("%s crashed: %s", name, e)
+            failures.append(name)
+    set_meta("_last_run")
+    log.info("done in %.1fs%s", time.time() - started, f" | FAILED: {failures}" if failures else "")
+
+
+if __name__ == "__main__":
+    main()
