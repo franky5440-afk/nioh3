@@ -5,7 +5,7 @@
   "channel": "Boomstick Gaming",
   "url": "https://www.youtube.com/watch?v=mz3HbJnkllA",
   "views": 128067,
-  "date": "2026-02-04",
+  "date": null,
   "lang": "en"
  },
  {
@@ -14,7 +14,7 @@
   "channel": "Fextralife",
   "url": "https://www.youtube.com/watch?v=Qy4TPLod560",
   "views": 125372,
-  "date": "2026-02-05",
+  "date": null,
   "lang": "en"
  },
  {
@@ -22,8 +22,26 @@
   "title": "Nioh 3 - Ultimate Starter Guide",
   "channel": "FightinCowboy",
   "url": "https://www.youtube.com/watch?v=I5aXvXjxeN0",
-  "views": 116404,
-  "date": "2026-02-05",
+  "views": 116401,
+  "date": null,
+  "lang": "en"
+ },
+ {
+  "video_id": "QVVUiPgjrxg",
+  "title": "Nioh 3 - Become Overpowered In Under 4 Hours! Best Early Unlocks & How To Find Them",
+  "channel": "KhrazeGaming",
+  "url": "https://www.youtube.com/watch?v=QVVUiPgjrxg",
+  "views": 106897,
+  "date": null,
+  "lang": "en"
+ },
+ {
+  "video_id": "jENghuAhPKY",
+  "title": "The Only Build You’ll Ever Need in Nioh 3",
+  "channel": "GameCraft",
+  "url": "https://www.youtube.com/watch?v=jENghuAhPKY",
+  "views": 103394,
+  "date": null,
   "lang": "en"
  },
  {
@@ -31,8 +49,8 @@
   "title": "Nioh 3 - NG+ Guide: Everything You Should Know!",
   "channel": "FightinCowboy",
   "url": "https://www.youtube.com/watch?v=R9lqw2LSwm8",
-  "views": 102082,
-  "date": "2026-02-18",
+  "views": 102084,
+  "date": null,
   "lang": "en"
  },
  {
@@ -40,8 +58,8 @@
   "title": "Nioh 3 - Blacksmithing Guide: Everything You NEED to Know",
   "channel": "FightinCowboy",
   "url": "https://www.youtube.com/watch?v=rcRMcWwxc24",
-  "views": 84230,
-  "date": "2026-02-11",
+  "views": 84229,
+  "date": null,
   "lang": "en"
  },
  {
@@ -50,43 +68,25 @@
   "channel": "P4wnyhof",
   "url": "https://www.youtube.com/watch?v=BZwU-_0hJ2I",
   "views": 66775,
-  "date": "2026-02-02",
+  "date": null,
   "lang": "en"
  },
  {
-  "video_id": "6RPDgg4UGnw",
-  "title": "12 Mistakes You're Making In Nioh 3 That Makes It HARDER! | Nioh Best Tips & Tricks Guide",
-  "channel": "Doms Roundtable",
-  "url": "https://www.youtube.com/watch?v=6RPDgg4UGnw",
-  "views": 54340,
-  "date": "2026-02-09",
-  "lang": "en"
- },
- {
-  "video_id": "3PLSBSXT2uo",
-  "title": "Nioh 3 | OPTIMIZATION GUIDE | Every Setting Tested | Best Settings",
-  "channel": "BenchmarKing",
-  "url": "https://www.youtube.com/watch?v=3PLSBSXT2uo",
-  "views": 52548,
-  "date": "2026-02-11",
-  "lang": "en"
- },
- {
-  "video_id": "0PUoIqaJU4I",
-  "title": "Nioh 3 - Ultimate Beginner TIPS & Tricks For The Perfect Start",
-  "channel": "KhrazeGaming",
-  "url": "https://www.youtube.com/watch?v=0PUoIqaJU4I",
-  "views": 50521,
-  "date": "2026-02-05",
-  "lang": "en"
- },
- {
-  "video_id": "4hUyeNn8lxE",
-  "title": "Nioh 3 Beginner Build (Stats, Skills, & Progression Explained)",
+  "video_id": "EYGH_DlIqIA",
+  "title": "Nioh 3 Blacksmithing Guide: Massive Damage for Any Weapon",
   "channel": "ItalianSpartacus",
-  "url": "https://www.youtube.com/watch?v=4hUyeNn8lxE",
-  "views": 46758,
-  "date": "2026-02-06",
+  "url": "https://www.youtube.com/watch?v=EYGH_DlIqIA",
+  "views": 60570,
+  "date": null,
+  "lang": "en"
+ },
+ {
+  "video_id": "54lmYBTZmXs",
+  "title": "Nioh 3 Best Start Guide - Get Powerful EARLY (Skills, Magic & Gear)",
+  "channel": "Arekkz Gaming",
+  "url": "https://www.youtube.com/watch?v=54lmYBTZmXs",
+  "views": 59354,
+  "date": null,
   "lang": "en"
  }
 ]

@@ -618,5 +618,35 @@
   "category": "collect",
   "lang": "en",
   "found_date": "2026-08-23"
+ },
+ {
+  "id": "d381d784c5e4384d8233c7e54707a344",
+  "title": "Nioh 3: Beginner's Tips and Tricks - AltChar",
+  "url": "https://www.altchar.com/guides/nioh-3-beginners-tips-and-tricks-aHsFU2x6m8cJ",
+  "snippet": "Nioh 3 is one of the most overwhelming games; with all the available options and tutorials, the game is constantly throwing your way from the beginning. In this guide, we bring you several tips and tricks to help you start better.",
+  "source": "altchar.com",
+  "category": "beginner",
+  "lang": "en",
+  "found_date": "2026-08-24"
+ },
+ {
+  "id": "3c301bc2af958ac24c613c2532755d00",
+  "title": "Nioh 3 Guide: Beginner's Tips & Tricks",
+  "url": "https://games.gg/nioh-3/guides/nioh-3-beginners-tips-and-tricks/",
+  "snippet": "Discover beginner tips and tricks for Nioh 3 that help new players get started and better understand the game's core mechanics.",
+  "source": "games.gg",
+  "category": "beginner",
+  "lang": "en",
+  "found_date": "2026-08-24"
+ },
+ {
+  "id": "8f059b21014ba1b31ac3c3bcafa695bd",
+  "title": "Things to Do First in Nioh 3 - Nioh 3 Guide - IGN",
+  "url": "https://www.ign.com/wikis/nioh-3/Things_to_Do_First_in_Nioh_3",
+  "snippet": "Unlike it's predecessors, Nioh 3 features an open world that's not too expansive, but packed with side activities and challenges as you make your way to new missions. Once you arrive in the ...",
+  "source": "ign.com",
+  "category": "walkthrough",
+  "lang": "en",
+  "found_date": "2026-08-24"
  }
 ]
