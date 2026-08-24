@@ -36,7 +36,7 @@ UA = {
 VIDEO_DOMAINS = ("youtube.com", "youtu.be", "bilibili.com", "twitch.tv", "nicovideo.jp")
 
 NEW_CUTOFF_DAYS = 21
-NEW_CHANNEL_CAP = 30
+RSS_CHANNEL_CAP = 60
 NEW_FLAT_LIMIT = 150
 GAME_TERMS = ("仁王", "nioh")
 
@@ -248,18 +248,23 @@ def collect_videos(lang):
             pool_new.append(v)
 
     # 候選頻道 RSS 查表：雲端 IP 會被 YouTube 擋完整 extract，RSS（純 requests）不受限
+    # 熱門候選按觀看數排序優先佔位（RSS 每頻道僅回最近 ~15 支，活躍頻道的老熱門片可能查不到）
     chans = []
-    for v in [*pool_hot, *pool_new]:
+    for v in sorted(pool_hot, key=lambda x: -(x.get("view_count") or 0)):
+        cid = v.get("channel_id")
+        if cid and cid not in chans:
+            chans.append(cid)
+    for v in pool_new:
         cid = v.get("channel_id")
         if cid and cid not in chans:
             chans.append(cid)
     rss_map = {}
-    for cid in chans[:NEW_CHANNEL_CAP]:
+    for cid in chans[:RSS_CHANNEL_CAP]:
         for vid, title, pub, views in yt_rss_latest(cid):
             if pub and len(pub) == 10:
                 rss_map[vid] = {"title": title, "date": pub, "views": views}
         time.sleep(0.3)
-    log.info("videos [%s]: %d channels rss -> %d videos", lang, min(len(chans), NEW_CHANNEL_CAP), len(rss_map))
+    log.info("videos [%s]: %d channels rss -> %d videos", lang, min(len(chans), RSS_CHANNEL_CAP), len(rss_map))
 
     def pick_hot(pool, top_n):
         known = [v for v in pool if isinstance(v.get("view_count"), int)]
