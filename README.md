@@ -82,3 +82,7 @@ nioh3/
 - `logs/scraper.log` — scraper 完整記錄
 - `logs/cron.log` — cron 執行輸出
 - `logs/server.log` — 網站伺服器輸出
+
+## 授權
+
+本專案採用 [Apache License 2.0](LICENSE)。歡迎自由使用、修改、二次開發或商用，但需保留原始著作權聲明，並在你修改過的檔案中註明有修改；衍生專案請標明來源於此 repo。
