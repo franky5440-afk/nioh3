@@ -34,8 +34,10 @@ scraper.py ──> data/*.json ──> build_site.py ──> site/（靜態站�
 ## 各來源已知陷阱
 
 ### yt-dlp（v2026.08+）
-- **沒有 `ytsearchdate` 前綴**了，按上傳時間排序要用搜尋 URL：`https://www.youtube.com/results?search_query={q}&sp=CAI%3D`——注意 `CAI%3D` 只能單能單層編碼，寫成 `%253D` 會被 parse_qs 解碼成無效參數、排序靜默失效
+- **沒有 `ytsearchdate` 前綴**了；而且 `sp=CAI%3D`（上傳時間排序）**已被 YouTube 靜默忽略**——不論 innertube API 或 HTML 頁、單層或雙層編碼都一樣，回傳順序是相關性排序。2026-08-24 實測確認，不要再嘗試用 sp 排序找新片
+- 找「最新影片」的正解：flat 搜尋結果自帶 `channel_id`，改抓候選頻道的上傳 RSS `https://www.youtube.com/feeds/videos.xml?channel_id={id}`——免費附發佈日期與觀看數，不必逐部完整 extract（見 `yt_rss_latest()`）
 - flat playlist 搜尋自帶 `view_count`，但**沒有 upload_date**，顯示日期需對選出的影片做完整 extract（每部約 1–2 秒，記得 sleep）
+- flat 搜尋結果會混入**播放清單項目**（id 是 PL… 共 34 碼），組 pool 時要過濾（只收 id 長度 11 的影片），否則完整 extract 會靜默失敗
 - 影片縮圖**不下載、不入 repo**（避免再散布第三方素材）：前端直接引用 `https://i.ytimg.com/vi/{video_id}/mqdefault.jpg`，載入失敗即隱藏。`data/thumbs/` 已列入 `.gitignore`，不要重新加回下載邏輯
 
 ### DuckDuckGo（ddgs）

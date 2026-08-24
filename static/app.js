@@ -29,7 +29,7 @@ function guideCard(g) {
     <p class="snippet">${esc(g.snippet)}</p>
     <div class="card-foot">
       <span class="tag gold">${CAT_LABELS[g.category] || esc(g.category)}</span>
-      <span>${esc(g.source)}</span><span>${esc(g.found_date)}</span>${EXT_ICON}
+      <span>${esc(g.source)}</span>${EXT_ICON}
     </div>
   </article>`;
 }

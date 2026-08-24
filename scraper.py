@@ -3,7 +3,8 @@ import json
 import logging
 import re
 import time
-from datetime import datetime, timezone
+import xml.etree.ElementTree as ET
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote_plus, urljoin, urlparse
 
@@ -33,6 +34,11 @@ UA = {
 }
 
 VIDEO_DOMAINS = ("youtube.com", "youtu.be", "bilibili.com", "twitch.tv", "nicovideo.jp")
+
+NEW_CUTOFF_DAYS = 21
+NEW_CHANNEL_CAP = 30
+NEW_FLAT_LIMIT = 150
+GAME_TERMS = ("仁王", "nioh")
 
 CATEGORIES = [
     ("boss", ["boss", "頭目", "尾王", "打法", "弱點", "怎麼打", "打不死", "攻略 boss"]),
@@ -125,30 +131,55 @@ def is_video_url(url):
     return any(d == vd or d.endswith("." + vd) for vd in VIDEO_DOMAINS)
 
 
-def yt_flat_search(query, n, sort_by_date=False):
+def yt_flat_search(query, n, sort_by_date=False, flat_limit=None):
     if sort_by_date:
         url = f"https://www.youtube.com/results?search_query={quote_plus(query)}&sp=CAI%3D"
     else:
         url = f"ytsearch{n}:{query}"
     opts = {"quiet": True, "no_warnings": True, "extract_flat": True, "skip_download": True, "socket_timeout": 30}
+    if flat_limit:
+        opts["playlist_items"] = f"1:{flat_limit}"
     with yt_dlp.YoutubeDL(opts) as ydl:
         info = ydl.extract_info(url, download=False)
     out = []
     for e in info.get("entries") or []:
-        if not e or not e.get("id"):
+        if not isinstance(e, dict):
+            continue
+        vid = e.get("id")
+        if not vid or len(vid) != 11:
             continue
         out.append({
-            "video_id": e["id"],
+            "video_id": vid,
             "title": e.get("title") or "",
             "channel": e.get("channel") or e.get("uploader") or "",
+            "channel_id": e.get("channel_id") or "",
             "view_count": e.get("view_count"),
             "duration": e.get("duration"),
-            "url": f"https://www.youtube.com/watch?v={e['id']}",
+            "url": f"https://www.youtube.com/watch?v={vid}",
         })
     return out
 
 
 YDL_FULL = {"quiet": True, "no_warnings": True, "skip_download": True, "socket_timeout": 30}
+
+
+def yt_rss_latest(channel_id):
+    """頻道上傳 RSS：回 [(video_id, title, date, views)]，最新 15 筆，含發佈日期與觀看數"""
+    out = []
+    try:
+        r = requests.get(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}", headers=UA, timeout=15)
+        r.raise_for_status()
+        ns = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015",
+              "m": "http://search.yahoo.com/mrss/"}
+        for e in ET.fromstring(r.content).findall("a:entry", ns):
+            vid = e.findtext("yt:videoId", "", ns)
+            title = (e.findtext("a:title", "", ns) or "").strip()
+            pub = (e.findtext("a:published", "", ns) or "")[:10]
+            views = e.find(".//m:statistics", ns)
+            out.append((vid, title, pub, int(views.get("views")) if views is not None and views.get("views", "").isdigit() else None))
+    except Exception as e:
+        log.warning("yt rss %s: %s", channel_id[:12], e)
+    return out
 
 
 def yt_full_info(vid):
@@ -193,54 +224,81 @@ def collect_videos(lang):
                 continue
             pool_hot.append(v)
 
-    def enrich_and_take(pool, top_n, by_views):
-        if by_views:
-            known = [v for v in pool if isinstance(v.get("view_count"), int)]
-            unknown = [v for v in pool if not isinstance(v.get("view_count"), int)]
-            need = max(0, top_n * 2 - len(known))
-            for v in unknown[:need]:
-                _, vc = yt_full_info(v["video_id"])
-                time.sleep(0.5)
-                if isinstance(vc, int):
-                    v["view_count"] = vc
-                    known.append(v)
-            picked = sorted(known, key=lambda x: -(x["view_count"] or 0))[:top_n]
-        else:
-            picked = []
-            for v in pool:
-                if len(picked) >= top_n + 2:
-                    break
-                date, vc = yt_full_info(v["video_id"])
-                time.sleep(0.5)
-                v["date"], v["view_count"] = date, vc
-                picked.append(v)
-            picked.sort(key=lambda x: x.get("date") or "", reverse=True)
+    def to_item(v, date, vc):
+        return {
+            "video_id": v["video_id"],
+            "title": v["title"],
+            "channel": v["channel"],
+            "url": v["url"],
+            "views": vc,
+            "date": date,
+            "lang": lang,
+        }
+
+    def pick_hot(pool, top_n):
+        known = [v for v in pool if isinstance(v.get("view_count"), int)]
+        unknown = [v for v in pool if not isinstance(v.get("view_count"), int)]
+        need = max(0, top_n * 2 - len(known))
+        for v in unknown[:need]:
+            _, vc = yt_full_info(v["video_id"])
+            time.sleep(0.5)
+            if isinstance(vc, int):
+                v["view_count"] = vc
+                known.append(v)
+        picked = sorted(known, key=lambda x: -(x["view_count"] or 0))[:top_n]
         out = []
         for v in picked:
-            date, vc = v.get("date"), v.get("view_count")
-            if date is None or vc is None:
-                d2, vc2 = yt_full_info(v["video_id"])
-                time.sleep(0.4)
-                date = date or d2
-                vc = vc if isinstance(vc, int) else vc2
-            out.append({
-                "video_id": v["video_id"],
-                "title": v["title"],
-                "channel": v["channel"],
-                "url": v["url"],
-                "views": vc,
-                "date": date,
-                "lang": lang,
-            })
-        return out[:top_n]
+            date, _ = yt_full_info(v["video_id"])
+            time.sleep(0.4)
+            out.append(to_item(v, date, v.get("view_count")))
+        return out
+
+    def pick_new(pool, keep, top_n):
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=NEW_CUTOFF_DAYS)).date()
+        chans = []
+        for v in pool:
+            cid = v.get("channel_id")
+            if cid and cid not in chans:
+                chans.append(cid)
+        chan_of = {v["video_id"]: v["channel"] for v in pool}
+        cands = {}
+        for cid in chans[:NEW_CHANNEL_CAP]:
+            for vid, title, pub, views in yt_rss_latest(cid):
+                try:
+                    recent = bool(pub) and datetime.strptime(pub, "%Y-%m-%d").date() >= cutoff
+                except ValueError:
+                    continue
+                if not (recent and keep(title) and any(t in title.lower() for t in GAME_TERMS)):
+                    continue
+                cands[vid] = to_item({"video_id": vid, "title": title, "channel": chan_of.get(vid, ""), "url": f"https://www.youtube.com/watch?v={vid}"}, pub, views)
+            time.sleep(0.3)
+        items = sorted(cands.values(), key=lambda x: x["date"] or "", reverse=True)[:top_n]
+        if items:
+            log.info("videos new [%s]: %d channels rss -> %d within %dd", lang, min(len(chans), NEW_CHANNEL_CAP), len(items), NEW_CUTOFF_DAYS)
+            return items
+        log.warning("videos new [%s]: rss empty, falling back to full-extract scan", lang)
+        recent, scanned = [], 0
+        for v in pool:
+            if len(recent) >= top_n or scanned >= 40:
+                break
+            scanned += 1
+            date, vc = yt_full_info(v["video_id"])
+            time.sleep(0.4)
+            try:
+                is_recent = bool(date) and datetime.strptime(date, "%Y-%m-%d").date() >= cutoff
+            except ValueError:
+                is_recent = False
+            if is_recent:
+                recent.append(to_item(v, date, vc))
+        return sorted(recent, key=lambda x: x["date"] or "", reverse=True)
 
     log.info("videos hot [%s]: %d candidates", lang, len(pool_hot))
-    hot = enrich_and_take(pool_hot, 10, by_views=True)
+    hot = pick_hot(pool_hot, 10)
 
     pool_new = []
     seen2 = set()
     for q in new_queries:
-        for v in yt_flat_search(q, 25, sort_by_date=True):
+        for v in yt_flat_search(q, 25, sort_by_date=True, flat_limit=NEW_FLAT_LIMIT):
             k = v["video_id"]
             if k in seen2:
                 continue
@@ -249,7 +307,7 @@ def collect_videos(lang):
                 continue
             pool_new.append(v)
     log.info("videos new [%s]: %d candidates", lang, len(pool_new))
-    new = enrich_and_take(pool_new, 10, by_views=False)
+    new = pick_new(pool_new, keep, 10)
 
     return hot, new
 
