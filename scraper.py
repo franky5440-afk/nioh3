@@ -400,13 +400,22 @@ def update_guides():
 
 
 def update_videos():
+    cache = load_json("video_dates.json", {})
     for lang in ("zh", "en", "ja"):
         hot, new = collect_videos(lang)
+        # 日期快取：本機 yt_full_info 可用、雲端被 bot 驗證擋住，靠累積互補
+        for it in [*hot, *new]:
+            vid = it["video_id"]
+            if it["date"]:
+                cache[vid] = it["date"]
+            elif vid in cache:
+                it["date"] = cache[vid]
         save_json(f"videos_hot_{lang}.json", hot)
         save_json(f"videos_new_{lang}.json", new)
         set_meta(f"videos_hot_{lang}")
         set_meta(f"videos_new_{lang}")
         log.info("videos [%s]: hot=%d new=%d", lang, len(hot), len(new))
+    save_json("video_dates.json", cache)
 
 
 def parse_baha_rows(html):
