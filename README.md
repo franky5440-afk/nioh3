@@ -29,8 +29,9 @@ python3 -m venv venv
 | 熱門影片 TOP10 | YouTube 每日熱門攻略影片（依觀看數），分中文、英文、日文區 | `data/videos_hot_{zh,en,ja}.json` |
 | 最新影片 | YouTube 每日最新發布攻略影片各 10 部，分中文、英文、日文區 | `data/videos_new_{zh,en,ja}.json` |
 | 巴哈討論區 | 巴哈姆特仁王哈啦區（bsn=8448）最新 10 篇討論（已排除置頂公告） | `data/bahamut.json` |
+| X 推文 | X（Twitter）上含「仁王3 / Nioh 3」的相關推文與官方 @nioh_game 動態，累積式，分中文、英文、日文區 | `data/tweets_{zh,en,ja}.json` |
 
-頂部搜尋框可跨全部內容（攻略＋影片＋討論）以關鍵字搜尋。
+頂部搜尋框可跨全部內容（攻略＋影片＋討論＋推文）以關鍵字搜尋。
 
 ## 每日更新
 
@@ -41,6 +42,7 @@ python3 -m venv venv
 - 攻略庫：DuckDuckGo 網頁搜尋（ddgs）
 - YouTube：yt-dlp（不需 API key）
 - 巴哈姆特：HTML 解析
+- X 推文：ddgs 站內搜尋（site:x.com）＋ syndication 官方帳號時間軸（免 API key；推文日期由 status id 直接換算）
 
 語言分區判定：標題或摘要含假名、或網域為 .jp → 日文區；含中日韓字元 → 中文區；其餘 → 英文區。三區各自獨立累積，不會互相混雜。
 
@@ -63,6 +65,7 @@ nioh3/
     ├── videos_hot_{zh,en,ja}.json # 熱門影片 TOP10（每日覆寫）
     ├── videos_new_{zh,en,ja}.json # 最新影片（每日覆寫）
     ├── bahamut.json               # 巴哈最新討論（每日覆寫）
+    ├── tweets_{zh,en,ja}.json     # X 推文（累積式，tid 去重，每語言上限 250 筆）
     ├── meta.json                  # 各區最後更新時間
     ├── site.json                  # 前端讀取的彙整檔（build_site.py 產生）
     └── (縮圖不存放，前端直連 i.ytimg.com)

@@ -21,7 +21,7 @@
     </div>
     <form class="search-box" id="searchForm" role="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="search" id="searchInput" placeholder="搜尋攻略、影片、討論…" autocomplete="off">
+      <input type="search" id="searchInput" placeholder="搜尋攻略、影片、討論、推文…" autocomplete="off">
       <button type="submit" class="btn-gold">搜尋</button>
     </form>
   </div>
@@ -41,6 +41,10 @@
     <button class="tab" data-tab="bahamut">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/></svg>
       巴哈討論區
+    </button>
+    <button class="tab" data-tab="tweets">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      X 推文
     </button>
   </nav>
 </header>
@@ -106,6 +110,21 @@
       <span class="meta-time" data-meta="bahamut"></span>
     </div>
     <div class="thread-list" id="bahaList"></div>
+  </section>
+
+  <section id="view-tweets" class="view hidden">
+    <div class="view-head">
+      <h2>X（Twitter）仁王3 相關推文</h2>
+      <span class="meta-time" data-meta="tweets"></span>
+    </div>
+    <div class="controls">
+      <div class="pill-group" data-lang-for="tweets">
+        <button class="pill active" data-lang="zh">中文區</button>
+        <button class="pill" data-lang="en">English</button>
+        <button class="pill" data-lang="ja">日本語</button>
+      </div>
+    </div>
+    <div class="tweet-list" id="tweetList"></div>
   </section>
 </main>
 

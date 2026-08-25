@@ -11,7 +11,9 @@ SECTIONS = [
     "guides_zh", "guides_en", "guides_ja",
     "videos_hot_zh", "videos_hot_en", "videos_hot_ja",
     "videos_new_zh", "videos_new_en", "videos_new_ja",
-    "bahamut", "meta",
+    "bahamut",
+    "tweets_zh", "tweets_en", "tweets_ja",
+    "meta",
 ]
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
@@ -39,7 +41,7 @@ def api_data():
 
 
 def match(item, q):
-    hay = " ".join(str(item.get(k) or "") for k in ("title", "snippet", "channel", "source", "author", "category")).lower()
+    hay = " ".join(str(item.get(k) or "") for k in ("title", "snippet", "channel", "source", "author", "author_name", "text", "category")).lower()
     return all(w in hay for w in q.split())
 
 
@@ -47,11 +49,15 @@ def match(item, q):
 def api_search():
     q = (request.args.get("q") or "").strip().lower()
     if not q:
-        return jsonify({"query": "", "guides": [], "hot": [], "new": [], "bahamut": [], "total": 0})
+        return jsonify({"query": "", "guides": [], "hot": [], "new": [], "bahamut": [], "tweets": [], "total": 0})
     guides = [g for s in ("guides_zh", "guides_en", "guides_ja") for g in load(s) if match(g, q)]
     hot = [v for s in ("videos_hot_zh", "videos_hot_en", "videos_hot_ja") for v in load(s) if match(v, q)]
     new = [v for s in ("videos_new_zh", "videos_new_en", "videos_new_ja") for v in load(s) if match(v, q)]
     baha = [b for b in load("bahamut") if match(b, q)]
+    tweets = sorted(
+        (t for s in ("tweets_zh", "tweets_en", "tweets_ja") for t in load(s) if match(t, q)),
+        key=lambda t: t.get("date") or "", reverse=True,
+    )
     guides.sort(key=lambda g: g.get("found_date") or "", reverse=True)
     return jsonify({
         "query": q,
@@ -59,7 +65,8 @@ def api_search():
         "hot": hot[:20],
         "new": new[:20],
         "bahamut": baha[:20],
-        "total": len(guides) + len(hot) + len(new) + len(baha),
+        "tweets": tweets[:20],
+        "total": len(guides) + len(hot) + len(new) + len(baha) + len(tweets),
     })
 
 

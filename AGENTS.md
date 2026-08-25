@@ -17,7 +17,7 @@ scraper.py ──> data/*.json ──> build_site.py ──> site/（靜態站�
 
 - `data/*.json` 是唯一資料來源，所有內容只能存放在本工作區
 - `site/` 是建置產物，已列入 `.gitignore`，**絕不 commit**；Pages 用 `actions/upload-pages-artifact` 上傳，不是 gh-pages branch
-- 攻略庫（`guides_*.json`）是**累積式**：URL 正規化去重後併入，永不清空；影片區與巴哈區是每日覆寫快照
+- 攻略庫（`guides_*.json`）是**累積式**：URL 正規化去重後併入，永不清空；X 推文區（`tweets_*.json`）同為累積式但每語言上限 250 筆（超出裁最舊）；影片區與巴哈區是每日覆寫快照
 - `meta.json` 記錄各區最後更新時間，`_last_run` 是完整掃描時間
 
 ## 語言分區規則（不可破壞）
@@ -48,6 +48,12 @@ scraper.py ──> data/*.json ──> build_site.py ──> site/（靜態站�
 - `RSS.php` 已失效（302 導向 missing.html），只能解析 `B.php?bsn=8448` HTML
 - 列表有兩種列結構：帶 `.b-list__summary__mark` 的是置頂/公告/精華（**跳過**），其標題是 `<a class="b-list__main__title">`；一般列的標題是 `<p class="b-list__main__title">` 包在外層 `<a>` 內，href 在外層 a 上，摘要用 `.b-list__brief`
 - 解析失敗時保留舊資料並記 log，不要覆蓋成空檔
+
+### X（Twitter）
+- 免費讀取只有兩條活路：embed 用的 syndication 端點（`syndication.twitter.com/srv/timeline-profile/screen-name/`）與 ddgs 站內搜尋（`site:x.com`）。官方 API 要錢、Nitter 公開實例已死，不要再試
+- syndication **極敏感於連續請求**（連打兩下就 429，且封鎖窗期以分鐘計）：每天只打官方帳號一次（目前僅 `@nioh_game`），失敗就保留舊資料（同巴哈模式）。回應是 `__NEXT_DATA__` JSON 包在 HTML 裡
+- 推文發文日期由 status id（snowflake）右移 22 bits 加 1288834974657 換算，不需另外抓推文頁
+- ddgs 撿到的標題格式是「顯示名稱 on X: 推文內容」，解析後仍要過 `GAME_TERMS` 關鍵字過濾；`tweets_*.json` 以 tid 去重累積，每語言上限 250 筆
 
 ## Git 與部署流程
 

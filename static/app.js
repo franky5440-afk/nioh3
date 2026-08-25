@@ -3,7 +3,7 @@ const CAT_LABELS = {
   walkthrough: "流程任務", collect: "收集要素", trophy: "白金成就", news: "情報更新", general: "綜合",
 };
 
-const state = { data: null, guidesLang: "zh", hotLang: "zh", newLang: "zh", guideCategory: "all", activeTab: "guides" };
+const state = { data: null, guidesLang: "zh", hotLang: "zh", newLang: "zh", tweetsLang: "zh", guideCategory: "all", activeTab: "guides" };
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
 
@@ -106,6 +106,21 @@ function renderBahamut() {
     </div>`).join("") : '<p class="empty-msg">尚無資料。</p>';
 }
 
+function renderTweets() {
+  const items = state.data[`tweets_${state.tweetsLang}`] || [];
+  $("#tweetList").innerHTML = items.length ? items.map((tw) => `
+    <article class="tweet-item">
+      <div class="tweet-head">
+        <a class="tweet-author" href="https://x.com/${esc(tw.author)}" target="_blank" rel="noopener noreferrer">${esc(tw.author_name || tw.author)}</a>
+        <span class="tweet-handle">@${esc(tw.author)}</span>
+        ${tw.date ? `<span>📅 ${esc(tw.date)}</span>` : ""}
+        ${typeof tw.likes === "number" ? `<span>❤️ ${tw.likes.toLocaleString()}</span>` : ""}
+        <a class="ext-link" href="${esc(tw.url)}" target="_blank" rel="noopener noreferrer" aria-label="在 X 開啟">${EXT_ICON}</a>
+      </div>
+      <p class="tweet-text"><a href="${esc(tw.url)}" target="_blank" rel="noopener noreferrer">${esc(tw.text)}</a></p>
+    </article>`).join("") : '<p class="empty-msg">尚無資料。</p>';
+}
+
 function renderMeta() {
   const meta = state.data.meta || {};
   const map = {
@@ -113,6 +128,7 @@ function renderMeta() {
     videos_hot: ["videos_hot_zh", "videos_hot_en", "videos_hot_ja"],
     videos_new: ["videos_new_zh", "videos_new_en", "videos_new_ja"],
     bahamut: ["bahamut"],
+    tweets: ["tweets_zh", "tweets_en", "tweets_ja"],
   };
   $$("[data-meta]").forEach((el) => {
     const times = (map[el.dataset.meta] || []).map((k) => meta[k]).filter(Boolean);
@@ -139,7 +155,10 @@ function localSearch(raw) {
     .filter((v) => m(v, ["title", "channel", "lang"])).slice(0, 20);
   const baha = (state.data.bahamut || [])
     .filter((b) => m(b, ["title", "snippet", "author", "source"])).slice(0, 20);
-  return { guides, hot, new: fresh, bahamut: baha, total: guides.length + hot.length + fresh.length + baha.length };
+  const tweets = [...(state.data.tweets_zh || []), ...(state.data.tweets_en || []), ...(state.data.tweets_ja || [])]
+    .filter((t) => m(t, ["text", "author", "author_name"]))
+    .sort((a, b) => String(b.date || "").localeCompare(String(a.date || ""))).slice(0, 20);
+  return { guides, hot, new: fresh, bahamut: baha, tweets, total: guides.length + hot.length + fresh.length + baha.length + tweets.length };
 }
 
 async function doSearch(q) {
@@ -156,6 +175,17 @@ async function doSearch(q) {
       <h4><a href="${esc(b.url)}" target="_blank" rel="noopener noreferrer">${esc(b.title)}</a></h4>
       <div class="thread-sub"><span>👤 ${esc(b.author) || "匿名"}</span><span>🕒 ${esc(b.time)}</span></div>
     </div></div>`).join("")}</div>`;
+  if (r.tweets.length) html += `<h3 class="group-title">X 推文（${r.tweets.length}）</h3><div class="tweet-list">${r.tweets.map((tw) => `
+    <article class="tweet-item">
+      <div class="tweet-head">
+        <a class="tweet-author" href="https://x.com/${esc(tw.author)}" target="_blank" rel="noopener noreferrer">${esc(tw.author_name || tw.author)}</a>
+        <span class="tweet-handle">@${esc(tw.author)}</span>
+        ${tw.date ? `<span>📅 ${esc(tw.date)}</span>` : ""}
+        ${typeof tw.likes === "number" ? `<span>❤️ ${tw.likes.toLocaleString()}</span>` : ""}
+        <a class="ext-link" href="${esc(tw.url)}" target="_blank" rel="noopener noreferrer" aria-label="在 X 開啟">${EXT_ICON}</a>
+      </div>
+      <p class="tweet-text"><a href="${esc(tw.url)}" target="_blank" rel="noopener noreferrer">${esc(tw.text)}</a></p>
+    </article>`).join("")}</div>`;
   $("#searchResults").innerHTML = html || `<p class="no-result">找不到符合「${esc(q)}」的內容。</p>`;
   switchView("search");
 }
@@ -171,7 +201,7 @@ function switchView(name) {
 /* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded", async () => {
   state.data = await (await fetch("data/site.json")).json();
-  renderGuides(); renderVideos(); renderBahamut(); renderMeta();
+  renderGuides(); renderVideos(); renderBahamut(); renderTweets(); renderMeta();
 
   $$(".tab").forEach((t) => t.addEventListener("click", () => switchView(t.dataset.tab)));
 
@@ -183,7 +213,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       pill.closest(".pill-group").querySelectorAll(".pill").forEach((p) => p.classList.remove("active"));
       pill.classList.add("active");
       state[`${pill.closest(".pill-group").dataset.langFor}Lang`] = pill.dataset.lang;
-      renderGuides(); renderVideos();
+      renderGuides(); renderVideos(); renderTweets();
     }
   });
 

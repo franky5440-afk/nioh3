@@ -11,7 +11,9 @@ SECTIONS = [
     "guides_zh", "guides_en", "guides_ja",
     "videos_hot_zh", "videos_hot_en", "videos_hot_ja",
     "videos_new_zh", "videos_new_en", "videos_new_ja",
-    "bahamut", "meta",
+    "bahamut",
+    "tweets_zh", "tweets_en", "tweets_ja",
+    "meta",
 ]
 
 

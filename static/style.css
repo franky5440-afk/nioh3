@@ -201,6 +201,24 @@ main { flex: 1; padding-top: 28px; padding-bottom: 48px; }
   font-size: 12px; font-weight: 700; padding: 3px 9px; white-space: nowrap;
 }
 
+/* ---------- x tweets ---------- */
+.tweet-list { display: flex; flex-direction: column; gap: 10px; max-width: 760px; }
+.tweet-item {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 18px; transition: border-color .2s;
+}
+.tweet-item:hover { border-color: var(--gold); }
+.tweet-head {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: 12.5px; color: var(--muted);
+}
+.tweet-author { font-weight: 700; font-size: 14.5px; color: var(--text); }
+.tweet-author:hover { color: var(--gold-hi); }
+.tweet-text { margin-top: 6px; font-size: 14px; white-space: pre-wrap; word-break: break-word; }
+.tweet-text a:hover { color: var(--gold-hi); }
+.ext-link { margin-left: auto; display: inline-flex; color: var(--muted); flex-shrink: 0; }
+.ext-link:hover { color: var(--gold-hi); }
+
 /* ---------- search results ---------- */
 #searchResults .group-title {
   font-size: 16px; font-weight: 700; color: var(--gold-hi);

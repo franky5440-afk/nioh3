@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import hashlib
+import html as html_lib
 import json
 import logging
 import re
@@ -39,6 +41,41 @@ NEW_CUTOFF_DAYS = 21
 RSS_CHANNEL_CAP = 60
 NEW_FLAT_LIMIT = 150
 GAME_TERMS = ("仁王", "nioh")
+
+TWEET_CAP = 250
+X_SEARCH_QUERIES = {
+    "zh": ('"仁王3" site:x.com', "tw-zh"),
+    "en": ('"Nioh 3" site:x.com', "us-en"),
+    "ja": ('"仁王3" site:x.com', "jp-jp"),
+}
+X_OFFICIAL_ACCOUNTS = ("nioh_game",)
+SYND_URL = "https://syndication.twitter.com/srv/timeline-profile/screen-name/{}?showReplies=false"
+SYND_MARKER = '<script id="__NEXT_DATA__" type="application/json">'
+STATUS_RE = re.compile(r"\b(?:x|twitter)\.com/([A-Za-z0-9_]{1,15})/status(?:es)?/(\d{10,})")
+# ddgs 摘要常見前綴：「1 week ago - 」「Feb 28, 2026 · 」「2026-02-28 - 」
+TIME_PREFIX_RE = re.compile(
+    r"^(?:\d+\s+(?:seconds?|minutes?|hours?|days?|weeks?|months?|years?)\s+ago"
+    r"|[A-Z][a-z]{2}\s+\d{1,2},\s+\d{4}"
+    r"|\d{4}-\d{2}-\d{2})\s*[·\-–—]\s*"
+)
+# 登入牆／聚合頁假推文的特徵
+JUNK_RES = (
+    re.compile(r"log\s*in\s*sign\s*up"),
+    re.compile(r"sensitive\s+content"),
+    re.compile(r"this\s+post\s+is\s+(?:only\s+available|unavailable)"),
+    re.compile(r"\(\@[A-Za-z0-9_]+\)\.\s*\d+\s+(?:replies|retweets|likes)\b"),
+)
+
+
+def clean_tweet_text(text):
+    """清掉搜尋引擎摘要前綴；登入牆等無實質內容者回 None 由呼叫端丟棄"""
+    t = TIME_PREFIX_RE.sub("", text or "").strip()
+    if not t:
+        return None
+    low = t.lower()
+    if any(p.search(low) for p in JUNK_RES):
+        return None
+    return t
 
 CATEGORIES = [
     ("boss", ["boss", "頭目", "尾王", "打法", "弱點", "怎麼打", "打不死", "攻略 boss"]),
@@ -472,6 +509,123 @@ def update_bahamut():
         log.warning("bahamut: no items parsed, keeping previous data")
 
 
+def snowflake_date(tid):
+    """推文 id（snowflake）內含建立時間：右移 22 bits 加 Twitter epoch"""
+    ts = (int(tid) >> 22) + 1288834974657
+    return datetime.fromtimestamp(ts / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+
+
+def x_timeline(screen_name):
+    """官方帳號時間軸（embed 公開端點，免登入）。對連續請求極敏感，失敗回空清單由呼叫端保留舊資料"""
+    try:
+        r = requests.get(SYND_URL.format(screen_name), headers=UA, timeout=20)
+        r.raise_for_status()
+        data = json.loads(r.text.split(SYND_MARKER, 1)[1].split("</script>", 1)[0])
+        entries = data["props"]["pageProps"]["timeline"]["entries"]
+        out = []
+        for e in entries:
+            tw = e.get("content", {}).get("tweet", {})
+            tid = tw.get("id_str") or ""
+            text = (tw.get("full_text") or "").strip()
+            likes = tw.get("favorite_count")
+            if not tid or not text:
+                continue
+            out.append({
+                "tid": tid,
+                "author": screen_name,
+                "author_name": (tw.get("user", {}) or {}).get("name") or "",
+                "text": text,
+                "likes": likes if isinstance(likes, int) else None,
+                "date": snowflake_date(tid),
+            })
+        return out
+    except Exception as e:
+        log.warning("x timeline %s: %s", screen_name, e)
+        return []
+
+
+def tweet_item(t):
+    url = f"https://x.com/{t['author']}/status/{t['tid']}"
+    text = t.get("text") or ""
+    return {
+        "id": re.sub(r"[^a-f0-9]", "", hashlib.md5(url.encode()).hexdigest()),
+        "tid": t["tid"],
+        "url": url,
+        "author": t["author"],
+        "author_name": t.get("author_name") or "",
+        "text": text,
+        "date": t.get("date") or snowflake_date(t["tid"]),
+        "likes": t.get("likes"),
+        "lang": detect_lang(text),
+    }
+
+
+def update_tweets():
+    """X 推文區（累積式，tid 去重，每語言上限 TWEET_CAP）。
+    主力：ddgs site:x.com 站內搜尋；輔助：syndication 官方帳號時間軸（每天僅一次請求）"""
+    pool = {}
+    for lang in ("zh", "en", "ja"):
+        for it in load_json(f"tweets_{lang}.json", []):
+            if isinstance(it.get("tid"), str) and it["tid"].isdigit():
+                pool[it["tid"]] = it
+
+    def merge(t):
+        nonlocal added
+        if t["tid"] not in pool:
+            added += 1
+        pool[t["tid"]] = tweet_item(t)
+
+    added = 0
+    with DDGS() as d:
+        for qkey, (q, region) in X_SEARCH_QUERIES.items():
+            try:
+                results = list(d.text(q, region=region, max_results=20))
+            except Exception as e:
+                log.warning("ddgs x %s %s: %s", qkey, q, e)
+                continue
+            for r in results:
+                m = STATUS_RE.search(r.get("href") or "")
+                if not m:
+                    continue
+                title = html_lib.unescape((r.get("title") or "").strip())
+                body = html_lib.unescape((r.get("body") or "").strip())
+                if not any(w in (title + " " + body).lower() for w in GAME_TERMS):
+                    continue
+                # 標題格式：「顯示名稱 on X: 推文內容」
+                disp, _, rest = title.partition(" on X:")
+                text = rest.strip()
+                if text.endswith("/ X"):
+                    text = text[:-3].strip()
+                if len(text) >= 2 and text.startswith('"') and text.endswith('"'):
+                    text = text[1:-1].strip()
+                if not text:
+                    text = body
+                text = clean_tweet_text(text)
+                if not text:
+                    continue
+                merge({"tid": m.group(2), "author": m.group(1).lower(),
+                       "author_name": disp.strip(), "text": text})
+            time.sleep(1.5)
+
+    for sn in X_OFFICIAL_ACCOUNTS:
+        for t in x_timeline(sn):
+            if any(w in t["text"].lower() for w in GAME_TERMS):
+                merge(t)
+
+    buckets = {"zh": [], "en": [], "ja": []}
+    for it in pool.values():
+        lang = it.get("lang") if it.get("lang") in buckets else detect_lang(it["text"])
+        buckets[lang].append(it)
+    total = {}
+    for lang, items in buckets.items():
+        items.sort(key=lambda x: ((x.get("date") or ""), (x.get("likes") or 0)), reverse=True)
+        items = items[:TWEET_CAP]
+        total[lang] = len(items)
+        save_json(f"tweets_{lang}.json", items)
+    set_meta("tweets")
+    log.info("tweets: +%d -> zh=%d en=%d ja=%d", added, total["zh"], total["en"], total["ja"])
+
+
 def main():
     started = time.time()
     log.info("=" * 50)
@@ -479,6 +633,7 @@ def main():
         ("guides", update_guides),
         ("videos", update_videos),
         ("bahamut", update_bahamut),
+        ("tweets", update_tweets),
     ]
     failures = []
     for name, fn in steps:
