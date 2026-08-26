@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nioh 3 — Hero 效果（武士版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#EFE7DD;      /* 底色：暖象牙白，貼近主視覺的霧面米色 */
+  --ivory-2:#E4D9CC;
+  --ink:#2A2320;        /* 主文字：接近黑的暖棕 */
+  --ink-soft:#6E635B;
+  --gold:#B8912F;
+  --gold-lt:#E3C97E;
+  --crimson:#8E2B2B;    /* 取自斗篷，第二重音色 */
+  --glass:rgba(255,255,255,.42);
+  --glass-line:rgba(255,255,255,.65);
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:Inter,-apple-system,"Noto Sans TC",sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ============ 舞台 ============ */
+.stage{position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
+
+/* 1a) 背景牆：同一張圖放大＋重模糊，負責把任何螢幕比例填滿 */
+.hero-wall{
+  position:absolute;inset:-12%;opacity:0;animation:heroIn 1700ms var(--ease) 100ms forwards;
+  background:url("assets/slender_samurai_statue.webp") center/cover no-repeat;
+  filter:blur(46px) saturate(.72) brightness(1.06);
+  transform:scale(1.15);will-change:transform;
+}
+/* 1b) 人物層：contain 保證頭跟基座都不會被切掉 */
+.hero-img{
+  position:absolute;inset:0;
+  background:url("assets/slender_samurai_statue.webp") center 50%/contain no-repeat;
+  will-change:transform,filter,opacity;
+  transform:scale(1.14);
+  filter:blur(20px) saturate(.88);
+  opacity:0;
+  animation:heroIn 1700ms var(--ease) 100ms forwards;
+}
+@keyframes heroIn{to{opacity:1}}
+.hero-img{animation-name:heroIn,heroSharpen}
+@keyframes heroSharpen{to{filter:blur(0) saturate(1)}}
+
+/* 2) 光暈：皇冠後方緩慢呼吸的暖光 */
+.halo{
+  position:absolute;left:50%;top:17%;width:30vmin;aspect-ratio:1;
+  translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,236,196,.85) 0%,rgba(255,228,175,.25) 38%,transparent 68%);
+  mix-blend-mode:screen;pointer-events:none;
+  animation:breathe 7s ease-in-out infinite;
+}
+@keyframes breathe{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.09)}}
+
+/* 3) 金色掃光 —— 斜向流過整個畫面，是「貴」的關鍵 */
+.sweep{
+  position:absolute;inset:-30%;pointer-events:none;mix-blend-mode:soft-light;
+  background:linear-gradient(105deg,transparent 42%,rgba(255,236,190,.9) 50%,transparent 58%);
+  animation:sweep 9s linear infinite;
+}
+@keyframes sweep{0%{transform:translateX(-60%)}100%{transform:translateX(60%)}}
+
+/* 4) 粒子 canvas：緩慢飄落的光塵 */
+#motes{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+
+/* 4b) 文字遮罩 —— 讓深色標題不必跟白色盔甲的紋理打架 */
+.scrim{position:absolute;inset:0;pointer-events:none;z-index:2;
+  background:
+    linear-gradient(to top,   rgba(239,231,221,.92) 0%, rgba(239,231,221,.55) 22%, transparent 46%),
+    linear-gradient(to right, rgba(239,231,221,.80) 0%, rgba(239,231,221,.35) 26%, transparent 48%);}
+
+/* 5) 暗角 + 顆粒，把 AI 圖壓成「印刷品」質感 */
+.vignette{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 52%,rgba(80,64,50,.20) 100%);}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.22;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.5'/></svg>");}
+
+/* ============ 介面層 ============ */
+.ui{position:relative;z-index:5;min-height:100svh;padding:28px clamp(20px,4vw,56px) 36px;
+    display:grid;grid-template-rows:auto 1fr auto;gap:24px}
+
+/* 玻璃通用 */
+.glass{background:var(--glass);backdrop-filter:blur(14px) saturate(1.3);
+  -webkit-backdrop-filter:blur(14px) saturate(1.3);
+  border:1px solid var(--glass-line);box-shadow:0 8px 30px rgba(90,72,55,.10)}
+
+/* 頂列 */
+.topbar{display:flex;align-items:center;gap:18px}
+.back{width:46px;height:46px;border-radius:50%;background:#1B1714;color:#F1EAE3;
+  display:grid;place-items:center;font-size:18px;flex:0 0 auto;
+  transition:transform .5s var(--ease)}
+.back:hover{transform:translateX(-4px)}
+.wordmark{font-family:"Cormorant Garamond",serif;font-size:15px;letter-spacing:.34em;
+  text-transform:uppercase;white-space:nowrap}
+.nav{margin-inline:auto;display:flex;gap:6px;padding:6px;border-radius:999px}
+.nav a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+  color:var(--ink);padding:9px 16px;border-radius:999px;transition:background .35s,color .35s}
+.nav a.is-on,.nav a:hover{background:rgba(255,255,255,.85)}
+.top-right{display:flex;align-items:center;gap:12px;margin-left:auto}
+.iconbtn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid rgba(40,32,26,.35);background:transparent;font-size:15px;cursor:pointer;
+  transition:background .4s,color .4s,transform .4s var(--ease)}
+.iconbtn:hover{background:var(--ink);color:var(--ivory);transform:rotate(45deg)}
+.pill{padding:12px 22px;border-radius:999px;font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;cursor:pointer;white-space:nowrap}
+
+/* 標題：逐行 mask reveal */
+.headline{font-family:"Cormorant Garamond",serif;font-weight:400;
+  font-size:clamp(30px,5.2vw,88px);line-height:.96;letter-spacing:.005em;
+  text-transform:uppercase;width:fit-content;align-self:center}
+.line{display:block;overflow:hidden;padding-right:.08em}
+.line > span{display:block;transform:translateY(112%);
+  animation:lineUp 1100ms var(--ease) forwards}
+@keyframes lineUp{to{transform:translateY(0)}}
+.dim{color:var(--crimson)}
+
+/* 右側玻璃卡 */
+.card{z-index:6;position:absolute;right:clamp(20px,10vw,140px);top:56%;max-width:330px;
+  padding:26px 28px;border-radius:18px;opacity:0;transform:translateY(26px);
+  animation:fadeUp 1100ms var(--ease) 1250ms forwards}
+.card h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:26px;
+  line-height:1.12;text-transform:uppercase;letter-spacing:.01em;margin-bottom:12px}
+.card p{font-size:11.5px;line-height:1.75;color:var(--ink-soft)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* 右下：同一張圖裁切成金色特寫小卡 */
+.detail{z-index:6;position:absolute;right:clamp(20px,4vw,56px);bottom:clamp(20px,4vw,56px);
+  width:clamp(140px,15vw,210px);aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+  border:1px solid var(--glass-line);box-shadow:0 14px 40px rgba(90,72,55,.22);
+  opacity:0;transform:translateY(26px);
+  animation:fadeUp 1100ms var(--ease) 1450ms forwards}
+.detail i{position:absolute;inset:0;display:block;
+  background:url("assets/slender_samurai_statue.webp") 50% 12%/300% no-repeat;
+  transition:transform 1.2s var(--ease)}
+.detail:hover i{transform:scale(1.12)}
+
+/* 底列小字 */
+.footline{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;
+  font-size:10.5px;line-height:1.85;color:var(--ink-soft);max-width:100%}
+.footline p{max-width:46ch;padding-bottom:6px;opacity:0;animation:fadeUp 1000ms var(--ease) 1550ms forwards}
+
+@media (orientation:portrait){
+  /* 圖本身就是 3:4，直式螢幕直接鋪滿最好看 */
+  .hero-img{background-size:cover;background-position:center 42%}
+  .halo{top:13%;width:42vmin}
+}
+@media (max-width:1100px){
+  .nav,.card{display:none}
+  .headline{max-width:100%;align-self:end}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+  .hero-img,.hero-wall{opacity:1;transform:none}
+  .hero-wall{filter:blur(46px) saturate(.72) brightness(1.06)}
+  .line>span,.card,.detail,.footline p{transform:none;opacity:1}
+}
+</style>
+</head>
+<body>
+<main class="stage" id="stage">
+  <div class="hero-wall" id="heroWall"></div>
+  <div class="hero-img" id="heroImg"></div>
+  <div class="halo"   id="halo"></div>
+  <div class="sweep"></div>
+  <canvas id="motes"></canvas>
+  <div class="scrim"></div>
+  <div class="vignette"></div>
+  <div class="grain"></div>
+
+  <div class="ui" id="ui">
+    <header class="topbar">
+      <div class="back">&#8592;</div>
+      <div class="wordmark">NIOH&nbsp;III</div>
+      <nav class="nav glass">
+        <a href="#" class="is-on">Story</a><a href="#">Combat</a>
+        <a href="#">Editions</a><a href="#">Pre-order</a>
+      </nav>
+      <div class="top-right">
+        <button class="iconbtn">&#8599;</button>
+        <div class="pill glass">Watch&nbsp;trailer</div>
+      </div>
+    </header>
+
+    <h1 class="headline" id="headline">
+      <span class="line"><span style="animation-delay:.55s">Rise</span></span>
+      <span class="line"><span style="animation-delay:.68s">of&nbsp;the</span></span>
+      <span class="line"><span style="animation-delay:.81s" class="dim">— Unbowed,</span></span>
+      <span class="line"><span style="animation-delay:.94s">Unbroken,</span></span>
+      <span class="line"><span style="animation-delay:1.07s">Sovereign</span></span>
+    </h1>
+
+    <div class="footline">
+      <p>戰國的殘影未散，妖異再度睜眼。<br>握刀者踏入無人生還之地 — 不退、不折、不臣。</p>
+    </div>
+  </div>
+
+  <aside class="card glass" id="card">
+    <h2>Master the blade —<br>Stance, Spirit,<br>Sovereignty</h2>
+    <p>三種架式、無數組合。以殘心承接每一次交鋒，
+       在生死一線之間奪回主導權。</p>
+  </aside>
+
+  <figure class="detail" id="detail"><i></i></figure>
+</main>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- 滑鼠視差：多層不同深度，用 lerp 讓它有重量感 ---------- */
+  const layers = [
+    { el: document.getElementById('heroWall'),d: 5 },   // 背景走最慢
+    { el: document.getElementById('heroImg'), d: 18 },
+    { el: document.getElementById('halo'),    d: 18 },  // 跟人物同步，日輪才不會脫節
+    { el: document.getElementById('headline'),d: -8 },
+    { el: document.getElementById('card'),    d: -16 },
+    { el: document.getElementById('detail'),  d: -22 },
+  ].filter(l => l.el);
+
+  let tx = 0, ty = 0, cx = 0, cy = 0, scrollT = 0, t0 = 0;
+  const hero = document.getElementById('heroImg');
+
+  if (!reduce) {
+    addEventListener('pointermove', e => {
+      tx = (e.clientX / innerWidth  - .5) * 2;   // -1 .. 1
+      ty = (e.clientY / innerHeight - .5) * 2;
+    }, { passive: true });
+
+    addEventListener('scroll', () => {
+      scrollT = Math.min(scrollY / innerHeight, 1);
+    }, { passive: true });
+
+    const easeOut = p => 1 - Math.pow(1 - p, 3);
+
+    const tick = now => {
+      if (!t0) t0 = now;
+      // 進場：1.14 -> 1.00 的推近，跟 CSS 的 blur 淡入同時發生
+      const intro = easeOut(Math.min((now - t0 - 100) / 1700, 1));
+      const introScale = 1.14 - .14 * Math.max(intro, 0);
+
+      cx += (tx - cx) * .055;                    // lerp = 慣性
+      cy += (ty - cy) * .055;
+
+      for (const { el, d } of layers) {
+        const wall = el.id === 'heroWall';
+        const extra = (el === hero || wall)
+          ? ` scale(${(wall ? 1.15 : 1) * (introScale + scrollT * .12)})`
+          : ` translateY(${-scrollT * 90}px)`;       // 介面往上飄
+        el.style.transform = `translate3d(${cx * d}px, ${cy * d}px, 0)` + extra;
+      }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  /* ---------- 光塵粒子 ---------- */
+  const cv = document.getElementById('motes'), ctx = cv.getContext('2d');
+  let motes = [], W = 0, H = 0;
+  const resize = () => {
+    const r = devicePixelRatio || 1;
+    W = cv.width  = innerWidth  * r;
+    H = cv.height = innerHeight * r;
+    cv.style.width = innerWidth + 'px';
+    cv.style.height = innerHeight + 'px';
+    const n = Math.round(innerWidth / 26);
+    motes = Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      r: (Math.random() * 1.8 + .5) * r,
+      vy: (Math.random() * .22 + .06) * r,
+      vx: (Math.random() - .5) * .12 * r,
+      a: Math.random() * .32 + .10,
+      ph: Math.random() * Math.PI * 2,
+    }));
+  };
+  resize(); addEventListener('resize', resize);
+
+  if (!reduce) (function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    for (const m of motes) {
+      m.y += m.vy; m.x += m.vx + Math.sin(t / 1800 + m.ph) * .18;
+      if (m.y > H + 8) { m.y = -8; m.x = Math.random() * W; }
+      const tw = m.a * (.62 + .38 * Math.sin(t / 900 + m.ph));   // 閃爍
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,242,214,${tw})`;
+      ctx.shadowBlur = 6; ctx.shadowColor = 'rgba(255,226,168,.9)';
+      ctx.arc(m.x, m.y, m.r, 0, 6.284);
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  })(0);
+})();
+</script>
+</body>
+</html>
