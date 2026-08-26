@@ -8,10 +8,10 @@
 | `samurai-hero-prompt.md` | 產主視覺圖的 prompt ＋ 圖必須符合的硬條件 |
 | `hero-demo.html` | 武士版成品，單檔自含（圖已內嵌 base64），瀏覽器直接開 |
 | `hero-template.html` | 上面兩個共用的模板，圖片位置是 `__ANGEL_B64__` 佔位字串 |
-| `reference-angel-version.html` | 原作重製版（天使），對照用 |
-| `assets/slender_samurai_statue.webp` | **目前使用中**的主視覺（Frank 產，1376×1824） |
-| `assets/hero-samurai.webp` | 我一開始生的暫代圖，留著對照 |
-| `assets/hero-angel.webp` | 天使主視覺 1600px |
+| `assets/hero-samurai.webp` | 早期的暫代圖，留著對照不同構圖 |
+
+主視覺本體不放這裡，只有一份在 `static/hero-samurai.webp`（1376×1824），
+`hero-demo.html` 直接相對引用它，避免同一張圖在 repo 裡存兩份。
 
 ## 效果由這六層疊出來
 
@@ -30,7 +30,7 @@
 
 | 檔案 | 改了什麼 |
 |---|---|
-| `static/hero-samurai.webp` | 主視覺（＝本資料夾的 `slender_samurai_statue.webp`） |
+| `static/hero-samurai.webp` | 主視覺，全 repo 唯一一份 |
 | `templates/index.html` | `<header>` 之前插入 `<section class="hero">`；補 Cormorant 字體；載入 `hero.js` |
 | `static/style.css` | 追加 hero 樣式 ＋「風格延續」段（吸頂玻璃 tab 列、卡片進場、全站雜訊） |
 | `static/hero.js` | 新檔：視差、捲動推近、光塵粒子 |

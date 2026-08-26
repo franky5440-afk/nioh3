@@ -36,14 +36,14 @@ body{
 /* 1a) 背景牆：同一張圖放大＋重模糊，負責把任何螢幕比例填滿 */
 .hero-wall{
   position:absolute;inset:-12%;opacity:0;animation:heroIn 1700ms var(--ease) 100ms forwards;
-  background:url("assets/slender_samurai_statue.webp") center/cover no-repeat;
+  background:url("../../static/hero-samurai.webp") center/cover no-repeat;
   filter:blur(46px) saturate(.72) brightness(1.06);
   transform:scale(1.15);will-change:transform;
 }
 /* 1b) 人物層：contain 保證頭跟基座都不會被切掉 */
 .hero-img{
   position:absolute;inset:0;
-  background:url("assets/slender_samurai_statue.webp") center 50%/contain no-repeat;
+  background:url("../../static/hero-samurai.webp") center 50%/contain no-repeat;
   will-change:transform,filter,opacity;
   transform:scale(1.14);
   filter:blur(20px) saturate(.88);
@@ -142,7 +142,7 @@ body{
   opacity:0;transform:translateY(26px);
   animation:fadeUp 1100ms var(--ease) 1450ms forwards}
 .detail i{position:absolute;inset:0;display:block;
-  background:url("assets/slender_samurai_statue.webp") 50% 12%/300% no-repeat;
+  background:url("../../static/hero-samurai.webp") 50% 12%/300% no-repeat;
   transition:transform 1.2s var(--ease)}
 .detail:hover i{transform:scale(1.12)}
 
