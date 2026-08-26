@@ -648,5 +648,1505 @@
   "category": "walkthrough",
   "lang": "en",
   "found_date": "2026-08-24"
+ },
+ {
+  "id": "be813df4e73a652f6bad0d7b0273498e",
+  "title": "GitHub - alvr-org/ALVR: Stream VR games from your PC to your...",
+  "url": "https://github.com/alvr-org/alvr",
+  "snippet": "Stream VR games from your PC to your headset over Wi-Fi. This is a fork of ALVR.",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "838fe263874a9929def9ff66fe05a1d7",
+  "title": "GitHub - mubaraknumann/unifideck: A Decky Loader plugin that...",
+  "url": "https://github.com/mubaraknumann/unifideck",
+  "snippet": "A Decky Loader plugin that brings together games from Steam, Epic Games Store, GOG, Amazon, Ubisoft and XCloud into a single, unified library experience on your Steam Deck. - mubaraknumann/unifideck",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "fec24f49558dbd52bea698cf383ea3f2",
+  "title": "Best of nes games · GitHub",
+  "url": "https://gist.github.com/spiiin/85711b2f2be6918bd1977d7ca79c29da",
+  "snippet": "Best of nes games. GitHub Gist: instantly share code, notes, and snippets.",
+  "source": "gist.github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f049865fda56ceb9901c2de547761eac",
+  "title": "Games on GitHub",
+  "url": "https://gist.github.com/roachhd/d579b58148d7e36a6b72",
+  "snippet": "GitHub is a great platform for discovering open-source games, exploring game projects, and learning from their source code.Discover an earning game featuring intuitive controls, regular updates, and a seamless user experience across supported devices.",
+  "source": "gist.github.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f6fecf4fc410dbf0c659b97e9785a481",
+  "title": "Epic Games - GitHub",
+  "url": "https://github.com/EpicGames",
+  "snippet": "Official GitHub presence for Epic Games with a broad range of Epic-maintained developer tools & technologies. Here you'll find two main types of repositories: Unreal Engine & other licensed source repositories, requiring Epic account linkage and acceptance of the applicable Epic license agreement ...",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f2580b29c6f0e4e261573ff556b1fec9",
+  "title": "GitHub - BrianLima/UWPHook: Add your Windows Store or UWP games...",
+  "url": "https://github.com/BrianLima/UWPHook",
+  "snippet": "🔗 Add your Windows Store or UWP games to Steam. Contribute to BrianLima/UWPHook development by creating an account on GitHub.",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "84e43b62cb49e0170eff9d497dae631e",
+  "title": "GitHub - praydog/REFramework: Mod loader, scripting platform, and...",
+  "url": "https://github.com/praydog/REFramework",
+  "snippet": "Mod loader, scripting platform, and VR support for all RE Engine games - praydog/REFramework",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "b910aa4cd3190475c2d77190b3a033da",
+  "title": "GitHub - elishacloud/dxwrapper: Fixes compatibility issues with...",
+  "url": "https://github.com/elishacloud/dxwrapper",
+  "snippet": "Fixes compatibility issues with older games running on Windows 10/11 by wrapping DirectX dlls. Also allows loading custom libraries with the file extension .asi into game processes. - elishacloud/...",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "782ff86d5be17c5e2547f1a183372271",
+  "title": "GitHub - clshortfuse/renodx: Renovation Engine for DirectX Games",
+  "url": "https://github.com/clshortfuse/renodx",
+  "snippet": "RenoDX, short for \"Renovation Engine for DirectX Games\", is a toolset to mod games. Currently it can replace shaders, inject buffers, add overlays, upgrade swapchains, upgrade texture resources, and write user settings to disk.",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "a5a336acc0b16333d7f15a1ef604341e",
+  "title": "GitHub - JibbSmart/JoyShockMapper: A tool for PC gamers to play...",
+  "url": "https://github.com/JibbSmart/JoyShockMapper",
+  "snippet": "A tool for PC gamers to play games with DualShock 4, DualSense, JoyCon, and Switch Pro Controllers. Gyro aiming, flick stick. - JibbSmart/JoyShockMapper",
+  "source": "github.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "7e13afdcc8b6e92491ed4894c6c871ee",
+  "title": "ChatGPT: Chat, Work, Create & Code with AI",
+  "url": "https://chatgpt.com/",
+  "snippet": "Use ChatGPT to answer questions, write, create images, complete work, and code—all in one place. Get started for free or download the app.",
+  "source": "chatgpt.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "97a4390f04098f4b1f5bbeac9369d9c3",
+  "title": "ChatGPT",
+  "url": "https://chatgpt.com/auth/?locale=pt-BR",
+  "snippet": "Use o ChatGPT para responder a perguntas, escrever, criar imagens, realizar tarefas e programar — tudo em um só lugar. Comece gratuitamente ou baixe o aplicativo.",
+  "source": "chatgpt.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "fa1ebe6395beec6dae15e2e11e543c18",
+  "title": "Introducing ChatGPT - OpenAI",
+  "url": "https://openai.com/index/chatgpt/",
+  "snippet": "Nov 30, 2022 · We’ve trained a model called ChatGPT which interacts in a conversational way. The dialogue format makes it possible for ChatGPT to answer followup questions, admit its mistakes, challenge incorrect premises, and reject inappropriate requests.",
+  "source": "openai.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "b2bc79d2ca6d196b8d161633e4f67df4",
+  "title": "Conheça o ChatGPT | OpenAI",
+  "url": "https://openai.com/pt-BR/index/chatgpt/",
+  "snippet": "Treinamos um modelo chamado ChatGPT, pensado para interagir com usuários dentro de um formato de conversa. Dessa forma, o ChatGPT consegue responder perguntas de acompanhamento, reconhecer ocasiões em que errou, esclarecer premissas incorretas e até recusar solicitações impróprias.",
+  "source": "openai.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "33860167ee5ff3efc3867dc4958ac601",
+  "title": "Chat GPT Online Grátis – Chatbot IA com GPT-5",
+  "url": "https://gpt.chat/pt/chat",
+  "snippet": "Como posso ajudar? Converse com ChatGPT grátis. Conversas de IA ilimitadas com GPT-5 — sem registro.",
+  "source": "gpt.chat",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "659f1f206b1613ccf645e1f80d84115d",
+  "title": "ChatGPT em português: grátis, online e sem registro",
+  "url": "https://www.chattide.ai/pt/chat-gpt/",
+  "snippet": "Esse é o ChatGPT em português. É uma inteligência artificial revolucionária desenvolvida pela OpenAI, treinada com uma enorme quantidade de informações para entender e se comunicar de forma natural. Você pode pedir para ele escrever um email, explicar um assunto complexo ou criar ideias criativas.",
+  "source": "chattide.ai",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "8c1547dcc67e8330f087c7282a6a4160",
+  "title": "OpenAI Platform",
+  "url": "https://platform.openai.com/onboarding?app=chat&callbackHost=chatgpt.com",
+  "snippet": "OpenAI Platform ... OpenAI Platform",
+  "source": "platform.openai.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "cd9be6250b4894b1a2b44f2fd62c325d",
+  "title": "GPT Chat - DeepAI",
+  "url": "https://deepai.org/chat/gpt-chat",
+  "snippet": "Looking for a ChatGPT-like experience? Give GPT-Chat a try! Please note that GPT Chat is not affiliated with OpenAI. ChatGPT is a trademark of OpenAI.",
+  "source": "deepai.org",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "9a365f0d787a8e1d3d10ad0f0e3007c5",
+  "title": "ChatGPT Português",
+  "url": "https://chatgpt.com/pt-PT/",
+  "snippet": "Use o ChatGPT para responder a perguntas, escrever, criar imagens, realizar tarefas e programar — tudo num só lugar. Comece gratuitamente ou transfira a aplicação.",
+  "source": "chatgpt.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2b85d5c3adbedc5bf6055e0cd24af16c",
+  "title": "ChatGPT",
+  "url": "https://chatgpt.com/features",
+  "snippet": "Use ChatGPT to answer questions, write, create images, complete work, and code—all in one place. Get started for free or download the app.",
+  "source": "chatgpt.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "385386dbbf41f41eadcbba50a96f36f2",
+  "title": "Husband Brandon Alexander, 35, Killed Estranged Wife Victoria...",
+  "url": "https://www.lipstickalley.com/threads/husband-brandon-alexander-35-killed-estranged-wife-victoria-alexander-38-in-murder-suicide-at-egg-harbor-twp-rehab-facility-police-say.6110963/",
+  "snippet": "Apr 14, 2026 · Husband killed estranged wife in murder-suicide at Egg Harbor Twp. rehab facility, police say Tuesday, April 14, 2026 11:42AM Police say a man shot his estranged wife and then turned the gun on himself at a rehab facility in Atlantic County on Monday morning. EGG HARBOR TWP., N.J. (WPVI) --...",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "a0f28c84d57cafce322dfb496a2276e2",
+  "title": "Tim Curry Today...Paralyzed and Wheelchair bound",
+  "url": "https://www.lipstickalley.com/threads/tim-curry-today-paralyzed-and-wheelchair-bound.3452482/",
+  "snippet": "Apr 27, 2020 · Due to a stroke from several years ago. He has been out of the spotlight for some time, but occasionally does appearances, and is still receptive and appreciative of his fanbase.",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "8ff9c8935d7950563ef21e58b9450eb0",
+  "title": "Bruno Mars tells Anderson .Paak that he’s “debt-free” at The...",
+  "url": "https://www.lipstickalley.com/threads/bruno-mars-tells-anderson-paak-that-he’s-“debt-free”-at-the-romantic-tour-in-las-vegas-“i-paid-the-casino-off-a-long-time-ago”.6109693/",
+  "snippet": "Apr 12, 2026 · Bruno Mars tells Anderson .Paak that he’s “debt-free” at The Romantic Tour in Las Vegas. “I paid the casino off a long time ago”",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c6c1e9f0774aed46b39cb1f0ce05cded",
+  "title": "Sylvester Stewart (March 15, 1943 – June 9, 2025)",
+  "url": "https://www.lipstickalley.com/threads/sylvester-stewart-march-15-1943-–-june-9-2025.6094172/",
+  "snippet": "Mar 16, 2026 · Started by ATLnWorld Yesterday at 11:07 AM Replies: 11",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "5ba0882ed1462b87e4e646b533a1a6d4",
+  "title": "BOEF - HABIBA | The Internet's largest African American Forum",
+  "url": "https://www.lipstickalley.com/threads/boef-habiba.6111490/",
+  "snippet": "Apr 15, 2026 · Joined Jun 16, 2024 Messages 2,222 Reaction score Reactions 2,891 618 228 2,663 Alleybux 1,153,000",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f4a318ef329bd09128178c78cf5f811e",
+  "title": "Younger Chase Infiniti and her family! | Page 12 | The Internet's...",
+  "url": "https://www.lipstickalley.com/threads/younger-chase-infiniti-and-her-family.6097366/page-12",
+  "snippet": "Mar 21, 2026 · When you state that Black women (who you don’t know and have never seen btw) are jealous of “mixed and light-skinned women” please detail exactly what we are jealous of. Put your anti-Black beliefs in writing so that we can all see exactly what you think about Blackness vs. whiteness lol...",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "41c0015c6879eb585d4c3a32afe25540",
+  "title": "steph curry’s GOAT movie trailer tomorrow. - Lipstick Alley",
+  "url": "https://www.lipstickalley.com/threads/steph-curry’s-goat-movie-trailer-tomorrow.6028845/",
+  "snippet": "Nov 24, 2025 · steph curry’s GOAT movie trailer tomorrow. Meh94 A moment ago animation goat movie sony steph curry Meh94 It's Bratz! B!tch!",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "11d4f3417bb05979db260c893388e888",
+  "title": "How the (black) daughter Mick Jagger once disowned saved him in...",
+  "url": "https://www.lipstickalley.com/threads/how-the-black-daughter-mick-jagger-once-disowned-saved-him-in-his-darkest-hour.673864/page-4",
+  "snippet": "Mar 29, 2014 · Click to expand... Karis never dated Tim Curry. Tim was friends with Marsha going way back to the early 70's. Karis does not deny her black heritage either. A lot of things being posted in this thread is total BS. Marsha is flighty and has made some questionable statements in the past but she never denied or rejected being black.",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2fff6d8a7e33e73fafe2d124380864d4",
+  "title": "Father, Timothy Isaiah Curry, 27, arrested and mother, Saunsiree...",
+  "url": "https://www.lipstickalley.com/threads/father-timothy-isaiah-curry-27-arrested-and-mother-saunsiree-jefferson-25-on-the-run-after-son-with-untreated-leukemia-died-in-a-hotel-room.5910900/",
+  "snippet": "May 29, 2025 · Timothy Isaiah Curry, 27, of Greenville, was taken into custody by the Charlotte-Mecklenburg Police Department and charged with involuntary manslaughter and felony child abuse by neglect inflicting serious injury, according to the Greenville Police Department. Officials say that wanted for the...",
+  "source": "lipstickalley.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "66aac135d6ed0300e4a782b7dc9dfee4",
+  "title": "Louisville Comedy Club to settle 372K EEOC claims related to xes...",
+  "url": "https://www.lipstickalley.com/threads/louisville-comedy-club-to-settle-372k-eeoc-claims-related-to-xes-discrimination-investigation.6092048/",
+  "snippet": "Mar 12, 2026 · Author: CJ Daniels Published: 2:49 PM EDT March 10, 2026 Updated: 2:49 PM EDT March 10, 2026 LOUISVILLE, Ky. — The Louisville Comedy Club will pay out thousands in damages following a federal investigation into sexµal harassment claims at the business. The U.S. Equal Employment Opportunity Commission (EEOC) said the club will pay $372,000 in relief and “furnish extensive injunctive relief ...",
+  "source": "lipstickalley.com",
+  "category": "walkthrough",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f138209a1ff85df465a319cfdcee23c0",
+  "title": "Auto Parts Locations in Detroit | Auto Parts Store",
+  "url": "https://stores.advanceautoparts.com/mi/detroit",
+  "snippet": "Browse locations in Detroit, MI Advance Auto Parts #8937 Detroit 15531 Grand River Ave Detroit MI 48227 (313) 835-3494 Open Until 9:00 PM Get Directions Go to Store Page",
+  "source": "stores.advanceautoparts.com",
+  "category": "collect",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "0501df751d24cc144eac3e3a54bab993",
+  "title": "Advance Auto Parts at 1215 N Detroit St in Warsaw, IN. Visit us...",
+  "url": "https://stores.advanceautoparts.com/in/warsaw/1215-n-detroit-st",
+  "snippet": "Auto parts store and accessories at 1215 N Detroit St in Warsaw, IN. We have everything you need to DIY and save by shopping online or in-store at an Advance Auto Parts store near you for the best replacement parts and aftermarket accessories.",
+  "source": "stores.advanceautoparts.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "31cdb11adf2284d6d370603051fae0fe",
+  "title": "Auto Parts Locations in MI | Auto Parts Store",
+  "url": "https://stores.advanceautoparts.com/mi",
+  "snippet": "Find Advance Auto Parts locations in Michigan for quality auto parts, accessories, and expert advice for your vehicle needs.",
+  "source": "stores.advanceautoparts.com",
+  "category": "collect",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "49aec4517999d70c30cea1f809f7e1dc",
+  "title": "Motor Oil & Oil Change Supplies in Detroit - Advance Auto Parts",
+  "url": "https://stores.advanceautoparts.com/mi/detroit/15531-grand-river-ave/motor-oil",
+  "snippet": "Find motor oil, oil filters, funnels, drain pans, and recycling options at Advance Auto Parts in Detroit, MI. Shop online or visit 15531 Grand River Ave.",
+  "source": "stores.advanceautoparts.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2c67c6c6298ec4d3a1d0132f473a3b5a",
+  "title": "Brake Pads & Rotors in Detroit, MI - Advance Auto Parts",
+  "url": "https://stores.advanceautoparts.com/mi/detroit/15531-grand-river-ave/brakes",
+  "snippet": "Advance Auto Parts in Detroit stocks brake pads, rotors, calipers, brake fluid, and tools at 15531 Grand River Ave. Shop online or visit the store for parts and advice.",
+  "source": "stores.advanceautoparts.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "8b7e6f0ad37e59ebc270b79948cae153",
+  "title": "Advance Auto Parts in Detroit, MI",
+  "url": "https://stores.advanceautoparts.com/mi/detroit/15531-grand-river-ave",
+  "snippet": "Auto parts store and accessories at in Detroit, MI. We have everything you need to DIY and save by shopping online or in-store at an Advance Auto Parts store near you for the best replacement parts and aftermarket accessories.",
+  "source": "stores.advanceautoparts.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f39cba55f179b3a1c0268c0aed43205c",
+  "title": "Car Batteries in Detroit - Advance Auto Parts",
+  "url": "https://stores.advanceautoparts.com/mi/detroit/15531-grand-river-ave/batteries",
+  "snippet": "Get car batteries, free battery testing, and free installation on most vehicles at Advance Auto Parts in Detroit, MI. Shop online or visit 15531 Grand River Ave.",
+  "source": "stores.advanceautoparts.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "d482ef640c351f6c3b5759fccd1d71a6",
+  "title": "Car Batteries in Warsaw - Advance Auto Parts",
+  "url": "https://stores.advanceautoparts.com/in/warsaw/1215-n-detroit-st/batteries",
+  "snippet": "Get car batteries, free battery testing, and free installation on most vehicles at Advance Auto Parts in Warsaw, IN. Shop online or visit 1215 N Detroit St.",
+  "source": "stores.advanceautoparts.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c5c8fa0d7cb249bc88eb02dc80851291",
+  "title": "Advance Auto Parts in Sidney, NY",
+  "url": "https://stores.advanceautoparts.com/ny/sidney/170-delaware-ave",
+  "snippet": "Auto parts store and accessories at 170 Delaware Ave in Sidney, NY. We have everything you need to DIY and save by shopping online or in-store at an Advance Auto Parts store near you for the best replacement parts and aftermarket accessories.",
+  "source": "stores.advanceautoparts.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "faa34c2d5b3c963611167ab5caecad1e",
+  "title": "Motor Oil & Oil Change Supplies in Warsaw - Advance Auto Parts",
+  "url": "https://stores.advanceautoparts.com/in/warsaw/1215-n-detroit-st/motor-oil",
+  "snippet": "Find motor oil, oil filters, funnels, drain pans, and recycling options at Advance Auto Parts in Warsaw, IN. Shop online or visit 1215 N Detroit St.",
+  "source": "stores.advanceautoparts.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "08a8133517052c597cb8108b0d96668a",
+  "title": "Kopitiam - Lowyat.NET",
+  "url": "https://forum.lowyat.net/Kopitiam",
+  "snippet": "While Kopitiam is a place to hang out and chat, annoying threads which make no sense at all will be deleted and offenders warned. Chat threads MUST be tagged properly. Threads in Serious Kopitiam subforum are threads where you may only post constructive and helpful comments. Threads or posts pertaining to racial, religious, political or sexual issues are strictly prohibited in Kopitiam ...",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "6073a8cc843d2fc0b45c842fab5eca89",
+  "title": "those use ipon watsapp web browser - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5556449",
+  "snippet": "Feb 27, 2026 · Outline · [ Standard ] · Linear+ those use ipon watsapp web browser, whatsapp server down",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "89be8927f458cb31a1ac689814b33d0e",
+  "title": "Microsoft Community",
+  "url": "https://answers.microsoft.com/en-us/msoffice/forum/all/office-365-groups-users-receiving-spam-email/ca864a1d-43c7-4ee4-a408-227094957433",
+  "snippet": "Microsoft Community",
+  "source": "answers.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "ec4a69fa3dba34e48f292e460b537cfa",
+  "title": "Microsoft Community",
+  "url": "https://answers.microsoft.com/en-us/msoffice/forum/all/setting-print-area-range/855d701d-af53-47d6-a087-e2e0178c3928",
+  "snippet": "Microsoft Community",
+  "source": "answers.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "bfe8e51e09d44bdfe08b216ff595a541",
+  "title": "Is Whatsapp web down? - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5538738",
+  "snippet": "Sep 8, 2025 · Lowyat.NET -> Kopitiam Bump Topic Add Reply RSS Feed Bottom Outline · [ Standard ] · Linear+ Is Whatsapp web down?",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2ae37339efa515e5d8f21c776fd746c2",
+  "title": "[found sos] cant login whatsapp browser - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5556445",
+  "snippet": "Feb 27, 2026 · Lowyat.NET -> Kopitiam -> Serious Kopitiam Bump Topic Add Reply RSS Feed Bottom Outline · [ Standard ] · Linear+ [found sos] cant login whatsapp browser, from iphone 344.3k views ... POCO F9 Ultra Now Listed On SIRIM; Local Launch Soon Ascend Airways Malaysia Expected To Begin Passenger Operations By End-2026",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "1f223ee82df8d1ac6acc6766d85ac51c",
+  "title": "From 21 April 2025, Shopee Express delivery - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5519991",
+  "snippet": "Apr 23, 2025 · Outline · [ Standard ] · Linear+ Chat From 21 April 2025, Shopee Express delivery, notification",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2e1588d26fa9904e41f9913fa99d8bb9",
+  "title": "FB, IG & Whatsapp Subscriptions Are Here! - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5566080",
+  "snippet": "May 28, 2026 · Outline · [ Standard ] · Linear+ FB, IG & Whatsapp Subscriptions Are Here!, From $2.99 onwards",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "7526e31ce04732d0c459a14c9e2c0ede",
+  "title": "Secondary Phone for Work - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5562126",
+  "snippet": "Apr 21, 2026 · Hello serious /k :blush: I’m back again and this time I would like to seek your opinion and recommendationsI’m looking to get a secondary phone for work purposes mainly to contact clients and use WhatsApp WebMy budget is around RM500.00 - 800.00.00I’m currently leaning towards the Samsung A07 5G as Samsung provides 6 major OS updates",
+  "source": "forum.lowyat.net",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "06a2e3d0062d97f353fd888a67d907b6",
+  "title": "Why someone instantly see WhatsApp message? - Lowyat.NET",
+  "url": "https://forum.lowyat.net/topic/5568207",
+  "snippet": "Jun 18, 2026 · My friend said her gf see his WhatsApp message instantly after replied or new message.I just confused, don't know how to respond on this.Why?This post has been edited by JimmyX: Jun 18 2026, 03:28 PM",
+  "source": "forum.lowyat.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "e45bb5f0584908c4f1e429c9b29e398b",
+  "title": "PS4 Jailbreak, Exploits & Hacks | PSX-Place",
+  "url": "https://www.psx-place.com/forums/ps4-jailbreak-exploits-hacks.188/",
+  "snippet": "Nov 18, 2025 · A discussion & information for the latest PlayStation 4 Jailbreak & Exploits for executing Homebrew and System Hacks",
+  "source": "psx-place.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f9585cc1ad5e1124ccec8275dca71985",
+  "title": "PSX-Place",
+  "url": "https://www.psx-place.com/",
+  "snippet": "PSX Place - The place for Playstation Hacking, Homebrew, Jailbreaking & Scene News(",
+  "source": "psx-place.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "3d73985f615a5041c97e325632c0e177",
+  "title": "PS3 - HFW 4.93.1 (Hybrid Firmware) | PSX-Place",
+  "url": "https://www.psx-place.com/resources/hfw-4-93-1-hybrid-firmware.1677/",
+  "snippet": "Mar 21, 2026 · The official HFW 4.93.1 has a EULA date of March 18, 2026 and an MD5 of D5B1F953972D0FBBBA5981181D5DD086 This firmware has been tested with PS3HEN 3.5.0...",
+  "source": "psx-place.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "3e89ac28aaccb006b611dea5b6bfcd9e",
+  "title": "PS3 - 4.91.1 HFW (Hybrid FirmWare) | PSX-Place",
+  "url": "https://www.psx-place.com/resources/4-91-1-hfw-hybrid-firmware.1478/",
+  "snippet": "Oct 9, 2024 · 4.91.1 HFW (Hybrid FirmWare). A FW (installable on unmodified systems) that restores 4.82 webkit to 4.91. MD5: C2717C377EB4F0FF458B8819B1E53D50",
+  "source": "psx-place.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "76b1a1f5c348d94169fc0c8dd9966fdf",
+  "title": "PS3 Jailbreak CFW and PS3HEN - PSX-Place",
+  "url": "https://www.psx-place.com/forums/ps3-jailbreak-cfw-and-ps3hen.86/",
+  "snippet": "Aug 11, 2026 · Various information and tools related to Jailbreaking / CFW & Downgrading your PS3 Console",
+  "source": "psx-place.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "ac93e156a24d20727acd134d8f1ac8fe",
+  "title": "PS3 - HFW 4.90.1 (Hybrid Firmware) | PSX-Place",
+  "url": "https://www.psx-place.com/threads/hfw-4-90-1-hybrid-firmware.39758/",
+  "snippet": "Mar 6, 2023 · Xjordy13x said: Can I install this hfw 4.90.1 once hen is ready My PS3 is a super slim Cech 4202c Or should I stay on 4.89 using update list method to get online it's working like that Right now PS3HEN is still in development, but is being worked on. I would stay on 4.89, as you cant use PS3HEN yet on 4.90",
+  "source": "psx-place.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "be9e42c3f670897c478432ae87107c08",
+  "title": "PS3 - Official PS3HEN v3.3.0 + HFW Released for 4.91 Firmware...",
+  "url": "https://www.psx-place.com/threads/official-ps3hen-v3-3-0-hfw-released-for-4-91-firmware-from-team-ps3xploit.43199/",
+  "snippet": "Mar 16, 2024 · The Official PS3HEN exploit has been updated to v3.3.0 with some new changes from @esc0rtd3w and @Joonie of Team PS3Xploit to support 4.91. Also, developer Joonie has brought back the webkit exploit from 4.82 to 4.91 with the official HFW release (HFW = OFW with old webkit injected). Its best...",
+  "source": "psx-place.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "35899b60c855fbf85511ec062cd000fe",
+  "title": "HFW 4.92.1 (Hybrid Firmware) Official Release - PSX-Place",
+  "url": "https://www.psx-place.com/threads/hfw-4-92-1-hybrid-firmware-official-release.46954/",
+  "snippet": "Mar 9, 2025 · Have fun ;) HFW, by its very nature is a modified version of original OFW, that by itself can be unstable or have unexpected results in some situations, due to the system files (sprx) replaced with older version during the creation process. HFW is meant to be accompanied by PS3HEN, which when...",
+  "source": "psx-place.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "fb84ba4dc677597e8ac8d8ecc8fe3db7",
+  "title": "PS3 - PS3HEN 3.4.0 + HFW 4.92 - Officially released by esc0rtd3w...",
+  "url": "https://www.psx-place.com/threads/ps3hen-3-4-0-hfw-4-92-officially-released-by-esc0rtd3w-of-team-ps3xploit.46959/",
+  "snippet": "Mar 9, 2025 · PS3 Developer @esc0rtd3w has released the latest update to PS3HEN with support to recent firmware update of 4.92. Along with the PS3HEN update is the release of Hybrid Firmware (HFW), which is just an official firmware (4.92) with the \"silk_webkit.sprx\" file replace from 4.82 OFW (that has a...",
+  "source": "psx-place.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "e16dc76b1102773aef826b917fbbb1ac",
+  "title": "PS3 ISO Tools - PSX-Place",
+  "url": "https://www.psx-place.com/resources/ps3-iso-tools.68/",
+  "snippet": "Jul 3, 2016 · PS3 ISO TOOLS V2.1 * * by Rudi Rastelli * ***************************************************************** * Credits: * * @Estwald for \"extractps3iso\" & \"patchps3iso ...",
+  "source": "psx-place.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f8de9547d4147aa41a9f53264b016fc6",
+  "title": "Microsoft - Wikipedia",
+  "url": "https://en.wikipedia.org/wiki/Microsoft",
+  "snippet": "Microsoft Corporation is an American multinational technology company headquartered in Redmond, Washington. The company became influential in the rise of personal computers through software like Windows and has since expanded into areas such as Internet services, cloud computing, artificial intelligence, video gaming, and more.",
+  "source": "en.wikipedia.org",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f99d92274e8f1c0d77f2abc1c4d61507",
+  "title": "Microsoft – AI, Cloud, Productivity, Computing, Gaming & Apps",
+  "url": "https://www.microsoft.com/en-us",
+  "snippet": "Explore Microsoft products and services and support for your home or business. Shop Microsoft 365, Copilot, Teams, Xbox, Windows, Azure, Surface and more.",
+  "source": "microsoft.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "0f2d0e4410ee4fd762cb496269f9081c",
+  "title": "Sign in to your account",
+  "url": "https://myaccount.microsoft.com/",
+  "snippet": "Access and manage your Microsoft account, subscriptions, and settings all in one place.",
+  "source": "myaccount.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "94f869aa921c51c9f18017b1a10e0a93",
+  "title": "Microsoft products, apps, and devices built to support you",
+  "url": "https://www.microsoft.com/en-us/microsoft-products-and-apps",
+  "snippet": "Uncover the power of Microsoft's products, apps, and devices designed to simplify your life and fuel your passions. Explore our comprehensive range and unlock new capabilities.",
+  "source": "microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c9643dd93e90fbc71255edb3c9e54e5f",
+  "title": "Sign in to your account - myaccount.microsoft.com",
+  "url": "https://myaccount.microsoft.com/login",
+  "snippet": "Sign in to manage your Microsoft account and access free online services like Outlook, Word, Excel, and PowerPoint securely from any device.",
+  "source": "myaccount.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "dc9ffc763634277a10e49f6323282ba1",
+  "title": "Home | Microsoft Careers",
+  "url": "https://careers.microsoft.com/",
+  "snippet": "Do what you love. Create the future you want. Explore the career options that Microsoft has to offer Stage.",
+  "source": "careers.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "eca3275479f983a72c3835197bdaf697",
+  "title": "Create your Microsoft account",
+  "url": "https://signup.live.com/",
+  "snippet": "Create your Microsoft account to access various services and features.",
+  "source": "signup.live.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "d24bfa1e3917cf33986da9d0a2635d7f",
+  "title": "Sign in - account.microsoft.com",
+  "url": "https://account.microsoft.com/account-checkup",
+  "snippet": "Sign in to check and manage your Microsoft account settings with the Account Checkup Wizard.",
+  "source": "account.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "99c6e14a4a834d27e64254503be57375",
+  "title": "Microsoft Store - Download apps, games & more for your Windows PC",
+  "url": "https://apps.microsoft.com/home",
+  "snippet": "Explore the Microsoft Store for apps and games on Windows. Enjoy exclusive deals, new releases, and your favorite content all in one place.",
+  "source": "apps.microsoft.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "8c9fada1403b5a620791168ec03c7806",
+  "title": "Outlook",
+  "url": "https://outlook.office.com/mail/inbox",
+  "snippet": "Sign in to Outlook to access and manage your email efficiently.",
+  "source": "outlook.office.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "032b570ac19694594c70c7b34fd4dd62",
+  "title": "Nioh - Reddit",
+  "url": "https://www.reddit.com/r/Nioh/top/",
+  "snippet": "r/Nioh: A Reddit community dedicated to Nioh and Nioh 2, action RPGs developed by Team Ninja and published by Koei Tecmo (PC) and Sony Computer…",
+  "source": "reddit.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "76d3720ccd36172ef38ee03cc1858f46",
+  "title": "nioh Wiki",
+  "url": "https://nioh.wiki.fextralife.com/nioh+wiki",
+  "snippet": "Sep 25, 2022 · Blending concepts of Ninja Gaiden with Dark Souls, nioh focuses on fast and precise combat. Ni-Oh is set during the samurai era and developer Team Ninja wants players to feel what it’s like to be a samurai.",
+  "source": "nioh.wiki.fextralife.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f2315d9077f8d5ce19c91bd6688877ad",
+  "title": "Nioh: Complete Edition on Steam",
+  "url": "https://store.steampowered.com/app/485510/Nioh_Complete_Edition/",
+  "snippet": "Nov 7, 2017 · Experience the newest brutal action game from Team NINJA and Koei Tecmo Games. In the age of samurai, a lone traveler lands on the shores of Japan. He must fight his way through the vicious warriors and supernatural Yokai that infest the land in order to find that which he seeks. KOEI TECMO GAMES CO., LTD. Developer: KOEI TECMO GAMES CO., LTD.",
+  "source": "store.steampowered.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "34ebe7d21be5751fecc77a88ed7505cd",
+  "title": "Nioh",
+  "url": "https://www.teamninja-studio.com/nioh/",
+  "snippet": "Experience a new world of dark samurai fantasy developed by Koei Tecmo Games exclusively on PlayStation®4. Official site with news, trailers and more.",
+  "source": "teamninja-studio.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "b4d9b9c5b00323b653c2cb54d8fd3288",
+  "title": "XDA Forums",
+  "url": "https://forum.xda-developers.com/posts/76046169/",
+  "snippet": "We would like to show you a description here but the site won’t allow us.",
+  "source": "forum.xda-developers.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "18677ed7d1f1a4bd8b8462102d55118f",
+  "title": "301 Moved Permanently",
+  "url": "https://forum.xda-developers.com/amazon-fire/general/launcher-root-launcher-hijack-v2-t3561026",
+  "snippet": "301 Moved Permanently 301 Moved Permanently nginx",
+  "source": "forum.xda-developers.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "be234cdc458227919d533423db7a1f7e",
+  "title": "[App] bxActions - Remap the Bixby button on Note9! single, double...",
+  "url": "https://forum.xda-developers.com/galaxy-note-9/themes/app-bxactions-remap-bixby-button-single-t3832301/page2",
+  "snippet": "Aug 21, 2018 · With bxActions you can remap the Bixby button on Note9 to any action or app you like! Use the Bixby button to mute your phone, take a screenshot, turn on flashlight or launch any app you like! Also works on lockscreen or when the screen is...",
+  "source": "forum.xda-developers.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "b153fa9cd590375986d33e03930266c6",
+  "title": "Cómo tocar BALADA PARA ADELINA Richard Clayderman, Paul de...",
+  "url": "https://www.tutorialesdemusica.com/2022/08/balada-para-adelina-piano-tutorial.html",
+  "snippet": "En este post te enseñaré a tocar “Balada para Adelina”, una composición inolvidable interpretada por Richard Clayderman y escrita por Paul de Senneville. A lo largo de esta entrada encontrarás todo lo necesario para lograrlo, explicado con claridad y dividido en tres partes.",
+  "source": "tutorialesdemusica.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "0c8af5cc0eba8fe031f0e75de7ac9411",
+  "title": "Aprende a tocar 'Balada para Adelina' en piano | TikTok",
+  "url": "https://www.tiktok.com/@fereirarobinson/video/7529996413489499397",
+  "snippet": "“Balada para Adelina” de Richard Clayderman tiene el poder de tocar el alma con solo unas notas… Hoy te enseño cómo tocar este fragmento en el piano, paso a paso.",
+  "source": "tiktok.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "fe6b96653a1dabd353511eef7b033044",
+  "title": "Balada para Adelina piano fácil - Día 31 (100 días de canciones...",
+  "url": "https://www.tiktok.com/@piania11/video/7647036298938551560",
+  "snippet": "Lead Día 31 de la serie \"100 días recomendando una canción fácil para aprender en piano\" presenta Balada para Adelina, la pieza más conocida de Richard Clayderman. Esta versión está pensada para quienes empiezan en el piano: melodía clara y acordes sencillos para practicar ritmo y expresividad.",
+  "source": "tiktok.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f172f7d94f7ee7229a00f60867cf120f",
+  "title": "Balada para Adelina: Partitura y Notas | PDF - Scribd",
+  "url": "https://es.scribd.com/document/571415497/Partitura-Balada-Para-Adelina",
+  "snippet": "El video enseña a leer partituras musicales para piano, explicando cómo nombrar cada nota de la pieza \"Balada para Adelina, Parte 1\". La instructora recomienda escribir con lápiz los nombres…",
+  "source": "es.scribd.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "d53d1a1af9cdbfdb2e5349b29c165c42",
+  "title": "Balada Para Adelina - Richard Clayderman - Piano Tutorial -...",
+  "url": "https://chordify.net/es/chords/balada-para-adelina-richard-clayderman-piano-tutorial-piano-facil-con-notas-musicale",
+  "snippet": "Cargando acordes para 'Balada Para Adelina - Richard Clayderman - Piano Tutorial - PIANO FÁCIL con notas'.",
+  "source": "chordify.net",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "6f7ee92ceb236afb1e00affac7981dc3",
+  "title": "Tutorial de Piano Balada Para Adelina Richard Clayderman | Clave...",
+  "url": "https://www.claveprod.com.co/entrada.php?id=789",
+  "snippet": "Artista: Richard Clayderman Año: 1977 Ver Letra 📜 Partitura de Piano 🎹 Inicio › Piano › Balada Para Adelina 🎶 Instrumento: Piano Dictado por: Viviana Andrea Cortes Niño Nivel de Aprendizaje:",
+  "source": "claveprod.com.co",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "1007f0034d93ac9cd0ae41cb9657072e",
+  "title": "New York Post - Wikipedia",
+  "url": "https://en.wikipedia.org/wiki/New_York_Post",
+  "snippet": "The New York Post (NY Post), founded as the New York Evening Post (originally New-York Evening Post), is an American conservative [3] daily tabloid newspaper published in New York City.",
+  "source": "en.wikipedia.org",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "9d7e5ab9f28d430ac851e2b94640216c",
+  "title": "New York Post – Breaking News, Top Headlines, Photos & Videos",
+  "url": "https://nypost.com/",
+  "snippet": "Your source for breaking news, photos, and videos about New York, sports, business, entertainment, opinion, real estate, culture, fashion, and more.",
+  "source": "nypost.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "40b677e453112c045483873c06a7901a",
+  "title": "US News - New York Post",
+  "url": "https://nypost.com/us-news/",
+  "snippet": "The Mamdani administration admitted it mistakenly told more than 1,000 New Yorkers that they could get hit with a pied-à-terre tax bill unless they proved otherwise, according to new court...",
+  "source": "nypost.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "4b44be9ee0508aadc17944c36077d0b4",
+  "title": "New York Post - August 25, 2026 - PressReader",
+  "url": "https://nypost.pressreader.com/new-york-post",
+  "snippet": "1 day ago · New York Post - August 25, 2026 Articles OUT OF MULLAH Dua's dual rules for wedding days WEIGHT AND ‘SPREE’ $QUEEZING POISON SNAKE That cut really hurts Money woes a ‘rial’ crusher $QUEEZING POISON SNAKE $tranglehold will crush the regime First son targeted in sick video Tehran issues strait-out warn Trump admin’s financial warfare ...",
+  "source": "nypost.pressreader.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "a7e86b0f864e0c6be7059e0f49d8ab0e",
+  "title": "NEW YORK POST",
+  "url": "https://my.nypost.com/nyp/home?sitecode=nyp",
+  "snippet": "NEW YORK POST PODCASTS Don't miss our suite of podcasts bringing you even deeper coverage of news, sports, gossip & more.",
+  "source": "my.nypost.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "72a17431059d397eb635fa96915113ca",
+  "title": "New York Post - Today's Front Page",
+  "url": "https://www.frontpages.com/new-york-post/",
+  "snippet": "1 day ago · View today's New York Post newspaper cover. Get the latest breaking headlines updated Tuesday, August 25, 2026. Read the news!",
+  "source": "frontpages.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "126af1b3129f2d195f73831e4c384dfc",
+  "title": "New York Post (@nypost) / X - Twitter",
+  "url": "https://x.com/nypost",
+  "snippet": "Breaking news, features and more from the NY Post. Follow ️ @pagesix, @nypmetro, @nypostbiz, @nypostsports, @nypfashion, @nypostopinion, @vrtpod, @_nynext",
+  "source": "x.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "96da47527f7f48fdb98db5264a46e15d",
+  "title": "Gafetes de Identificación - ANAM - Agencia Nacional de Aduanas de...",
+  "url": "https://anam.gob.mx/gafetes-de-identificacion/",
+  "snippet": "Es el portal único de trámites, información y participación ciudadana. Leer más.",
+  "source": "anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c108670d3911a3229431cb67f70d7d6c",
+  "title": "Gafetes ANAM",
+  "url": "https://gafetesaduanales.anam.gob.mx/",
+  "snippet": "¡Bienvenido de vuelta! ¡Crea tu cuenta!",
+  "source": "gafetesaduanales.anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c78def7f15a396f25143b17c54706e19",
+  "title": "Plataforma Única ANAM",
+  "url": "https://accesounico.anam.gob.mx/",
+  "snippet": "¿Olvido su contraseña?",
+  "source": "accesounico.anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "d6f1bf54de73d332a60fc98d20e281a6",
+  "title": "Acceso Único ANAM - ANAM - Agencia Nacional de Aduanas de México",
+  "url": "https://www.anam.gob.mx/acceso-unico-anam/",
+  "snippet": "Gafetes Electrónicos de Identificación de Aduanas. Acceso Único. Activa NI Web. Candados Electrónicos ANAM. X.",
+  "source": "anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "dc1a00116b5a6f5f9317b77ec6ec90c0",
+  "title": "Gafetes ANAM",
+  "url": "https://gafetesaduanales-uat.anam.gob.mx/",
+  "snippet": "¡Bienvenido de vuelta! ¡Crea tu cuenta!",
+  "source": "gafetesaduanales-uat.anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "0753c6f248c7ad7f4996d81cbc341afa",
+  "title": "Sistema de registro - gafetesaduanales.anam.gob.mx",
+  "url": "https://gafetesaduanales.anam.gob.mx/crear-cuenta/",
+  "snippet": "¿Es extranjero?",
+  "source": "gafetesaduanales.anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "edd6b99de4faf7d92a6ebb1acffb21b6",
+  "title": "Solicitud, renovación y cambio del gafete electrónico ANAM",
+  "url": "https://wp.caaarem.mx/?actaduanera=solicitud-renovacion-y-cambio-del-gafete-electronico-anam",
+  "snippet": "Nov 7, 2022 · Se cuenta con una plataforma de citas vía internet para que los interesados puedan agendar la cita en la aduana de su preferencia y así poder obtener su gafete electrónico de identificación de la ANAM.",
+  "source": "wp.caaarem.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "a85faffa5d1f097779dafe2a285f3eaa",
+  "title": "ANAM",
+  "url": "https://consultaqrgafete.anam.gob.mx/GafetesConsulting/",
+  "snippet": "ANAM sayfası, kullanıcıların gümrük işlemleri için bilgi ve hizmetlere erişimini kolaylaştırmak amacıyla tasarlanmıştır.",
+  "source": "consultaqrgafete.anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "ac1a8b4bbb130f84ef828b2137ca730f",
+  "title": "Plataforma Única ANAM",
+  "url": "https://accesounico.anam.gob.mx/activate",
+  "snippet": "Seleccione el tipo de usuario con el cual desea registrarse.",
+  "source": "accesounico.anam.gob.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "4b9737f5aa829743ef774215b33b6207",
+  "title": "Actualización Gafetes de Identificación Agencia Nacional de...",
+  "url": "https://www.anmecpreval2.com.mx/saai/boletines/documentos/Boletin+ANAM+2024+01+Actualización+en+Concepto+de+pago+para+generar+línea+de+captura+Gafetes+de+Identificación+ANAM.pdf",
+  "snippet": "Ciudad de México, a 04 de enero de 2024. Actualización en “Concepto de pago” para generar línea de captura- Gafetes de Identificación Agencia Nacional de Aduanas de México.",
+  "source": "anmecpreval2.com.mx",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "437d877f70161d8c6e59760c22add16f",
+  "title": "Rob Ford - Wikipedia",
+  "url": "https://en.m.wikipedia.org/wiki/Rob_Ford",
+  "snippet": "Before and after his term as mayor, Ford was a city councillor; first being elected to Toronto City Council in the 2000 municipal election, before being re-elected to his council seat twice. Ford's political career, particularly his mayoralty, saw a number of personal and work-related controversies and legal proceedings. [2] .",
+  "source": "en.m.wikipedia.org",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "ad2cb534d464b286d2cfc9adf98a15a2",
+  "title": "Mayoralty of Rob Ford - Wikipedia",
+  "url": "https://en.m.wikipedia.org/wiki/Mayoralty_of_Rob_Ford",
+  "snippet": "The drug scandal created headlines nationally and internationally as Ford denied his abuse until a video was found of him smoking crack cocaine. Ford then took a two-month leave of absence for rehabilitation. He declined to run again for mayor for a second term due to a cancer diagnosis.",
+  "source": "en.m.wikipedia.org",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "29a4d2a970eefbaeb2ca51eed6527c17",
+  "title": "Rob Ford - Simple English Wikipedia, the free encyclopedia",
+  "url": "https://simple.m.wikipedia.org/wiki/Rob_Ford",
+  "snippet": "Rob Ford ... Robert Bruce \"Rob\" Ford (May 28, 1969 – March 22, 2016) was a Canadian politician and businessman. He was the sixty-fourth Mayor of Toronto, Ontario, Canada. Before he was elected mayor, Ford was a city councilor. He was first elected to Toronto City Council in the 2000 Toronto municipal election. He was re-elected to his council ...",
+  "source": "simple.m.wikipedia.org",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f52535cdb297d5dcb4fa0f921f18ac2a",
+  "title": "Rob Ford, former Toronto mayor, dead at 46 | CBC News",
+  "url": "https://www.cbc.ca/news/canada/toronto/rob-ford-1.3489457",
+  "snippet": "Mar 22, 2016 · Rob Ford, the former Toronto mayor who polarized voters with his brash, uncompromising political style and became an international celebrity for his drug and alcohol use while in office, has...",
+  "source": "cbc.ca",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "d9f85b996f5e28fc5b4017911af887aa",
+  "title": "Renata Ford, wife of late Toronto mayor Rob Ford, has died",
+  "url": "https://www.cbc.ca/news/canada/toronto/renata-ford-dead-9.7260839",
+  "snippet": "Jul 19, 2026 · Renata Ford, the wife of late Toronto mayor Rob Ford, has died at 55-years-old. Ontario Premier Doug Ford announced the news in a statement on Monday night. Renata was a sister-in-law to...",
+  "source": "cbc.ca",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "6c4921158f819c80628907f89a903dff",
+  "title": "Rob Ford - IMDb",
+  "url": "https://m.imdb.com/name/nm6067048/",
+  "snippet": "Rob Ford was born on 28 May 1969 in Etobicoke, Ontario, Canada. He was an actor and writer, known for Rob Ford's Words in the Mouth of a Child (2014), Toronah (2015) and WingMen (2016).",
+  "source": "m.imdb.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "9c9653bfdb187dc72eae6bd13df0f20d",
+  "title": "All About Rob Ford's Life After His Crack Cocaine Scandal",
+  "url": "https://people.com/what-happened-to-toronto-mayor-rob-ford-11758556",
+  "snippet": "Jun 22, 2025 · So, what happened to Rob Ford? Here's everything to know about the controversial politician's life after his crack cocaine video scandal.",
+  "source": "people.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "e36fb7c43150b685163e5101175fcf45",
+  "title": "Rob Ford - The Canadian Encyclopedia",
+  "url": "https://thecanadianencyclopedia.ca/en/article/rob-ford",
+  "snippet": "Jul 24, 2014 · Robert Bruce Ford, municipal politician, mayor of Toronto 2010–2014 (born 28 May 1969 in Etobicoke, ON; died 22 March 2016 in Toronto, ON). A populist in the conservative vein, Ford’s defiance of convention and his tabloid celebrity made him a unique figure in modern Canadian politics.",
+  "source": "thecanadianencyclopedia.ca",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "708b87faf3e76265a437339f5a3d8f8f",
+  "title": "Doug Ford, Premier of Ontario | ontario.ca",
+  "url": "https://www.ontario.ca/page/premier",
+  "snippet": "Jun 29, 2018 · Doug Ford, Premier of Ontario Working hard to protect and strengthen Ontario, for today and generations to come. Contact the Premier",
+  "source": "ontario.ca",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "ebe1c7967f1977c2524eae4a8be5bb6d",
+  "title": "Rob Ford: A world of trouble | CBC News",
+  "url": "https://newsinteractives.cbc.ca/longform-custom/rob-ford/",
+  "snippet": "Sep 1, 2016 · A look at the forces that shaped Rob Ford, one of the most divisive politicians Canada has ever seen.",
+  "source": "newsinteractives.cbc.ca",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "9b624353fcc610369ab009a1c6fd734a",
+  "title": "Jobs in Lisboa (3,000+ Open Roles) | LinkedIn",
+  "url": "https://www.linkedin.com/jobs/jobs-in-lisbon/",
+  "snippet": "Today's top 3,000+ jobs in Lisboa. Leverage your professional network, and get hired. New Lisboa jobs added daily.",
+  "source": "linkedin.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "9547df29181500a236a44b968b1975c7",
+  "title": "233 Jobs in Lisboa, Lisboa | Randstad",
+  "url": "https://www.randstad.com/jobs/portugal/lisboa/lisboa/",
+  "snippet": "5 days ago · Browse 233 jobs in Lisboa, Lisboa. Choose from temporary and permanent jobs that'll help you reach your career goals.",
+  "source": "randstad.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "cbaad462cc8d35511ba5298469c80ce7",
+  "title": "328 Jobs in Lisboa | Randstad",
+  "url": "https://www.randstad.com/jobs/portugal/lisboa/",
+  "snippet": "1 day ago · Browse 328 jobs in Lisboa. Choose from temporary and permanent jobs that'll help you reach your career goals.",
+  "source": "randstad.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "1eb47909aba041128b7d3e8e77cd259f",
+  "title": "jobs in lisbon - Ofertas de Emprego em Portugal | OLX Portugal",
+  "url": "https://www.olx.pt/emprego/q-jobs-in-lisbon/",
+  "snippet": "jobs in lisbon - Encontra os melhores ofertas de emprego para ti. Cria o teu Perfil de Candidato e encontra emprego mais rápido!",
+  "source": "olx.pt",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "b13fcc50f055c129c4a8bcbedc77a26e",
+  "title": "12 000 Jobs, Employment in Lisboa 24 de agosto de 2026| Indeed",
+  "url": "https://pt.indeed.com/m/jobs?l=Lisboa",
+  "snippet": "Candidate-se a ofertas disponíveis para: Lisboa no Indeed.com, o maior site de empregos do mundo.",
+  "source": "pt.indeed.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "4be1dd575063a560d25309f79cdf9fcc",
+  "title": "Ofertas de Emprego para: Lisboa",
+  "url": "https://emprego.sapo.pt/offers?local=lisboa",
+  "snippet": "Encontre diariamente novos anúncios de empregos para trabalhar nas maiores empresas do país, no melhor site de emprego e recrutamento em Portugal.",
+  "source": "emprego.sapo.pt",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "10fb9dc18a208164dc0acf7f5ad4b458",
+  "title": "Vagas de emprego Lisboa - Ofertas de emprego - Trabalho em Lisboa...",
+  "url": "https://www.vagas.pt/emprego/lisboa/",
+  "snippet": "Veja todas as 329 ofertas de emprego em Lisboa e arredores. Ofertas de emprego em localidades próximas. 👉 Quantos empregos estão disponíveis na Lisboa? Existem atualmente 314 ofertas de emprego em Lisboa no Vagas.pt. 👉 Que empresas oferecem mais empregos na Lisboa?",
+  "source": "vagas.pt",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "619d1a7522d62db065e85e1e695756c9",
+  "title": "2 000+ Ofertas (Job), Emprego em Lisboa 25 de agosto de 2026 |...",
+  "url": "https://pt.indeed.com/q-job-l-lisboa-ofertas.html",
+  "snippet": "Candidate-se a ofertas de: Job disponíveis para: Lisboa, no Indeed.com, o maior site de empregos do mundo.",
+  "source": "pt.indeed.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2059cea0884a20eaebbedf815c53a9a8",
+  "title": "Vagas de Emprego Lisboa em Portugal (11,000+ vagas) | LinkedIn",
+  "url": "https://pt.linkedin.com/jobs/emprego-lisboa-vagas",
+  "snippet": "As 11,000+ melhores vagas de Emprego Lisboa hoje, em Portugal. Aproveite sua rede profissional para conseguir emprego. Novas vagas de Emprego Lisboa são adicionadas diariamente.",
+  "source": "pt.linkedin.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "11069c4ef2737fa2f280eb7f231a0948",
+  "title": "+ de 15.000 vagas de Vagas em: Lisboa e Região - LinkedIn...",
+  "url": "https://pt.linkedin.com/jobs/vagas-em-lisbon-area-portugal",
+  "snippet": "Aproveite sua rede profissional para conseguir um emprego. Novas vagas de Vagas adicionadas diariamente.",
+  "source": "pt.linkedin.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "fed09778900658403850f209dfb640aa",
+  "title": "Anybody remember these restaurants? (Cincinnati, Dayton:...",
+  "url": "https://www.city-data.com/forum/cincinnati/260718-anybody-remember-these-restaurants-26.html",
+  "snippet": "Mar 22, 2009 · I've read through over 18 pages of nostalgia that has brought a smile to my face. So far, these places have not been mentioned: Acropolis Chili. Best local late night food Mariemont Inn's National Exemplor Restaurant: Was a favorite Sunday night place for my parents to take our family. I remember the great Hungarian mushroom soup.",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "dd85e503bd5c353d3a45fdf5d618b8c7",
+  "title": "Arizona Smaller Cities, Towns, and Villages (between 1000 and...",
+  "url": "https://www.city-data.com/city/Arizona2.html",
+  "snippet": "Cities in Arizona The areas on this histogram show the distribution of the values. The area of each rectangle on the histogram corresponds to the number of map areas that have values in this interval. The upper distribution corresponds to the visible map area. The lower distribution corresponds to the whole US.",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "dd21d384d6ff49944870b764342e5464",
+  "title": "Arkansas Very Small Towns and Villages (fewer than 1000...",
+  "url": "https://www.city-data.com/city/Arkansas3.html",
+  "snippet": "Forum Archive: Arkansas Pages: 2 3 4 5 6 7 Fayetteville - Springdale - Rogers Pages: 2 3 4 Little Rock - Conway area Pages: 2 Map of Radon Zones in Arkansas based on Environmental Protection Agency (EPA) data More Arkansas directories: Cities in Arkansas with more than 6000 residents Cities, towns, and villages in Arkansas between 1000 and 6000 ...",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "9535424b046a072c0fd230ae4a625931",
+  "title": "Tennessee Smaller Cities, Towns, and Villages (between 1000 and...",
+  "url": "https://www.city-data.com/city/Tennessee2.html",
+  "snippet": "Historical population change (%) Forum Archive: Tennessee Pages: 2 3 4 5 6 7 8 9 10 11 12 13 Chattanooga Pages: 2 3 4 5 6 Cookeville Pages: 2 3 4 5 Kingsport - Johnson City - Bristol Pages: 2 3 4 5 6 7 8 Knoxville Pages: 2 3 4 5 6 7 8 9 10 11 12 13 Memphis Pages: 2 3 4 5 6 7 8 Nashville Pages: 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 ...",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "76155a1d3dd77decd86a8422b5606518",
+  "title": "Louisiana Very Small Towns and Villages (fewer than 1000...",
+  "url": "https://www.city-data.com/city/Louisiana3.html",
+  "snippet": "Louisiana Pages: 2 3 4 5 Baton Rouge Pages: 2 3 New Orleans Pages: 2 3 4 5 6 7 Shreveport-Bossier City Pages: 2 Map of Radon Zones in Louisiana based on Environmental Protection Agency (EPA) data More Louisiana directories: Cities in Louisiana with more than 6000 residents Cities, towns, and villages in Louisiana between 1000 and 6000 residents",
+  "source": "city-data.com",
+  "category": "boss",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "073a2689e2843c97fe2729836c338003",
+  "title": "Electchester is not what it use to be (York: apartments, violent...",
+  "url": "https://www.city-data.com/forum/new-york-city/2774633-electchester-not-what-use.html",
+  "snippet": "Aug 11, 2017 · If it makes you feel any better, I think Forest Hills Co-op is like 99% white, that NYCHA is pretty much off limits to anybody not Jewish Interesting how NYCHA can make an impact on a neighborhood though, I personally can't think of any neighborhood that has gotten worse in NYC like that since 2000.",
+  "source": "city-data.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "a427d92c3443389fd72085473005cc7c",
+  "title": "Georgia Very Small Towns and Villages (fewer than 1000 residents)",
+  "url": "https://www.city-data.com/city/Georgia3.html",
+  "snippet": "Augusta area Pages: 2 3 4 5 6 7 Columbus, GA Pages: 2 3 4 5 Macon Pages: 2 3 Savannah area Pages: 2 3 4 5 6 7 8 9 Map of Radon Zones in Georgia based on Environmental Protection Agency (EPA) data Cities in Georgia with more than 6000 residents Cities, towns, and villages in Georgia between 1000 and 6000 residents",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "38c08bd768c2a1bded033474d400d55c",
+  "title": "Registered sex offenders in Hollywood, Florida - crimes listed...",
+  "url": "https://www.city-data.com/so/so-Hollywood-Florida.html",
+  "snippet": "According to our research of Florida and other state lists, there were 90 registered sex offenders living in Hollywood as of August 18, 2026. The ratio of all residents to sex offenders in Hollywood is 1,689 to 1. The ratio of registered sex offenders to all residents in this city is much lower than the state average. Crime in Hollywood detailed stats: murders, rapes, robberies, assaults ...",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "4eb0415d92957ebb4f2ee2267c8db54d",
+  "title": "Mississippi Very Small Towns and Villages (fewer than 1000...",
+  "url": "https://www.city-data.com/city/Mississippi3.html",
+  "snippet": "Historical population Historical population change (%) Forum Archive: Mississippi Pages: 2 3 4 5 6 Jackson Pages: 2 Map of Radon Zones in Mississippi based on Environmental Protection Agency (EPA) data More Mississippi directories: Cities in Mississippi with more than 6000 residents Cities, towns, and villages in Mississippi between 1000 and ...",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "4626a74229f865711d6fb43b75ad0661",
+  "title": "North Carolina Very Small Towns and Villages (fewer than 1000...",
+  "url": "https://www.city-data.com/city/North-Carolina3.html",
+  "snippet": "Western North Carolina Pages: 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 Map of Radon Zones in North Carolina based on Environmental Protection Agency (EPA) data More North Carolina directories: Cities in North Carolina with more than 6000 residents Cities, towns, and villages in North Carolina between 1000 and 6000 residents",
+  "source": "city-data.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f6e88ac3db351d4e73d2f32bf922ec40",
+  "title": "GNCC Racing - The World’s Premier Cross Country Racing Series",
+  "url": "https://gnccracing.com/",
+  "snippet": "GNCC Racing is the World’s Premier Cross Country Racing Series since 1975, featuring ATV, Motorcycle and eMTB racing, Pro and Amateur racers, Adult and Youth classes.",
+  "source": "gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "0087dafc55f63f92b1dcefa02c9b83bb",
+  "title": "2026 Race Schedule - GNCC Racing",
+  "url": "https://gnccracing.com/events",
+  "snippet": "Feb 28, 2026 · GNCC Racing is the World's Premier Cross Country Racing Series since 1975, featuring ATV, Motorcycle and eMTB racing, Pro and Amateur racers, Adult and Youth classes.",
+  "source": "gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "63a098f2f66bf6e33e6ff4d75ce1569d",
+  "title": "2026 GNCC Results",
+  "url": "http://results.gnccracing.com/",
+  "snippet": "2026 GNCC Points Standings ... 2026 GNCC Race Results Search Events Round 1 - Big Buck - Union, SC Round 2 - Wild Boar - Palatka, FL Round 3 - Talladega - Talladega, AL Round 4 - Camp Coker - Society Hill, SC Round 5 - The Dukes - Leburn, KY Round 6 - Old Gray - Monterey, TN Round 7 - Powerline Park - St. Clairsville, OH Round 8 - Watkins Glen ...",
+  "source": "results.gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "8e0342e56ae63750c37f04277f17ee3e",
+  "title": "2026 GNCC Racer Profile / Stats",
+  "url": "http://results.gnccracing.com/racer.asp?n=427",
+  "snippet": "GNCC Results ATV PM - 01. XC1 Pro - ATV Machine: Honda Class Finish: 10 / Overall Finish: 15",
+  "source": "results.gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c43f471f643174fc399ad5047f5ca3b0",
+  "title": "Pre-Registration - GNCC Racing",
+  "url": "https://gnccracing.com/pre-registration",
+  "snippet": "pre-registration information Welcome to the GNCC Racing Pre-Registration Service, brought to you by Rocky Mountain ATV/MC Race Gas!",
+  "source": "gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "1f52c213459ae3e06a89da4fbb31704c",
+  "title": "Yamaha Racing Snowshoe: Motorcycle Race Report - GNCC Racing",
+  "url": "https://gnccracing.com/2026/06/29/yamaha-racing-snowshoe-motorcycle-race-report",
+  "snippet": "Jun 29, 2026 · The 2026 Yamaha Racing Snowshoe GNCC concluded another unforgettable weekend of racing atop Snowshoe Mountain, as the world's best off-road racers conquered one of the most demanding and iconic events on the Progressive Grand National Cross Country (GNCC Racing) Series, an AMA National Championship.",
+  "source": "gnccracing.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "45680535cb40fd636abbf2a5594bc889",
+  "title": "GNCC 101 - GNCC Racing",
+  "url": "https://gnccracing.com/gncc-101",
+  "snippet": "Rules: The GNCC Series is sanctioned by the American Motorcyclist Association (AMA), so the AMA Amateur Competition Rules apply. However, due to the unique and special character of GNCC Racing, it was necessary to develop our own rules that apply only to GNCC. There are three different sets of GNCC Supplemental Rules: Pro Competition, Amateur Competition, and eMTB Competition Familiarize ...",
+  "source": "gnccracing.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "c360515dfc5db22c1890235c32c7cfb2",
+  "title": "2026 Online Streaming & TV Schedule - GNCC Racing",
+  "url": "https://gnccracing.com/broadcasts",
+  "snippet": "Feb 14, 2026 · Explore the 2025 GNCC Racing TV and online streaming schedule for thrilling cross-country racing action.",
+  "source": "gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "66eaa08ac7d0d06f6517861d8831d3df",
+  "title": "Rd 9 - Snowshoe - General Info - GNCC Racing",
+  "url": "https://gnccracing.com/event/snowshoe",
+  "snippet": "Jun 26, 2026 · The toughest, most spectacular and most unique race on the whole GNCC tour, the Snowshoe GNCC made its debut in 2007 and will not soon be forgotten. The race is set in the upscale ski village at Snowshoe, West Virginia’s largest ski resort.",
+  "source": "gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "47d2a6ab62bd0ec890c68956d0340ad4",
+  "title": "Riders Meeting - GNCC Racing",
+  "url": "https://gnccracing.com/category/riders-meeting",
+  "snippet": "Jul 2, 2026 · Riders Meeting AMSOIL Watkins Glen International: Motorcycle Race Report June 8, 2026 The Progressive Grand National Cross Country (GNCC Racing) Series, an AMA National Championship, wrapped up its inaugural AMSOIL Watkins Glen International GNCC with an exciting weekend of racing at the legendary Watkins Glen International in New York. Marking the series’ first visit to the Empire State ...",
+  "source": "gnccracing.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "553d113be8641dd4d0f93e90b464339f",
+  "title": "Online Quizzes: Take Online Quiz - ProProfs",
+  "url": "https://www.proprofs.com/quiz-school/browse",
+  "snippet": "Find Quizzes for Your Learning Goals Browse and take quizzes across topics people come back to again and again: Education & Learning - quizzes designed for students, teachers, and classrooms Trivia & General Knowledge - history, science, space, animals, and more Pop Culture - movies, music, quiz games, superheroes, and cartoons Personality & Self-Discovery - fun quizzes to compare and share ...",
+  "source": "proprofs.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "565cd0f9918bc749ee28e92c1d8e16bb",
+  "title": "Can You Pass The Ultimate \"Friends\" Trivia Quiz? - ProProfs",
+  "url": "https://www.proprofs.com/quiz-school/story.php?title=friends-tv-show-quiz",
+  "snippet": "Jun 29, 2026 · Test your \"Friends\" knowledge with our fun Friends Quiz! Delve into the iconic moments, hilarious quotes, and unforgettable friendships from the beloved TV show. Whether you're a casual fan or a die-hard enthusiast, this ultimate trivia quiz will put your Friend's knowledge to the test. From Central Perk to apartment numbers, our Friends Quiz covers a wide range of topics that true fans will ...",
+  "source": "proprofs.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "b9be4bd6fc2efb67719656e8f03d9d69",
+  "title": "BingHomepageQuiz - Reddit",
+  "url": "https://www.reddit.com/r/BingHomepageQuiz/hot/",
+  "snippet": "Microsoft Bing Homepage daily quiz questions and their answers",
+  "source": "reddit.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "56159410c2b8a881a09483b703bc4c05",
+  "title": "Bing Entertainment Quiz (9-21-2022) : r/BingQuizAnswers - Reddit",
+  "url": "https://www.reddit.com/r/BingQuizAnswers/comments/xjr0zx/bing_entertainment_quiz_9212022/",
+  "snippet": "Sep 21, 2022 · Bing Entertainment News Quiz: Questions Answers (09-21-2022) 21 September 2022 1: Which singer was just honored with a star on the Hollywood Walk of…",
+  "source": "reddit.com",
+  "category": "news",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "37f2d5a75d4350922c2eab15bc9d3f7b",
+  "title": "231 Entertainment Quizzes with Question & Answers - ProProfs",
+  "url": "https://www.proprofs.com/quiz-school/topic/entertainment",
+  "snippet": "Feb 22, 2025 · Entertainment Quizzes, Questions & Answers Top Trending Entertainment Quizzes Multiple Choice Entertainment Quiz Here is a thrilling, short multiple-choice Entertainment Quiz that consists of questions about Hollywood music, movies, sports, books, and TV shows from over the past 20 years or so. So, if you think you have good knowledge about...",
+  "source": "proprofs.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "43ba7719a708191f091f184637fb189b",
+  "title": "Cricket Quiz: How Much You Know About Cricket? - Quiz & Trivia -...",
+  "url": "https://www.proprofs.com/quiz-school/story.php?title=online-cricket-quiz",
+  "snippet": "May 13, 2025 · Step onto the pitch and test your knowledge with the ultimate cricket quiz, a meticulously crafted challenge designed for fans of this beloved sport. This quiz offers a broad spectrum of questions covering historic matches, legendary players, iconic stadiums, and unforgettable moments that have defined cricket over the years. From the early days of test matches to the thrilling energy of T20 ...",
+  "source": "proprofs.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "2d59a811fe73e4cf41c8169a73061111",
+  "title": "Science Quiz Questions For Grade 11 and 12 - ProProfs",
+  "url": "https://www.proprofs.com/quiz-school/story.php?title=science-quiz-biologychemistryphysics",
+  "snippet": "Nov 20, 2025 · Are you ready to test your knowledge with a challenging science quiz? The Science Quiz Questions for Grade 11 and 12 cover key topics in physics, chemistry, and biology. The questions will assess your understanding of scientific principles, formulas, and real-world applications. If you are preparing for an exam then this quiz will help you improve your problem-solving skills. Each question ...",
+  "source": "proprofs.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "a192871d15263e36314a2170726e8bbe",
+  "title": "General Knowledge Quiz For Know-IT-alls - ProProfs",
+  "url": "https://www.proprofs.com/quiz-school/story.php?title=3dq-test-your-basic-general-knowledge",
+  "snippet": "Jul 15, 2026 · Are you ready to challenge your brain with a fun and engaging general knowledge quiz? From history and science to geography and pop culture, this quiz covers a wide range of topics that will test your knowledge and curiosity. If you're a trivia enthusiast or just looking for a quick mental workout, this quiz promises an exciting journey through fascinating facts and information. This general ...",
+  "source": "proprofs.com",
+  "category": "build",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "fdffc0697c63187b4f94d37cc6718ccb",
+  "title": "Telugu Movie Quiz – Test Your Tollywood Knowledge with Answers -...",
+  "url": "https://www.proprofs.com/quiz-school/story.php?title=telugu-movies",
+  "snippet": "Jul 14, 2026 · The Telugu Movie Quiz is designed to test your knowledge of Telugu cinema, from classic hits to modern blockbusters. If you are a casual viewer or a true film enthusiast, this quiz will challenge your understanding of famous actors, directors, iconic dialogues, and unforgettable movie moments. With carefully curated questions, this quiz covers various aspects of Tollywood. For those who want ...",
+  "source": "proprofs.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
+ },
+ {
+  "id": "f0f910f9b5f968842c8d6b6b773726c8",
+  "title": "This Class 5 GK Quiz Might Just CATch You Off Guard",
+  "url": "https://www.proprofs.com/quiz-school/story.php?title=gk-quiz-grade-5",
+  "snippet": "Aug 3, 2026 · How strong is your general knowledge? The GK quiz for grade 5 covers a wide range of topics, including history, geography, science, and current affairs, ensuring a comprehensive understanding of the world around them. With this quiz, students can enhance their critical thinking and problem-solving skills while having fun. To make the experience even more interactive, the GK quiz for grade 5 ...",
+  "source": "proprofs.com",
+  "category": "general",
+  "lang": "en",
+  "found_date": "2026-08-26"
  }
 ]
