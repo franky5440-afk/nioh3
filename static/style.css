@@ -247,3 +247,236 @@ main { flex: 1; padding-top: 28px; padding-bottom: 48px; }
 }
 
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ==================================================================
+   HERO —— 象牙白主視覺，往下漸層轉場回深色內容區
+   設計拆解與備援素材見 docs/hero-redesign/
+   ================================================================== */
+:root {
+  --ivory: #EFE7DD;      /* hero 底色 */
+  --crimson: #8E2B2B;    /* 取自斗篷，第二重音色 */
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+
+.hero {
+  position: relative; height: 100svh; min-height: 520px;
+  flex: none; overflow: hidden; isolation: isolate;
+  background: var(--ivory); color: #2A2320;
+}
+
+/* 背景牆：同張圖放大重模糊，負責填滿任何螢幕比例 */
+.hero-wall {
+  position: absolute; inset: -12%;
+  background: url("hero-samurai.webp") center/cover no-repeat;
+  /* 重點是「顏色要跟圖片邊緣的奶白對得上」，否則 contain 的切邊會現形。
+     所以這層不是拿來看內容的，是拿來當一片有紋理的奶霧。 */
+  filter: blur(58px) saturate(.28) brightness(1.3) contrast(.68);
+  transform: scale(1.15); opacity: 0; will-change: transform;
+  animation: heroWallFade 1700ms var(--ease) 100ms forwards;
+}
+/* 人物層：做成跟圖同比例的盒子（高度撐滿、寬度由 aspect-ratio 算出），
+   效果等同 contain，但因為盒子邊緣＝圖片邊緣，羽化遮罩才對得準。
+   直接用 inset:0 + contain 的話，遮罩會落在視窗邊緣、離接縫十萬八千里。 */
+.hero-img {
+  position: absolute; top: 0; bottom: 0; left: 50%;
+  aspect-ratio: 1376 / 1824; translate: -50% 0;
+  background: url("hero-samurai.webp") center/cover no-repeat;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 9%, #000 91%, transparent 100%);
+  transform: scale(1.14); filter: blur(20px) saturate(.88); opacity: 0;
+  will-change: transform, filter, opacity;
+  animation: heroFade 1700ms var(--ease) 100ms forwards,
+             heroSharpen 1700ms var(--ease) 100ms forwards;
+}
+@keyframes heroFade     { to { opacity: 1 } }
+@keyframes heroWallFade { to { opacity: .6 } }
+@keyframes heroSharpen { to { filter: blur(0) saturate(1) } }
+
+/* 日輪光暈：呼吸 */
+.hero-halo {
+  position: absolute; left: 50%; top: 17%; width: 30vmin; aspect-ratio: 1;
+  translate: -50% -50%; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,236,196,.85) 0%, rgba(255,228,175,.25) 38%, transparent 68%);
+  mix-blend-mode: screen; animation: heroBreathe 7s ease-in-out infinite;
+}
+@keyframes heroBreathe { 0%,100% { opacity:.55; transform:scale(1) } 50% { opacity:1; transform:scale(1.09) } }
+
+/* 金色斜向掃光 */
+.hero-sweep {
+  position: absolute; inset: -30%; pointer-events: none; mix-blend-mode: soft-light;
+  background: linear-gradient(105deg, transparent 42%, rgba(255,236,190,.9) 50%, transparent 58%);
+  animation: heroSweep 9s linear infinite;
+}
+@keyframes heroSweep { from { transform: translateX(-60%) } to { transform: translateX(60%) } }
+
+/* canvas 是替換元素，只給 inset:0 不會被撐開（會停在 300×150 的內建尺寸），
+   一定要明寫 width/height，JS 才讀得到正確的 clientWidth。 */
+.hero-motes {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  pointer-events: none; mix-blend-mode: screen;
+}
+
+/* 文字遮罩：讓深色襯線標題不必跟白色盔甲的紋理搶對比 */
+.hero-scrim {
+  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background:
+    linear-gradient(to top,   rgba(239,231,221,.92) 0%, rgba(239,231,221,.55) 22%, transparent 46%),
+    linear-gradient(to right, rgba(239,231,221,.80) 0%, rgba(239,231,221,.35) 26%, transparent 48%);
+}
+.hero-vignette {
+  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background:
+    /* 外圈洗成象牙白 —— 蓋掉 contain 的切邊，也讓人物從背景浮出來 */
+    radial-gradient(74% 90% at 50% 46%, transparent 44%, rgba(239,231,221,.55) 74%, rgba(239,231,221,.96) 100%),
+    radial-gradient(120% 90% at 50% 40%, transparent 62%, rgba(80,64,50,.14) 100%);
+}
+/* 轉場：hero 底部化進內容區的深色，避免硬邊 */
+.hero-fade {
+  position: absolute; inset: 0; pointer-events: none; z-index: 3;
+  background: linear-gradient(to bottom, transparent 62%, rgba(15,14,12,.22) 80%, rgba(15,14,12,.72) 93%, var(--bg) 100%);
+}
+
+/* ---------- hero 介面層 ---------- */
+.hero-ui {
+  position: relative; z-index: 5; height: 100%;
+  max-width: 1200px; margin: 0 auto; padding: 26px 20px clamp(140px, 20vh, 210px);
+  display: grid; grid-template-rows: auto 1fr auto; gap: 20px;
+}
+.hero-top { display: flex; align-items: center; gap: 16px; }
+.hero-wordmark {
+  font-family: "Noto Serif TC", serif; font-weight: 600;
+  font-size: 14px; letter-spacing: .3em;
+}
+.hero-chip {
+  margin-left: auto; padding: 9px 18px; border-radius: 999px;
+  font-size: 11px; letter-spacing: .12em; white-space: nowrap;
+  background: rgba(255,255,255,.42); border: 1px solid rgba(255,255,255,.65);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: 0 8px 30px rgba(90,72,55,.10);
+}
+
+/* 標題：逐行 mask reveal */
+.hero-title {
+  align-self: center; width: fit-content;
+  font-family: "Noto Serif TC", "Cormorant Garamond", serif; font-weight: 900;
+  font-size: clamp(38px, 6.6vw, 92px); line-height: 1.06; letter-spacing: .06em;
+}
+.hero-title .line { display: block; overflow: hidden; padding-right: .12em; }
+.hero-title .line > span { display: block; transform: translateY(112%); animation: heroLineUp 1100ms var(--ease) forwards; }
+@keyframes heroLineUp { to { transform: translateY(0) } }
+.hero-dim { color: var(--crimson); font-weight: 600; font-size: .5em; letter-spacing: .16em; }
+
+.hero-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; flex-wrap: wrap; }
+.hero-lede {
+  max-width: 46ch; font-size: 12.5px; line-height: 1.9; color: #5C534C;
+  opacity: 0; animation: heroFadeUp 1000ms var(--ease) 1350ms forwards;
+}
+@keyframes heroFadeUp { from { opacity:0; transform: translateY(26px) } to { opacity:1; transform:none } }
+.hero-cue {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 12px 22px; border-radius: 999px; color: #2A2320;
+  font-size: 11px; letter-spacing: .18em; white-space: nowrap;
+  background: rgba(255,255,255,.42); border: 1px solid rgba(255,255,255,.65);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  opacity: 0; animation: heroFadeUp 1000ms var(--ease) 1500ms forwards;
+  transition: background .35s, transform .5s var(--ease);
+}
+.hero-cue:hover { background: rgba(255,255,255,.8); transform: translateY(-2px); }
+.hero-cue svg { width: 15px; height: 15px; animation: heroNudge 2.2s ease-in-out infinite; }
+@keyframes heroNudge { 0%,100% { transform: translateY(0) } 50% { transform: translateY(3px) } }
+
+/* 右下角頭盔特寫卡 */
+.hero-detail {
+  position: absolute; z-index: 6;
+  right: clamp(20px, 4vw, 56px); bottom: clamp(200px, 27vh, 300px);
+  width: clamp(120px, 13vw, 186px); aspect-ratio: 4/5;
+  border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,.65);
+  box-shadow: 0 14px 40px rgba(90,72,55,.22);
+  opacity: 0; animation: heroFadeUp 1100ms var(--ease) 1450ms forwards;
+}
+.hero-detail i {
+  position: absolute; inset: 0; display: block;
+  background: url("hero-samurai.webp") 50% 12%/300% no-repeat;
+  transition: transform 1.2s var(--ease);
+}
+.hero-detail:hover i { transform: scale(1.12); }
+
+@media (orientation: portrait) {
+  /* 圖本身就是 3:4，直式螢幕直接鋪滿最好看，也就沒有接縫要處理 */
+  .hero-img {
+    inset: 0; width: auto; aspect-ratio: auto; translate: none;
+    background-position: center 42%;
+    -webkit-mask-image: none; mask-image: none;
+  }
+  .hero-halo { top: 13%; width: 42vmin; }
+}
+@media (max-width: 640px) {
+  .hero-detail { display: none; }
+  .hero-ui { padding-left: 14px; padding-right: 14px; }
+}
+
+/* ==================================================================
+   風格延續 —— 把 hero 的語言帶進深色內容區
+   ================================================================== */
+
+/* tab 列吸頂，玻璃質感呼應 hero 上的膠囊 */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background:
+    radial-gradient(1200px 300px at 70% -80px, rgba(201,162,39,.08), transparent),
+    rgba(15,14,12,.86);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+}
+.tab { letter-spacing: .04em; }
+/* active tab 的金線從中間拉開，跟 hero 的掃光同一套語彙 */
+.tab { position: relative; }
+.tab::after {
+  content: ""; position: absolute; left: 50%; right: 50%; bottom: -2px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-hi), transparent);
+  transition: left .45s var(--ease), right .45s var(--ease);
+}
+.tab.active { border-bottom-color: transparent; }
+.tab.active::after { left: 0; right: 0; }
+
+/* 金色按鈕：hover 時掃過一道光 */
+.btn-gold { position: relative; overflow: hidden; }
+.btn-gold::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%);
+}
+.btn-gold:hover::after { animation: btnSweep .75s var(--ease); }
+@keyframes btnSweep { to { transform: translateX(120%) } }
+
+/* 內容卡片沿用 hero 的進場曲線，前 10 張依序浮現 */
+.guide-card, .video-card, .thread-item, .tweet-item {
+  animation: cardIn .62s var(--ease) both;
+}
+@keyframes cardIn { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+.guide-card:nth-child(1),.video-card:nth-child(1),.thread-item:nth-child(1),.tweet-item:nth-child(1){animation-delay:.02s}
+.guide-card:nth-child(2),.video-card:nth-child(2),.thread-item:nth-child(2),.tweet-item:nth-child(2){animation-delay:.06s}
+.guide-card:nth-child(3),.video-card:nth-child(3),.thread-item:nth-child(3),.tweet-item:nth-child(3){animation-delay:.10s}
+.guide-card:nth-child(4),.video-card:nth-child(4),.thread-item:nth-child(4),.tweet-item:nth-child(4){animation-delay:.14s}
+.guide-card:nth-child(5),.video-card:nth-child(5),.thread-item:nth-child(5),.tweet-item:nth-child(5){animation-delay:.18s}
+.guide-card:nth-child(6),.video-card:nth-child(6),.thread-item:nth-child(6),.tweet-item:nth-child(6){animation-delay:.22s}
+.guide-card:nth-child(7),.video-card:nth-child(7),.thread-item:nth-child(7),.tweet-item:nth-child(7){animation-delay:.26s}
+.guide-card:nth-child(8),.video-card:nth-child(8),.thread-item:nth-child(8),.tweet-item:nth-child(8){animation-delay:.30s}
+.guide-card:nth-child(n+9),.video-card:nth-child(n+9),.thread-item:nth-child(n+9),.tweet-item:nth-child(n+9){animation-delay:.34s}
+
+/* 全站薄雜訊：把 hero 的印刷顆粒感延伸到深色區 */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: .035; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.5'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-img, .hero-detail, .hero-lede, .hero-cue { opacity: 1 !important; }
+  .hero-wall { opacity: .6 !important; }
+  .hero-img { transform: none !important; filter: none !important; }
+  .hero-title .line > span { transform: none !important; }
+  .guide-card, .video-card, .thread-item, .tweet-item { opacity: 1 !important; transform: none !important; }
+}

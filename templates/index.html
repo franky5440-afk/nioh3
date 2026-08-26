@@ -6,10 +6,45 @@
 <title>仁王3 攻略武庫 | Nioh 3 Guide Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
+<section class="hero" id="hero">
+  <div class="hero-wall" id="heroWall"></div>
+  <div class="hero-img"  id="heroImg"></div>
+  <div class="hero-halo" id="heroHalo"></div>
+  <div class="hero-sweep"></div>
+  <canvas class="hero-motes" id="heroMotes"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-fade"></div>
+
+  <div class="hero-ui">
+    <div class="hero-top">
+      <span class="hero-wordmark">仁王三 攻略武庫</span>
+      <span class="hero-chip">每日 08:00 自動更新</span>
+    </div>
+
+    <p class="hero-title" id="heroTitle">
+      <span class="line"><span style="animation-delay:.55s">仁王 三</span></span>
+      <span class="line"><span style="animation-delay:.70s">攻略武庫</span></span>
+      <span class="line"><span style="animation-delay:.85s" class="hero-dim">— 全網彙整</span></span>
+    </p>
+
+    <div class="hero-foot">
+      <p class="hero-lede">攻略・影片・討論・推文，每日自動彙整成一處。<br>
+         中文 / English / 日本語 三區並行，不必再開十個分頁。</p>
+      <a class="hero-cue" href="#tabs" aria-label="往下看內容">
+        <span>探索武庫</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <figure class="hero-detail"><i></i></figure>
+</section>
+
 <header class="site-header">
   <div class="header-inner">
     <div class="brand">
@@ -133,6 +168,7 @@
   <p id="lastRun"></p>
 </footer>
 
+<script src="static/hero.js"></script>
 <script src="static/app.js"></script>
 </body>
 </html>

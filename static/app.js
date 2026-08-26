@@ -195,7 +195,16 @@ function switchView(name) {
   $$(".view").forEach((el) => el.classList.add("hidden"));
   $(`#view-${name}`).classList.remove("hidden");
   $$(".tab").forEach((t) => t.classList.toggle("active", t.dataset.tab === name));
-  window.scrollTo({ top: 0 });
+  scrollToContent();
+}
+
+// 頁首有 100svh 的 hero，切 tab 若捲回 top:0 會整個飛回主視覺。
+// 改成：已經捲過 hero 就對齊內容起點（吸頂 tab 列剛好貼在最上面），還在 hero 裡就不動。
+function scrollToContent() {
+  const hero = document.getElementById("hero");
+  if (!hero) { window.scrollTo({ top: 0 }); return; }
+  const top = hero.offsetHeight;
+  if (window.scrollY > top) window.scrollTo({ top });
 }
 
 /* ---------- init ---------- */
