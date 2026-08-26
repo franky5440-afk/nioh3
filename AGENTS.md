@@ -1,7 +1,8 @@
 # nioh3 專案規範
 
 仁王3 攻略聚合站。Flask 本機版 + GitHub Pages 線上版共用同一套前端與資料。
-全域規範見 `~/.config/opencode/AGENTS.md`，本檔只列專案特有規則。
+全域規範見 `~/.codex/AGENTS.md`，本檔只列專案特有規則。
+（2026-08-26：builder 已由 opencode 換成 codex，全域規範隨之搬到該路徑；舊的 `~/.config/opencode/AGENTS.md` 已停用，不要再引用。）
 
 ## 語言
 
@@ -57,15 +58,30 @@ scraper.py ──> data/*.json ──> build_site.py ──> site/（靜態站�
 
 ## Git 與部署流程
 
-1. push 前依全域規範做機密掃描
+🔴 **本 repo 是 PUBLIC，builder 一律不得執行 `git push`。**
+公開後會被爬取、快取、索引，刪掉也收不回來。你的工作到 **commit 為止**，然後在回報裡寫清楚
+「已 commit 哪幾個、可以推」就停下來，交給主對話與 Frank。**不要問要不要 push，直接停。**
+
+⚠️ **下方步驟 2–3 裡出現的 `git push` 與 `gh workflow run` 不是給你執行的**——那是在描述整條
+部署流程（含主對話與 Frank 負責的部分）。指令範例出現在文件裡不等於授權你執行。
+
+細則（什麼可以自己做、機密掃描指令長什麼樣）一律見 `~/.codex/AGENTS.md` 的
+「Git：本機操作自由，push 是閘門」一節，**此處不另立一套說法**。
+
+1. push 前依全域規範做機密掃描（＝ `~/.codex/AGENTS.md` 裡那條 `git ls-files -z | xargs -0 grep -nE ...`；
+   注意要用 `git ls-files` 而非 `grep -r`，否則會掃到 `venv/` 產生大量假警報）
 2. **push 之後線上不會自動更新**，必須手動觸發：`gh workflow run deploy.yml --ref main`（workflow 也負責當天的雲端爬蟲）
 3. 雲端 bot 每天 UTC 00:00 會產生 "daily data update" commit。本機 push 若被拒或 rebase 撞到 `data/*.json` 衝突，標準解法：
 
 ```bash
+# ⚠️ 含推送，僅限已獲 Frank 授權者執行；builder 做到 rebase --continue 為止即停
 git pull --rebase
 git checkout --theirs -- data/   # 衝突時以本地較新資料為準
-git add -A && git -c core.editor=true rebase --continue && git push
+git add data/ && git -c core.editor=true rebase --continue && git push
 ```
+
+（`git add data/` 而非 `git add -A`：這段是在解 `data/` 的衝突，不需要全域暫存，
+而 `-A` 會把非預期的檔案一起帶進 commit，跟機密掃描紀律相衝。）
 
 4. repo 必須保持 public（免費 Pages 限制），資料皆為公開網頁內容無敏感性問題
 
