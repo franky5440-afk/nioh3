@@ -312,15 +312,16 @@ def collect_videos(lang):
     log.info("videos [%s]: %d channels rss -> %d videos", lang, min(len(chans), RSS_CHANNEL_CAP), len(rss_map))
 
     def pick_hot(pool, top_n):
-        """熱門影片不看全歷史觀看數：只取近 HOT_CUTOFF_DAYS 天上傳的影片，再依觀看數排序"""
+        """熱門影片優先取近 HOT_CUTOFF_DAYS 天上傳的影片，依觀看數排序；
+        冷門遊戲近期候選常不足 top_n，這時依觀看數從較舊的影片往下補滿"""
         cutoff = (datetime.now(timezone.utc) - timedelta(days=HOT_CUTOFF_DAYS)).date()
         chan_of = {v["video_id"]: v["channel"] for v in pool}
         cands = {v["video_id"]: dict(v) for v in pool}
-        # 頻道 RSS 近期上傳也列入候選，避免搜尋結果偏舊時樣本不足
+        # 頻道 RSS 上傳也列入候選，擴大樣本、避免搜尋結果不足時湊不滿榜單
         for vid, info in rss_map.items():
             if vid in cands:
                 continue
-            if not (within_cutoff(info["date"], cutoff) and keep(info["title"]) and any(t in info["title"].lower() for t in GAME_TERMS)):
+            if not (keep(info["title"]) and any(t in info["title"].lower() for t in GAME_TERMS)):
                 continue
             cands[vid] = {"video_id": vid, "title": info["title"], "channel": chan_of.get(vid, ""),
                           "url": f"https://www.youtube.com/watch?v={vid}", "view_count": info["views"]}
@@ -337,18 +338,17 @@ def collect_videos(lang):
                 v["view_count"] = views
                 known.append(v)
 
-        out = []
+        recent, older = [], []
         for v in sorted(known, key=lambda x: -(x["view_count"] or 0)):
             date = (rss_map.get(v["video_id"]) or {}).get("date")
             if not date:
                 date, _ = yt_full_info(v["video_id"])
                 time.sleep(0.4)
-            if not within_cutoff(date, cutoff):
-                continue
-            out.append(to_item(v, date, v["view_count"]))
-            if len(out) >= top_n:
+            item = to_item(v, date, v["view_count"])
+            (recent if within_cutoff(date, cutoff) else older).append(item)
+            if len(recent) >= top_n:
                 break
-        return out
+        return recent[:top_n] if len(recent) >= top_n else recent + older[:top_n - len(recent)]
 
     def pick_new(pool, top_n):
         cutoff = (datetime.now(timezone.utc) - timedelta(days=NEW_CUTOFF_DAYS)).date()
