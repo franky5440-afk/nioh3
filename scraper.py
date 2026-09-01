@@ -469,10 +469,14 @@ def update_videos():
                 cache[vid] = it["date"]
             elif vid in cache:
                 it["date"] = cache[vid]
-        save_json(f"videos_hot_{lang}.json", hot)
-        save_json(f"videos_new_{lang}.json", new)
-        set_meta(f"videos_hot_{lang}")
-        set_meta(f"videos_new_{lang}")
+        # YouTube 偶發擋 bot 導致抓到 0 筆時不要覆蓋，保留舊資料避免頁面開天窗
+        for category, items in (("hot", hot), ("new", new)):
+            name = f"videos_{category}_{lang}"
+            if items:
+                save_json(f"{name}.json", items)
+                set_meta(name)
+            else:
+                log.warning("%s: parsed 0 items, keeping previous data", name)
         log.info("videos [%s]: hot=%d new=%d", lang, len(hot), len(new))
     save_json("video_dates.json", cache)
 
