@@ -81,6 +81,10 @@
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       X 推文
     </button>
+    <button class="tab" data-tab="story">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+      劇情小說
+    </button>
   </nav>
 </header>
 
@@ -160,6 +164,22 @@
       </div>
     </div>
     <div class="tweet-list" id="tweetList"></div>
+  </section>
+
+  <section id="view-story" class="view hidden">
+    <div class="view-head">
+      <h2>劇情小說｜仁王3</h2>
+      <span class="meta-time" id="storyMeta"></span>
+    </div>
+    <div class="story-spoiler" id="storySpoiler" role="alert">
+      <strong>【劇透警告】</strong>
+      本章回小說體長稿含主線結局（含第十三回雙結局）與關鍵反轉。未通關或不欲知曉劇情者請勿閱讀。繼續瀏覽即視為接受劇透。
+      原創敘事改寫，非官方劇本。
+    </div>
+    <nav class="story-toc" id="storyToc" aria-label="章回目錄"></nav>
+    <article class="story-body" id="storyBody">
+      <p class="empty-msg">載入中…</p>
+    </article>
   </section>
 </main>
 

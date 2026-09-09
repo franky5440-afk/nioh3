@@ -248,6 +248,205 @@ main { flex: 1; padding-top: 28px; padding-bottom: 48px; }
 
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
+
+/* ---------- 劇情小說（ivory / gold 武士調） ---------- */
+.story-spoiler {
+  border: 1px solid rgba(201,162,39,.4);
+  background: rgba(201,162,39,.08);
+  color: #e4dcc8;
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  line-height: 1.7;
+  font-size: 14.5px;
+}
+.story-spoiler strong { color: var(--gold-hi); }
+
+.story-toc {
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.02);
+  border-radius: 10px;
+  padding: 16px 18px 12px;
+  margin-bottom: 28px;
+}
+.story-toc-title {
+  margin: 0 0 10px;
+  font-size: 15px;
+  color: var(--gold-hi);
+  font-weight: 700;
+}
+.story-toc-list {
+  margin: 0;
+  padding-left: 1.25em;
+  columns: 2;
+  column-gap: 24px;
+}
+.story-toc-list li {
+  break-inside: avoid;
+  margin: 0 0 6px;
+  line-height: 1.45;
+  font-size: 14px;
+}
+.story-toc-list a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.story-toc-list a:hover {
+  color: var(--gold-hi);
+  border-bottom-color: var(--gold);
+}
+
+.story-body {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+.story-chapter {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 88px;
+}
+.story-chapter:last-child { border-bottom: none; }
+.story-chapter-inner {
+  font-size: 16.5px;
+  line-height: 1.9;
+  color: var(--text);
+  letter-spacing: .02em;
+}
+.story-chapter-inner h1 {
+  font-family: "Noto Serif TC", "Cormorant Garamond", serif;
+  font-size: 1.55em;
+  font-weight: 900;
+  color: var(--gold-hi);
+  border-left: 4px solid var(--gold);
+  padding-left: 12px;
+  margin: 0 0 18px;
+  line-height: 1.35;
+}
+.story-chapter-inner h2 {
+  font-size: 1.15em;
+  color: var(--gold-hi);
+  margin: 1.4em 0 .6em;
+}
+.story-chapter-inner h3 {
+  font-size: 1.02em;
+  color: var(--gold);
+  margin: 1.2em 0 .5em;
+}
+.story-chapter-inner p { margin: 0 0 1.05em; }
+.story-chapter-inner blockquote {
+  margin: 0 0 1.1em;
+  padding: 10px 14px;
+  border-left: 3px solid var(--gold);
+  background: rgba(201,162,39,.08);
+  color: #e0d8c4;
+}
+.story-chapter-inner hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 1.6em 0;
+}
+.story-chapter-inner ul, .story-chapter-inner ol {
+  margin: 0 0 1em;
+  padding-left: 1.4em;
+}
+.story-chapter-inner li { margin-bottom: .35em; }
+.story-chapter-inner table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.2em;
+  font-size: .92em;
+}
+.story-chapter-inner th, .story-chapter-inner td {
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.story-chapter-inner th {
+  background: rgba(201,162,39,.12);
+  color: var(--gold-hi);
+}
+.story-chapter-inner strong { color: #f0e6d0; }
+.story-back-toc {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.story-back-toc:hover { color: var(--gold-hi); }
+
+/* 第十三回雙結局卡片：A 處刑 / B 影武者 / 共通 */
+.story-ending {
+  margin: 1.4em 0 1.6em;
+  padding: 16px 16px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.story-ending-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+.story-ending h2 {
+  margin-top: .35em !important;
+}
+.story-ending-a {
+  border-color: rgba(176,67,63,.55);
+  background:
+    linear-gradient(135deg, rgba(176,67,63,.12), transparent 55%),
+    var(--card);
+}
+.story-ending-a .story-ending-badge {
+  color: #f0c8c4;
+  background: rgba(176,67,63,.28);
+  border: 1px solid rgba(176,67,63,.45);
+}
+.story-ending-a h2 { color: #e8b4ae; }
+.story-ending-b {
+  border-color: rgba(201,162,39,.5);
+  background:
+    linear-gradient(135deg, rgba(201,162,39,.14), transparent 55%),
+    var(--card);
+}
+.story-ending-b .story-ending-badge {
+  color: #f0e2b0;
+  background: rgba(201,162,39,.22);
+  border: 1px solid rgba(201,162,39,.45);
+}
+.story-ending-b h2 { color: var(--gold-hi); }
+.story-ending-common {
+  border-color: rgba(236,231,219,.22);
+  background:
+    linear-gradient(135deg, rgba(236,231,219,.06), transparent 55%),
+    var(--card2);
+}
+.story-ending-common .story-ending-badge {
+  color: #d8d0c0;
+  background: rgba(236,231,219,.1);
+  border: 1px solid rgba(236,231,219,.2);
+}
+.story-ending-common h2 { color: #e8e2d4; }
+
+@media (max-width: 640px) {
+  .story-toc-list { columns: 1; }
+  .story-body { max-width: none; padding: 0 2px; }
+  .story-chapter-inner {
+    font-size: 16px;
+    line-height: 1.85;
+  }
+  .story-chapter-inner h1 { font-size: 1.35em; }
+  .story-spoiler { font-size: 13.5px; padding: 12px; }
+  .story-ending { padding: 14px 12px 6px; }
+}
+
 /* ==================================================================
    HERO —— 象牙白主視覺，往下漸層轉場回深色內容區
    設計拆解與備援素材見 docs/hero-redesign/

@@ -121,6 +121,41 @@ function renderTweets() {
     </article>`).join("") : '<p class="empty-msg">尚無資料。</p>';
 }
 
+
+async function loadStory() {
+  const body = $("#storyBody");
+  const toc = $("#storyToc");
+  const meta = $("#storyMeta");
+  if (!body) return;
+  try {
+    const res = await fetch("data/story.json");
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const story = await res.json();
+    const chapters = story.chapters || [];
+    if (!chapters.length) {
+      toc.innerHTML = "";
+      body.innerHTML = '<p class="empty-msg">尚無劇情小說內容，請稍後再試或等待下次建置。</p>';
+      if (meta) meta.textContent = "尚未建置";
+      return;
+    }
+    if (meta) meta.textContent = `${story.chapter_count || chapters.length} 章`;
+    toc.innerHTML = `<h3 class="story-toc-title">章回目錄</h3><ol class="story-toc-list">${
+      chapters.map((c) => `<li><a href="#${esc(c.id)}">${esc(c.title)}</a></li>`).join("")
+    }</ol>`;
+    body.innerHTML = chapters.map((c) =>
+      `<section class="story-chapter" id="${esc(c.id)}">
+        <div class="story-chapter-inner">${c.html}</div>
+        <a class="story-back-toc" href="#storyToc">↑ 回目錄</a>
+      </section>`
+    ).join("");
+  } catch (err) {
+    toc.innerHTML = "";
+    body.innerHTML = '<p class="empty-msg">劇情小說載入失敗，請重新整理頁面後再試。</p>';
+    if (meta) meta.textContent = "載入失敗";
+    console.warn("story load failed", err);
+  }
+}
+
 function renderMeta() {
   const meta = state.data.meta || {};
   const map = {
@@ -211,6 +246,7 @@ function scrollToContent() {
 document.addEventListener("DOMContentLoaded", async () => {
   state.data = await (await fetch("data/site.json")).json();
   renderGuides(); renderVideos(); renderBahamut(); renderTweets(); renderMeta();
+  loadStory();
 
   $$(".tab").forEach((t) => t.addEventListener("click", () => switchView(t.dataset.tab)));
 
