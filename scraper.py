@@ -352,6 +352,10 @@ def collect_videos(lang):
                 rss_map[vid] = {"title": title, "date": pub, "views": views}
         time.sleep(0.3)
     log.info("videos [%s]: %d channels rss -> %d videos", lang, min(len(chans), RSS_CHANNEL_CAP), len(rss_map))
+    # RSS 全空代表 YouTube 擋下請求，不應用搜尋池老片遞補覆寫舊資料
+    if not rss_map:
+        log.warning("videos [%s]: RSS 0 部，視為 YouTube 擋下，hot/new 一律回空 list 讓 update_videos 保留前一日資料", lang)
+        return [], []
 
     def pick_new(pool, top_n):
         cutoff = (datetime.now(timezone.utc) - timedelta(days=NEW_CUTOFF_DAYS)).date()
