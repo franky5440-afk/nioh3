@@ -50,9 +50,9 @@ const CONTRACT = `(async () => {
     return shown.length === 1 ? true : "顯示中的 view 有 " + shown.length + " 個：" + shown.map(e => e.id).join(",");
   });
 
-  check("R2 五個 tab 按鈕齊全且順序正確", () => {
+  check("R2 六個 tab 按鈕齊全且順序正確", () => {
     const got = [...document.querySelectorAll("nav.tabs .tab")].map(e => e.dataset.tab);
-    const want = ["guides", "hot", "new", "bahamut", "tweets"];
+    const want = ["guides", "hot", "new", "bahamut", "tweets", "story"];
     return JSON.stringify(got) === JSON.stringify(want)
       ? true : "實得 " + JSON.stringify(got);
   });

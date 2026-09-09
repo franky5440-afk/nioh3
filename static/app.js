@@ -122,6 +122,82 @@ function renderTweets() {
 }
 
 
+const STORY_SPOILER = {
+  main: "本章回小說體長稿含主線結局（含第十三回雙結局）與關鍵反轉。未通關或不欲知曉劇情者請勿閱讀。繼續瀏覽即視為接受劇透。原創敘事改寫，非官方劇本。",
+  dlc01: "本卷為 DLC「慶安地獄變」後日譚（家光就任後→1651）。含本篇終局之後走向與關鍵人物；A斬／B赦皆可接。未通關本篇或 DLC、或不欲劇透者請勿閱讀。原創敘事改寫，非官方劇本。",
+};
+
+let storyState = { data: null, volumeId: "main" };
+
+function renderStoryVolume(volumeId) {
+  const body = $("#storyBody");
+  const toc = $("#storyToc");
+  const meta = $("#storyMeta");
+  const bar = $("#storyVolumeBar");
+  const blurb = $("#storyVolumeBlurb");
+  const spoilerText = $("#storySpoilerText");
+  if (!body || !storyState.data) return;
+
+  const story = storyState.data;
+  const volumes = Array.isArray(story.volumes) && story.volumes.length
+    ? story.volumes
+    : [{
+        id: "main",
+        title: "本篇",
+        short_title: "本篇",
+        blurb: "",
+        chapters: story.chapters || [],
+        chapter_count: (story.chapters || []).length,
+      }];
+
+  const vol = volumes.find((v) => v.id === volumeId) || volumes[0];
+  storyState.volumeId = vol.id;
+  const chapters = vol.chapters || [];
+
+  if (bar) {
+    bar.innerHTML = volumes.map((v) =>
+      `<button type="button" class="story-volume-btn${v.id === vol.id ? " active" : ""}" data-volume="${esc(v.id)}" role="tab" aria-selected="${v.id === vol.id ? "true" : "false"}">${esc(v.short_title || v.title)}</button>`
+    ).join("");
+  }
+  if (blurb) {
+    if (vol.blurb) {
+      blurb.hidden = false;
+      blurb.textContent = vol.blurb;
+    } else {
+      blurb.hidden = true;
+      blurb.textContent = "";
+    }
+  }
+  if (spoilerText) {
+    spoilerText.textContent = STORY_SPOILER[vol.id] || STORY_SPOILER.main;
+  }
+
+  if (!chapters.length) {
+    toc.innerHTML = "";
+    body.innerHTML = '<p class="empty-msg">尚無劇情小說內容，請稍後再試或等待下次建置。</p>';
+    if (meta) meta.textContent = "尚未建置";
+    return;
+  }
+
+  const totalCh = volumes.reduce((n, v) => n + (v.chapter_count || (v.chapters || []).length), 0);
+  if (meta) {
+    meta.textContent = volumes.length > 1
+      ? `${vol.short_title || vol.title}｜${chapters.length} 章（全站 ${totalCh} 章）`
+      : `${story.chapter_count || chapters.length} 章`;
+  }
+
+  const tocLabel = vol.id === "dlc01" ? "DLC01 章回目錄（請先讀導讀）" : "章回目錄";
+  toc.innerHTML = `<h3 class="story-toc-title">${tocLabel}</h3><ol class="story-toc-list">${
+    chapters.map((c) => `<li><a href="#${esc(c.id)}">${esc(c.title)}</a></li>`).join("")
+  }</ol>`;
+  body.innerHTML = chapters.map((c) =>
+    `<section class="story-chapter" id="${esc(c.id)}">
+      <div class="story-chapter-inner">${c.html}</div>
+      <a class="story-back-toc" href="#storyToc">↑ 回目錄</a>
+    </section>`
+  ).join("");
+}
+
 async function loadStory() {
   const body = $("#storyBody");
   const toc = $("#storyToc");
@@ -130,26 +206,10 @@ async function loadStory() {
   try {
     const res = await fetch("data/story.json");
     if (!res.ok) throw new Error("HTTP " + res.status);
-    const story = await res.json();
-    const chapters = story.chapters || [];
-    if (!chapters.length) {
-      toc.innerHTML = "";
-      body.innerHTML = '<p class="empty-msg">尚無劇情小說內容，請稍後再試或等待下次建置。</p>';
-      if (meta) meta.textContent = "尚未建置";
-      return;
-    }
-    if (meta) meta.textContent = `${story.chapter_count || chapters.length} 章`;
-    toc.innerHTML = `<h3 class="story-toc-title">章回目錄</h3><ol class="story-toc-list">${
-      chapters.map((c) => `<li><a href="#${esc(c.id)}">${esc(c.title)}</a></li>`).join("")
-    }</ol>`;
-    body.innerHTML = chapters.map((c) =>
-      `<section class="story-chapter" id="${esc(c.id)}">
-        <div class="story-chapter-inner">${c.html}</div>
-        <a class="story-back-toc" href="#storyToc">↑ 回目錄</a>
-      </section>`
-    ).join("");
+    storyState.data = await res.json();
+    renderStoryVolume(storyState.volumeId || "main");
   } catch (err) {
-    toc.innerHTML = "";
+    if (toc) toc.innerHTML = "";
     body.innerHTML = '<p class="empty-msg">劇情小說載入失敗，請重新整理頁面後再試。</p>';
     if (meta) meta.textContent = "載入失敗";
     console.warn("story load failed", err);
@@ -251,6 +311,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   $$(".tab").forEach((t) => t.addEventListener("click", () => switchView(t.dataset.tab)));
 
   document.addEventListener("click", (e) => {
+    const volBtn = e.target.closest(".story-volume-btn");
+    if (volBtn) {
+      renderStoryVolume(volBtn.dataset.volume);
+      const tocEl = $("#storyToc");
+      if (tocEl) tocEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const chip = e.target.closest(".chip");
     if (chip) { state.guideCategory = chip.dataset.cat; renderGuides(); return; }
     const pill = e.target.closest(".pill");
